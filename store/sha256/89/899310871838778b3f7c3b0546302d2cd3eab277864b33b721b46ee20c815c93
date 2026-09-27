@@ -1,0 +1,2835 @@
+{
+  "created_at": "2026-09-27T23:53:56.577535+00:00",
+  "report_count": 1,
+  "reports": [
+    {
+      "caveats": [
+        "Earnings depend on network demand, your trust level and how many other providers are warm on the same model. None of those are controlled here, and all drift, so a measured $/GB-hour describes a window \u2014 not a constant.",
+        "Per-model rates are observational unless produced by `dbyield experiment`: if a model was advertised only during quiet hours it will look worse than it is. Round-robin experiments exist to break that confound.",
+        "`resident_gb` comes from Darkbloom's own `estimated_memory_gb`, which understates true occupancy (activations, KV cache, fragmentation). Co-resident sets can therefore evict each other even when the arithmetic fits.",
+        "base_reward income is excluded from per-model figures because it is paid for availability, not for serving any particular model.",
+        "Low-confidence models (under 30 jobs or 2.0h exposure): ternary-bonsai-2-27b. Treat their rates as anecdotes."
+      ],
+      "current_config": {
+        "advertised_models": [
+          "gemma-4-26b-qat-4bit"
+        ],
+        "config_drift": null,
+        "measured_usd_per_hour": 0.04703,
+        "resident_gb": 17.444
+      },
+      "experiment": {
+        "arms": {
+          "gemma-4-26b-qat-4bit": [
+            "gemma-4-26b-qat-4bit"
+          ],
+          "gemma-4-26b-qat-4bit+gpt-oss-20b": [
+            "gemma-4-26b-qat-4bit",
+            "gpt-oss-20b"
+          ],
+          "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b": [
+            "gemma-4-26b-qat-4bit",
+            "ternary-bonsai-2-27b"
+          ]
+        },
+        "created_at": "2026-09-27T16:31:34.256495+00:00",
+        "dry_run": false,
+        "finished_at": "2026-09-27T23:48:09.306007+00:00",
+        "id": "20260927T163134Z-ec7ccc",
+        "machine": {
+          "chip": "Apple M4 Max",
+          "darkbloom_version": "0.9.10",
+          "gpu_cores": 40,
+          "inference_memory_gb": 60.0,
+          "macos": "27.0",
+          "max_model_slots": 3,
+          "ram_gb": 64.0
+        },
+        "notes": [],
+        "results": [
+          {
+            "arm_id": "gemma-4-26b-qat-4bit",
+            "arm_kind": "single",
+            "base_reward_usd": 0.036441,
+            "completion_tokens": 277845,
+            "covariates": {
+              "busy_fraction": 0.675,
+              "competing_providers_mean": 594.25,
+              "competing_warm_mean": 249.5,
+              "concurrent_requests_max": 2.0,
+              "concurrent_requests_mean": 0.575,
+              "gpu_active_gb_mean": 15.4842,
+              "gpu_utilization_mean": 0.2419,
+              "queued_requests_mean": 0.15,
+              "realized_decode_tps": 61.1025,
+              "router_gpu_penalty_ms_est": 1209.675,
+              "saturated_sample_fraction": 0.0,
+              "warm_fraction": 1.0
+            },
+            "excluding_stalled": null,
+            "fully_warm_slots": 4,
+            "gross_usd": 0.198624,
+            "jobs": 1474,
+            "measured_hours": 2.0,
+            "models": [
+              "gemma-4-26b-qat-4bit"
+            ],
+            "peak_gpu_active_gb": 17.718458735384047,
+            "per_slot": [
+              {
+                "advertised_verified": true,
+                "competition": [
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 460.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 195,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 591,
+                      "self_percentile": 0.6701,
+                      "self_rank": 196,
+                      "tiers": {
+                        "M1|Max": 106,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 22,
+                        "M2|Max": 35,
+                        "M2|Ultra": 29,
+                        "M3|Max": 26,
+                        "M3|Pro": 2,
+                        "M3|Ultra": 80,
+                        "M4|Base": 1,
+                        "M4|Max": 112,
+                        "M4|Pro": 68,
+                        "M5|Max": 64,
+                        "M5|Pro": 40,
+                        "M5|Ultra": 5
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gemma-4-26b-qat-4bit",
+                    "providers": 591,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 181,
+                    "warm": 241,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 78,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 241,
+                      "self_percentile": 0.6763,
+                      "self_rank": 79,
+                      "tiers": {
+                        "M1|Max": 45,
+                        "M1|Ultra": 9,
+                        "M2|Max": 18,
+                        "M2|Ultra": 8,
+                        "M3|Max": 11,
+                        "M3|Ultra": 31,
+                        "M4|Max": 47,
+                        "M4|Pro": 26,
+                        "M5|Max": 28,
+                        "M5|Pro": 15,
+                        "M5|Ultra": 3
+                      }
+                    }
+                  }
+                ],
+                "covariates": {
+                  "advertised_mismatch_samples": 0,
+                  "busy_fraction": 0.7,
+                  "busy_seconds": 1260.0,
+                  "concurrency_samples": 30,
+                  "concurrent_requests_max": 2.0,
+                  "concurrent_requests_mean": 0.5667,
+                  "gpu_active_gb_max": 17.718,
+                  "gpu_active_gb_mean": 15.621,
+                  "gpu_active_gb_min": 14.759,
+                  "gpu_utilization_mean": 0.2441,
+                  "kv_grant_gb_mean": {
+                    "gemma-4-26b-qat-4bit": 40.05
+                  },
+                  "over_admitted": true,
+                  "queued_requests_max": 1.0,
+                  "queued_requests_mean": 0.1667,
+                  "realized_decode_tps": 64.96,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 344,
+                  "router_gpu_penalty_ms_est": 1220.4,
+                  "samples": 30,
+                  "saturated_sample_fraction": 0.0,
+                  "tokens_generated_counter_reset": false,
+                  "tokens_generated_delta": 81854,
+                  "trust_levels": [
+                    "self_signed"
+                  ],
+                  "warm_fraction": 1.0
+                },
+                "fleet_delta": {
+                  "cancellations_received_delta": 1,
+                  "last_24h_requests_end": 2983219,
+                  "last_24h_requests_start": 2983282,
+                  "requests_served_delta": 350,
+                  "tokens_generated_delta": 83350
+                },
+                "gross_usd": 0.049318,
+                "measure_from": "2026-09-27T16:37:37.069392+00:00",
+                "measured_hours": 0.5,
+                "round_index": 0,
+                "shape": {
+                  "completion_tokens": 83641,
+                  "gross_usd": 0.049318,
+                  "input_output_ratio": 8.899,
+                  "jobs": 353,
+                  "jobs_per_hour": 705.99,
+                  "prompt_tokens": 744288
+                },
+                "slot_index": 0,
+                "stall_evidence": {
+                  "fleet_24h_counter_moved": true,
+                  "fleet_busy": true,
+                  "jobs_in_ledger": 353,
+                  "other_providers_serving_our_models": 181,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 344,
+                  "rule": "stalled iff the provider served nothing (coordinator counter delta 0 and no ledger jobs) while the fleet was demonstrably not idle",
+                  "verdict_reason": "the provider served work"
+                },
+                "stalled": false,
+                "usd_per_hour": 0.098635,
+                "warm_ok": true,
+                "warm_seconds": 0.0
+              },
+              {
+                "advertised_verified": true,
+                "competition": [
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 203,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 594,
+                      "self_percentile": 0.6582,
+                      "self_rank": 204,
+                      "tiers": {
+                        "M1|Max": 104,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 24,
+                        "M2|Max": 35,
+                        "M2|Ultra": 28,
+                        "M3|Max": 27,
+                        "M3|Pro": 3,
+                        "M3|Ultra": 81,
+                        "M4|Base": 1,
+                        "M4|Max": 107,
+                        "M4|Pro": 68,
+                        "M5|Max": 68,
+                        "M5|Pro": 41,
+                        "M5|Ultra": 6
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gemma-4-26b-qat-4bit",
+                    "providers": 594,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 219,
+                    "warm": 213,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 400.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 72,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 213,
+                      "self_percentile": 0.662,
+                      "self_rank": 73,
+                      "tiers": {
+                        "M1|Max": 41,
+                        "M1|Ultra": 12,
+                        "M2|Max": 15,
+                        "M2|Ultra": 9,
+                        "M3|Max": 13,
+                        "M3|Ultra": 23,
+                        "M4|Max": 31,
+                        "M4|Pro": 25,
+                        "M5|Max": 26,
+                        "M5|Pro": 15,
+                        "M5|Ultra": 3
+                      }
+                    }
+                  }
+                ],
+                "covariates": {
+                  "advertised_mismatch_samples": 0,
+                  "busy_fraction": 0.5333,
+                  "busy_seconds": 960.0,
+                  "concurrency_samples": 30,
+                  "concurrent_requests_max": 1.0,
+                  "concurrent_requests_mean": 0.5333,
+                  "gpu_active_gb_max": 15.912,
+                  "gpu_active_gb_mean": 15.157,
+                  "gpu_active_gb_min": 14.759,
+                  "gpu_utilization_mean": 0.2368,
+                  "kv_grant_gb_mean": {
+                    "gemma-4-26b-qat-4bit": 40.05
+                  },
+                  "over_admitted": true,
+                  "queued_requests_max": 1.0,
+                  "queued_requests_mean": 0.0667,
+                  "realized_decode_tps": 101.95,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 288,
+                  "router_gpu_penalty_ms_est": 1184.1,
+                  "samples": 30,
+                  "saturated_sample_fraction": 0.0,
+                  "tokens_generated_counter_reset": false,
+                  "tokens_generated_delta": 97872,
+                  "trust_levels": [
+                    "self_signed"
+                  ],
+                  "warm_fraction": 1.0
+                },
+                "fleet_delta": {
+                  "cancellations_received_delta": 0,
+                  "last_24h_requests_end": 2985443,
+                  "last_24h_requests_start": 2985962,
+                  "requests_served_delta": 308,
+                  "tokens_generated_delta": 101384
+                },
+                "gross_usd": 0.034156,
+                "measure_from": "2026-09-27T18:26:44.972108+00:00",
+                "measured_hours": 0.5,
+                "round_index": 1,
+                "shape": {
+                  "completion_tokens": 99873,
+                  "gross_usd": 0.034156,
+                  "input_output_ratio": 2.98,
+                  "jobs": 309,
+                  "jobs_per_hour": 618.0,
+                  "prompt_tokens": 297620
+                },
+                "slot_index": 3,
+                "stall_evidence": {
+                  "fleet_24h_counter_moved": true,
+                  "fleet_busy": true,
+                  "jobs_in_ledger": 309,
+                  "other_providers_serving_our_models": 219,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 288,
+                  "rule": "stalled iff the provider served nothing (coordinator counter delta 0 and no ledger jobs) while the fleet was demonstrably not idle",
+                  "verdict_reason": "the provider served work"
+                },
+                "stalled": false,
+                "usd_per_hour": 0.068312,
+                "warm_ok": true,
+                "warm_seconds": 0.0
+              },
+              {
+                "advertised_verified": true,
+                "competition": [
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 460.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 203,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 596,
+                      "self_percentile": 0.6594,
+                      "self_rank": 204,
+                      "tiers": {
+                        "M1|Max": 106,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 25,
+                        "M2|Max": 36,
+                        "M2|Ultra": 29,
+                        "M3|Max": 26,
+                        "M3|Pro": 4,
+                        "M3|Ultra": 81,
+                        "M4|Base": 1,
+                        "M4|Max": 107,
+                        "M4|Pro": 68,
+                        "M5|Max": 68,
+                        "M5|Pro": 38,
+                        "M5|Ultra": 6
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gemma-4-26b-qat-4bit",
+                    "providers": 596,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 290,
+                    "warm": 285,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 123,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 96.0,
+                      "n": 285,
+                      "self_percentile": 0.5684,
+                      "self_rank": 124,
+                      "tiers": {
+                        "M1|Max": 34,
+                        "M1|Ultra": 12,
+                        "M2|Max": 20,
+                        "M2|Ultra": 15,
+                        "M3|Max": 12,
+                        "M3|Ultra": 55,
+                        "M4|Max": 54,
+                        "M4|Pro": 28,
+                        "M5|Max": 38,
+                        "M5|Pro": 13,
+                        "M5|Ultra": 4
+                      }
+                    }
+                  }
+                ],
+                "covariates": {
+                  "advertised_mismatch_samples": 0,
+                  "busy_fraction": 0.9,
+                  "busy_seconds": 1620.0,
+                  "concurrency_samples": 30,
+                  "concurrent_requests_max": 3.0,
+                  "concurrent_requests_mean": 0.8333,
+                  "gpu_active_gb_max": 17.363,
+                  "gpu_active_gb_mean": 15.855,
+                  "gpu_active_gb_min": 14.759,
+                  "gpu_utilization_mean": 0.2477,
+                  "kv_grant_gb_mean": {
+                    "gemma-4-26b-qat-4bit": 40.05
+                  },
+                  "over_admitted": true,
+                  "queued_requests_max": 3.0,
+                  "queued_requests_mean": 0.1667,
+                  "realized_decode_tps": 21.72,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 366,
+                  "router_gpu_penalty_ms_est": 1238.6,
+                  "samples": 30,
+                  "saturated_sample_fraction": 0.0,
+                  "tokens_generated_counter_reset": false,
+                  "tokens_generated_delta": 35186,
+                  "trust_levels": [
+                    "self_signed"
+                  ],
+                  "warm_fraction": 1.0
+                },
+                "fleet_delta": {
+                  "cancellations_received_delta": 6,
+                  "last_24h_requests_end": 3011472,
+                  "last_24h_requests_start": 2999114,
+                  "requests_served_delta": 374,
+                  "tokens_generated_delta": 36144
+                },
+                "gross_usd": 0.067626,
+                "measure_from": "2026-09-27T20:15:56.297486+00:00",
+                "measured_hours": 0.5,
+                "round_index": 2,
+                "shape": {
+                  "completion_tokens": 36061,
+                  "gross_usd": 0.067626,
+                  "input_output_ratio": 39.654,
+                  "jobs": 372,
+                  "jobs_per_hour": 744.0,
+                  "prompt_tokens": 1429963
+                },
+                "slot_index": 6,
+                "stall_evidence": {
+                  "fleet_24h_counter_moved": true,
+                  "fleet_busy": true,
+                  "jobs_in_ledger": 372,
+                  "other_providers_serving_our_models": 290,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 366,
+                  "rule": "stalled iff the provider served nothing (coordinator counter delta 0 and no ledger jobs) while the fleet was demonstrably not idle",
+                  "verdict_reason": "the provider served work"
+                },
+                "stalled": false,
+                "usd_per_hour": 0.135251,
+                "warm_ok": true,
+                "warm_seconds": 0.0
+              },
+              {
+                "advertised_verified": true,
+                "competition": [
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 205,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 596,
+                      "self_percentile": 0.656,
+                      "self_rank": 206,
+                      "tiers": {
+                        "M1|Max": 107,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 26,
+                        "M2|Max": 36,
+                        "M2|Ultra": 29,
+                        "M3|Max": 26,
+                        "M3|Pro": 2,
+                        "M3|Ultra": 79,
+                        "M4|Base": 1,
+                        "M4|Max": 106,
+                        "M4|Pro": 70,
+                        "M5|Max": 70,
+                        "M5|Pro": 37,
+                        "M5|Ultra": 6
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gemma-4-26b-qat-4bit",
+                    "providers": 596,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 138,
+                    "warm": 259,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 410.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 90,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 259,
+                      "self_percentile": 0.6525,
+                      "self_rank": 91,
+                      "tiers": {
+                        "M1|Max": 55,
+                        "M1|Ultra": 14,
+                        "M2|Max": 24,
+                        "M2|Ultra": 17,
+                        "M3|Max": 7,
+                        "M3|Ultra": 31,
+                        "M4|Max": 41,
+                        "M4|Pro": 32,
+                        "M5|Max": 26,
+                        "M5|Pro": 10,
+                        "M5|Ultra": 2
+                      }
+                    }
+                  }
+                ],
+                "covariates": {
+                  "advertised_mismatch_samples": 0,
+                  "busy_fraction": 0.5667,
+                  "busy_seconds": 1020.0,
+                  "concurrency_samples": 30,
+                  "concurrent_requests_max": 2.0,
+                  "concurrent_requests_mean": 0.3667,
+                  "gpu_active_gb_max": 17.01,
+                  "gpu_active_gb_mean": 15.304,
+                  "gpu_active_gb_min": 14.759,
+                  "gpu_utilization_mean": 0.2391,
+                  "kv_grant_gb_mean": {
+                    "gemma-4-26b-qat-4bit": 40.05
+                  },
+                  "over_admitted": true,
+                  "queued_requests_max": 1.0,
+                  "queued_requests_mean": 0.2,
+                  "realized_decode_tps": 55.78,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 432,
+                  "router_gpu_penalty_ms_est": 1195.6,
+                  "samples": 30,
+                  "saturated_sample_fraction": 0.0,
+                  "tokens_generated_counter_reset": false,
+                  "tokens_generated_delta": 56892,
+                  "trust_levels": [
+                    "self_signed"
+                  ],
+                  "warm_fraction": 1.0
+                },
+                "fleet_delta": {
+                  "cancellations_received_delta": 1,
+                  "last_24h_requests_end": 2976563,
+                  "last_24h_requests_start": 2974527,
+                  "requests_served_delta": 438,
+                  "tokens_generated_delta": 58723
+                },
+                "gross_usd": 0.047524,
+                "measure_from": "2026-09-27T22:05:05.640852+00:00",
+                "measured_hours": 0.5,
+                "round_index": 3,
+                "shape": {
+                  "completion_tokens": 58270,
+                  "gross_usd": 0.047524,
+                  "input_output_ratio": 14.358,
+                  "jobs": 440,
+                  "jobs_per_hour": 879.99,
+                  "prompt_tokens": 836653
+                },
+                "slot_index": 9,
+                "stall_evidence": {
+                  "fleet_24h_counter_moved": true,
+                  "fleet_busy": true,
+                  "jobs_in_ledger": 440,
+                  "other_providers_serving_our_models": 138,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 432,
+                  "rule": "stalled iff the provider served nothing (coordinator counter delta 0 and no ledger jobs) while the fleet was demonstrably not idle",
+                  "verdict_reason": "the provider served work"
+                },
+                "stalled": false,
+                "usd_per_hour": 0.095047,
+                "warm_ok": true,
+                "warm_seconds": 0.0
+              }
+            ],
+            "per_slot_spread_usd_per_hour": [
+              0.068312,
+              0.135251
+            ],
+            "per_slot_usd_per_hour": [
+              0.098635,
+              0.068312,
+              0.135251,
+              0.095047
+            ],
+            "prompt_tokens": 3308524,
+            "resident_gb": 17.444,
+            "shape": {
+              "completion_tokens": 277845,
+              "completion_tokens_max": 32000,
+              "completion_tokens_p50": 81,
+              "completion_tokens_p90": 284,
+              "completion_tokens_per_hour": 138921.6,
+              "completion_tokens_per_job": 188.5,
+              "input_output_ratio": 11.908,
+              "jobs": 1474,
+              "jobs_per_hour": 737.0,
+              "prompt_tokens": 3308524,
+              "prompt_tokens_max": 36739,
+              "prompt_tokens_p50": 1152,
+              "prompt_tokens_p90": 6365,
+              "prompt_tokens_per_job": 2244.6,
+              "realized_usd_per_mtok": 0.0554,
+              "usd_per_job": 0.000135
+            },
+            "slots": 4,
+            "stalled_slots": 0,
+            "unknown_stall_slots": 0,
+            "usd_per_day_projected": 2.3835,
+            "usd_per_gb_hour": 0.005693,
+            "usd_per_hour": 0.099311,
+            "warm_verified_slots": 4
+          },
+          {
+            "arm_id": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+            "arm_kind": "set",
+            "base_reward_usd": 0.038447,
+            "completion_tokens": 217219,
+            "covariates": {
+              "busy_fraction": 0.3833,
+              "competing_providers_mean": 401.0,
+              "competing_warm_mean": 128.5,
+              "concurrent_requests_max": 1.25,
+              "concurrent_requests_mean": 0.2917,
+              "gpu_active_gb_mean": 24.6152,
+              "gpu_utilization_mean": 0.3846,
+              "queued_requests_mean": 0.125,
+              "realized_decode_tps": 80.2275,
+              "router_gpu_penalty_ms_est": 1923.075,
+              "saturated_sample_fraction": 0.0,
+              "warm_fraction": 1.0
+            },
+            "excluding_stalled": null,
+            "fully_warm_slots": 4,
+            "gross_usd": 0.096761,
+            "jobs": 775,
+            "measured_hours": 2.0,
+            "models": [
+              "gemma-4-26b-qat-4bit",
+              "ternary-bonsai-2-27b"
+            ],
+            "peak_gpu_active_gb": 26.42073151282966,
+            "per_slot": [
+              {
+                "advertised_verified": true,
+                "competition": [
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 460.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 201,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 598,
+                      "self_percentile": 0.6639,
+                      "self_rank": 202,
+                      "tiers": {
+                        "M1|Max": 106,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 24,
+                        "M2|Max": 35,
+                        "M2|Ultra": 29,
+                        "M3|Max": 26,
+                        "M3|Pro": 4,
+                        "M3|Ultra": 80,
+                        "M4|Base": 1,
+                        "M4|Max": 111,
+                        "M4|Pro": 68,
+                        "M5|Max": 69,
+                        "M5|Pro": 39,
+                        "M5|Ultra": 5
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gemma-4-26b-qat-4bit",
+                    "providers": 598,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 207,
+                    "warm": 251,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 93,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 251,
+                      "self_percentile": 0.6295,
+                      "self_rank": 94,
+                      "tiers": {
+                        "M1|Max": 49,
+                        "M1|Ultra": 13,
+                        "M2|Max": 15,
+                        "M2|Ultra": 10,
+                        "M3|Max": 13,
+                        "M3|Ultra": 34,
+                        "M4|Max": 42,
+                        "M4|Pro": 25,
+                        "M5|Max": 35,
+                        "M5|Pro": 13,
+                        "M5|Ultra": 2
+                      }
+                    }
+                  },
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 460.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 61,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 209,
+                      "self_percentile": 0.7081,
+                      "self_rank": 62,
+                      "tiers": {
+                        "M1|Max": 38,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 7,
+                        "M2|Max": 14,
+                        "M2|Pro": 3,
+                        "M2|Ultra": 9,
+                        "M3|Max": 9,
+                        "M3|Pro": 1,
+                        "M3|Ultra": 20,
+                        "M4|Base": 4,
+                        "M4|Max": 46,
+                        "M4|Pro": 22,
+                        "M5|Base": 2,
+                        "M5|Max": 24,
+                        "M5|Pro": 7,
+                        "M5|Ultra": 2
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "ternary-bonsai-2-27b",
+                    "providers": 209,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 67,
+                    "warm": 15,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 819.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 6,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 15,
+                      "self_percentile": 0.6,
+                      "self_rank": 7,
+                      "tiers": {
+                        "M1|Max": 2,
+                        "M3|Max": 1,
+                        "M3|Ultra": 2,
+                        "M4|Base": 1,
+                        "M4|Max": 3,
+                        "M4|Pro": 2,
+                        "M5|Max": 4
+                      }
+                    }
+                  }
+                ],
+                "covariates": {
+                  "advertised_mismatch_samples": 0,
+                  "busy_fraction": 0.5,
+                  "busy_seconds": 900.0,
+                  "concurrency_samples": 30,
+                  "concurrent_requests_max": 2.0,
+                  "concurrent_requests_mean": 0.4,
+                  "gpu_active_gb_max": 26.421,
+                  "gpu_active_gb_mean": 24.81,
+                  "gpu_active_gb_min": 24.246,
+                  "gpu_utilization_mean": 0.3877,
+                  "kv_grant_gb_mean": {
+                    "gemma-4-26b-qat-4bit": 7.492,
+                    "ternary-bonsai-2-27b": 23.974
+                  },
+                  "over_admitted": true,
+                  "queued_requests_max": 1.0,
+                  "queued_requests_mean": 0.1667,
+                  "realized_decode_tps": 76.87,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 171,
+                  "router_gpu_penalty_ms_est": 1938.3,
+                  "samples": 30,
+                  "saturated_sample_fraction": 0.0,
+                  "tokens_generated_counter_reset": false,
+                  "tokens_generated_delta": 69187,
+                  "trust_levels": [
+                    "self_signed"
+                  ],
+                  "warm_fraction": 1.0
+                },
+                "fleet_delta": {
+                  "cancellations_received_delta": 2,
+                  "last_24h_requests_end": 2979216,
+                  "last_24h_requests_start": 2981999,
+                  "requests_served_delta": 188,
+                  "tokens_generated_delta": 71484
+                },
+                "gross_usd": 0.026482,
+                "measure_from": "2026-09-27T17:14:11.808205+00:00",
+                "measured_hours": 0.5,
+                "round_index": 0,
+                "shape": {
+                  "completion_tokens": 71821,
+                  "gross_usd": 0.026482,
+                  "input_output_ratio": 3.324,
+                  "jobs": 187,
+                  "jobs_per_hour": 374.0,
+                  "prompt_tokens": 238745
+                },
+                "slot_index": 1,
+                "stall_evidence": {
+                  "fleet_24h_counter_moved": true,
+                  "fleet_busy": true,
+                  "jobs_in_ledger": 187,
+                  "other_providers_serving_our_models": 274,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 171,
+                  "rule": "stalled iff the provider served nothing (coordinator counter delta 0 and no ledger jobs) while the fleet was demonstrably not idle",
+                  "verdict_reason": "the provider served work"
+                },
+                "stalled": false,
+                "usd_per_hour": 0.052964,
+                "warm_ok": true,
+                "warm_seconds": 14.02
+              },
+              {
+                "advertised_verified": true,
+                "competition": [
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 460.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 202,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 594,
+                      "self_percentile": 0.6599,
+                      "self_rank": 203,
+                      "tiers": {
+                        "M1|Max": 106,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 24,
+                        "M2|Max": 36,
+                        "M2|Ultra": 28,
+                        "M3|Max": 27,
+                        "M3|Pro": 2,
+                        "M3|Ultra": 81,
+                        "M4|Base": 1,
+                        "M4|Max": 106,
+                        "M4|Pro": 68,
+                        "M5|Max": 67,
+                        "M5|Pro": 41,
+                        "M5|Ultra": 6
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gemma-4-26b-qat-4bit",
+                    "providers": 594,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 226,
+                    "warm": 172,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 460.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 57,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 172,
+                      "self_percentile": 0.6686,
+                      "self_rank": 58,
+                      "tiers": {
+                        "M1|Max": 32,
+                        "M1|Ultra": 5,
+                        "M2|Max": 5,
+                        "M2|Ultra": 6,
+                        "M3|Max": 10,
+                        "M3|Ultra": 17,
+                        "M4|Max": 30,
+                        "M4|Pro": 23,
+                        "M5|Max": 29,
+                        "M5|Pro": 14,
+                        "M5|Ultra": 1
+                      }
+                    }
+                  },
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 410.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 61,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 208,
+                      "self_percentile": 0.7067,
+                      "self_rank": 62,
+                      "tiers": {
+                        "M1|Max": 36,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 7,
+                        "M2|Max": 15,
+                        "M2|Pro": 3,
+                        "M2|Ultra": 9,
+                        "M3|Max": 11,
+                        "M3|Pro": 1,
+                        "M3|Ultra": 20,
+                        "M4|Base": 4,
+                        "M4|Max": 45,
+                        "M4|Pro": 22,
+                        "M5|Base": 1,
+                        "M5|Max": 22,
+                        "M5|Pro": 8,
+                        "M5|Ultra": 3
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "ternary-bonsai-2-27b",
+                    "providers": 208,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 81,
+                    "warm": 15,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 819.0,
+                      "bandwidth_median_gbs": 410.0,
+                      "bandwidth_p90_gbs": 614.0,
+                      "faster_than_self": 4,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 15,
+                      "self_percentile": 0.7333,
+                      "self_rank": 5,
+                      "tiers": {
+                        "M1|Max": 2,
+                        "M3|Max": 2,
+                        "M3|Ultra": 1,
+                        "M4|Base": 1,
+                        "M4|Max": 5,
+                        "M4|Pro": 1,
+                        "M5|Max": 3
+                      }
+                    }
+                  }
+                ],
+                "covariates": {
+                  "advertised_mismatch_samples": 0,
+                  "busy_fraction": 0.6333,
+                  "busy_seconds": 1140.0,
+                  "concurrency_samples": 30,
+                  "concurrent_requests_max": 1.0,
+                  "concurrent_requests_mean": 0.4333,
+                  "gpu_active_gb_max": 25.61,
+                  "gpu_active_gb_mean": 24.832,
+                  "gpu_active_gb_min": 24.246,
+                  "gpu_utilization_mean": 0.388,
+                  "kv_grant_gb_mean": {
+                    "gemma-4-26b-qat-4bit": 7.492,
+                    "ternary-bonsai-2-27b": 23.974
+                  },
+                  "over_admitted": true,
+                  "queued_requests_max": 1.0,
+                  "queued_requests_mean": 0.2667,
+                  "realized_decode_tps": 75.46,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 281,
+                  "router_gpu_penalty_ms_est": 1940.0,
+                  "samples": 30,
+                  "saturated_sample_fraction": 0.0,
+                  "tokens_generated_counter_reset": false,
+                  "tokens_generated_delta": 86023,
+                  "trust_levels": [
+                    "self_signed"
+                  ],
+                  "warm_fraction": 1.0
+                },
+                "fleet_delta": {
+                  "cancellations_received_delta": 0,
+                  "last_24h_requests_end": 2997810,
+                  "last_24h_requests_start": 2986535,
+                  "requests_served_delta": 291,
+                  "tokens_generated_delta": 87911
+                },
+                "gross_usd": 0.044515,
+                "measure_from": "2026-09-27T19:03:11.074726+00:00",
+                "measured_hours": 0.5,
+                "round_index": 1,
+                "shape": {
+                  "completion_tokens": 86536,
+                  "gross_usd": 0.044515,
+                  "input_output_ratio": 7.085,
+                  "jobs": 286,
+                  "jobs_per_hour": 572.0,
+                  "prompt_tokens": 613079
+                },
+                "slot_index": 4,
+                "stall_evidence": {
+                  "fleet_24h_counter_moved": true,
+                  "fleet_busy": true,
+                  "jobs_in_ledger": 286,
+                  "other_providers_serving_our_models": 307,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 281,
+                  "rule": "stalled iff the provider served nothing (coordinator counter delta 0 and no ledger jobs) while the fleet was demonstrably not idle",
+                  "verdict_reason": "the provider served work"
+                },
+                "stalled": false,
+                "usd_per_hour": 0.089029,
+                "warm_ok": true,
+                "warm_seconds": 12.58
+              },
+              {
+                "advertised_verified": true,
+                "competition": [
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 460.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 201,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 590,
+                      "self_percentile": 0.6593,
+                      "self_rank": 202,
+                      "tiers": {
+                        "M1|Max": 107,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 24,
+                        "M2|Max": 37,
+                        "M2|Ultra": 29,
+                        "M3|Max": 26,
+                        "M3|Pro": 2,
+                        "M3|Ultra": 79,
+                        "M4|Base": 1,
+                        "M4|Max": 106,
+                        "M4|Pro": 68,
+                        "M5|Max": 68,
+                        "M5|Pro": 36,
+                        "M5|Ultra": 6
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gemma-4-26b-qat-4bit",
+                    "providers": 590,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 157,
+                    "warm": 287,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 91,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 287,
+                      "self_percentile": 0.6829,
+                      "self_rank": 92,
+                      "tiers": {
+                        "M1|Max": 63,
+                        "M1|Ultra": 12,
+                        "M2|Max": 21,
+                        "M2|Ultra": 15,
+                        "M3|Max": 10,
+                        "M3|Ultra": 31,
+                        "M4|Max": 57,
+                        "M4|Pro": 32,
+                        "M5|Max": 33,
+                        "M5|Pro": 12,
+                        "M5|Ultra": 1
+                      }
+                    }
+                  },
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 410.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 62,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 209,
+                      "self_percentile": 0.7033,
+                      "self_rank": 63,
+                      "tiers": {
+                        "M1|Max": 37,
+                        "M1|Ultra": 7,
+                        "M2|Max": 14,
+                        "M2|Pro": 3,
+                        "M2|Ultra": 10,
+                        "M3|Max": 11,
+                        "M3|Pro": 1,
+                        "M3|Ultra": 20,
+                        "M4|Base": 4,
+                        "M4|Max": 46,
+                        "M4|Pro": 22,
+                        "M5|Base": 1,
+                        "M5|Max": 22,
+                        "M5|Pro": 8,
+                        "M5|Ultra": 3
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "ternary-bonsai-2-27b",
+                    "providers": 209,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 59,
+                    "warm": 17,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 819.0,
+                      "bandwidth_median_gbs": 410.0,
+                      "bandwidth_p90_gbs": 614.0,
+                      "faster_than_self": 6,
+                      "gpu_cores_median": 32.0,
+                      "memory_median_gb": 64.0,
+                      "n": 17,
+                      "self_percentile": 0.6471,
+                      "self_rank": 7,
+                      "tiers": {
+                        "M1|Max": 3,
+                        "M3|Max": 2,
+                        "M3|Ultra": 1,
+                        "M4|Base": 1,
+                        "M4|Max": 3,
+                        "M4|Pro": 1,
+                        "M5|Max": 5,
+                        "M5|Pro": 1
+                      }
+                    }
+                  }
+                ],
+                "covariates": {
+                  "advertised_mismatch_samples": 0,
+                  "busy_fraction": 0.3333,
+                  "busy_seconds": 600.0,
+                  "concurrency_samples": 30,
+                  "concurrent_requests_max": 1.0,
+                  "concurrent_requests_mean": 0.2667,
+                  "gpu_active_gb_max": 26.03,
+                  "gpu_active_gb_mean": 24.513,
+                  "gpu_active_gb_min": 24.246,
+                  "gpu_utilization_mean": 0.383,
+                  "kv_grant_gb_mean": {
+                    "gemma-4-26b-qat-4bit": 7.492,
+                    "ternary-bonsai-2-27b": 23.974
+                  },
+                  "over_admitted": true,
+                  "queued_requests_max": 1.0,
+                  "queued_requests_mean": 0.0667,
+                  "realized_decode_tps": 78.47,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 222,
+                  "router_gpu_penalty_ms_est": 1915.1,
+                  "samples": 30,
+                  "saturated_sample_fraction": 0.0,
+                  "tokens_generated_counter_reset": false,
+                  "tokens_generated_delta": 47084,
+                  "trust_levels": [
+                    "self_signed"
+                  ],
+                  "warm_fraction": 1.0
+                },
+                "fleet_delta": {
+                  "cancellations_received_delta": 0,
+                  "last_24h_requests_end": 2987580,
+                  "last_24h_requests_start": 3012800,
+                  "requests_served_delta": 227,
+                  "tokens_generated_delta": 47479
+                },
+                "gross_usd": 0.019879,
+                "measure_from": "2026-09-27T20:52:23.299320+00:00",
+                "measured_hours": 0.5,
+                "round_index": 2,
+                "shape": {
+                  "completion_tokens": 47479,
+                  "gross_usd": 0.019879,
+                  "input_output_ratio": 4.845,
+                  "jobs": 227,
+                  "jobs_per_hour": 454.0,
+                  "prompt_tokens": 230020
+                },
+                "slot_index": 7,
+                "stall_evidence": {
+                  "fleet_24h_counter_moved": true,
+                  "fleet_busy": true,
+                  "jobs_in_ledger": 227,
+                  "other_providers_serving_our_models": 216,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 222,
+                  "rule": "stalled iff the provider served nothing (coordinator counter delta 0 and no ledger jobs) while the fleet was demonstrably not idle",
+                  "verdict_reason": "the provider served work"
+                },
+                "stalled": false,
+                "usd_per_hour": 0.039758,
+                "warm_ok": true,
+                "warm_seconds": 13.27
+              },
+              {
+                "advertised_verified": true,
+                "competition": [
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 205,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 590,
+                      "self_percentile": 0.6525,
+                      "self_rank": 206,
+                      "tiers": {
+                        "M1|Max": 109,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 26,
+                        "M2|Max": 36,
+                        "M2|Ultra": 29,
+                        "M3|Max": 25,
+                        "M3|Pro": 3,
+                        "M3|Ultra": 80,
+                        "M4|Base": 1,
+                        "M4|Max": 104,
+                        "M4|Pro": 67,
+                        "M5|Max": 68,
+                        "M5|Pro": 35,
+                        "M5|Ultra": 6
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gemma-4-26b-qat-4bit",
+                    "providers": 590,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 198,
+                    "warm": 259,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 96,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 259,
+                      "self_percentile": 0.6293,
+                      "self_rank": 97,
+                      "tiers": {
+                        "M1|Max": 51,
+                        "M1|Ultra": 14,
+                        "M2|Max": 17,
+                        "M2|Ultra": 16,
+                        "M3|Max": 10,
+                        "M3|Ultra": 34,
+                        "M4|Max": 42,
+                        "M4|Pro": 31,
+                        "M5|Max": 28,
+                        "M5|Pro": 12,
+                        "M5|Ultra": 4
+                      }
+                    }
+                  },
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 410.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 64,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 210,
+                      "self_percentile": 0.6952,
+                      "self_rank": 65,
+                      "tiers": {
+                        "M1|Max": 37,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 8,
+                        "M2|Max": 14,
+                        "M2|Pro": 3,
+                        "M2|Ultra": 10,
+                        "M3|Max": 10,
+                        "M3|Pro": 1,
+                        "M3|Ultra": 20,
+                        "M4|Base": 4,
+                        "M4|Max": 45,
+                        "M4|Pro": 23,
+                        "M5|Base": 2,
+                        "M5|Max": 23,
+                        "M5|Pro": 6,
+                        "M5|Ultra": 3
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "ternary-bonsai-2-27b",
+                    "providers": 210,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 64,
+                    "warm": 12,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 614.0,
+                      "bandwidth_median_gbs": 410.0,
+                      "bandwidth_p90_gbs": 614.0,
+                      "faster_than_self": 3,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 12,
+                      "self_percentile": 0.75,
+                      "self_rank": 4,
+                      "tiers": {
+                        "M1|Max": 2,
+                        "M3|Max": 2,
+                        "M4|Base": 1,
+                        "M4|Max": 3,
+                        "M4|Pro": 1,
+                        "M5|Max": 3
+                      }
+                    }
+                  }
+                ],
+                "covariates": {
+                  "advertised_mismatch_samples": 0,
+                  "busy_fraction": 0.0667,
+                  "busy_seconds": 120.0,
+                  "concurrency_samples": 30,
+                  "concurrent_requests_max": 1.0,
+                  "concurrent_requests_mean": 0.0667,
+                  "gpu_active_gb_max": 25.612,
+                  "gpu_active_gb_mean": 24.306,
+                  "gpu_active_gb_min": 24.246,
+                  "gpu_utilization_mean": 0.3798,
+                  "kv_grant_gb_mean": {
+                    "gemma-4-26b-qat-4bit": 7.492,
+                    "ternary-bonsai-2-27b": 23.974
+                  },
+                  "over_admitted": false,
+                  "queued_requests_max": 0.0,
+                  "queued_requests_mean": 0.0,
+                  "realized_decode_tps": 90.11,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 70,
+                  "router_gpu_penalty_ms_est": 1898.9,
+                  "samples": 30,
+                  "saturated_sample_fraction": 0.0,
+                  "tokens_generated_counter_reset": false,
+                  "tokens_generated_delta": 10813,
+                  "trust_levels": [
+                    "self_signed"
+                  ],
+                  "warm_fraction": 1.0
+                },
+                "fleet_delta": {
+                  "cancellations_received_delta": 0,
+                  "last_24h_requests_end": 2982730,
+                  "last_24h_requests_start": 2978541,
+                  "requests_served_delta": 72,
+                  "tokens_generated_delta": 10960
+                },
+                "gross_usd": 0.005885,
+                "measure_from": "2026-09-27T22:41:36.768278+00:00",
+                "measured_hours": 0.5,
+                "round_index": 3,
+                "shape": {
+                  "completion_tokens": 11383,
+                  "gross_usd": 0.005885,
+                  "input_output_ratio": 7.212,
+                  "jobs": 75,
+                  "jobs_per_hour": 150.0,
+                  "prompt_tokens": 82094
+                },
+                "slot_index": 10,
+                "stall_evidence": {
+                  "fleet_24h_counter_moved": true,
+                  "fleet_busy": true,
+                  "jobs_in_ledger": 75,
+                  "other_providers_serving_our_models": 262,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 70,
+                  "rule": "stalled iff the provider served nothing (coordinator counter delta 0 and no ledger jobs) while the fleet was demonstrably not idle",
+                  "verdict_reason": "the provider served work"
+                },
+                "stalled": false,
+                "usd_per_hour": 0.01177,
+                "warm_ok": true,
+                "warm_seconds": 13.73
+              }
+            ],
+            "per_slot_spread_usd_per_hour": [
+              0.01177,
+              0.089029
+            ],
+            "per_slot_usd_per_hour": [
+              0.052964,
+              0.089029,
+              0.039758,
+              0.01177
+            ],
+            "prompt_tokens": 1163938,
+            "resident_gb": 27.05,
+            "shape": {
+              "completion_tokens": 217219,
+              "completion_tokens_max": 32000,
+              "completion_tokens_p50": 104,
+              "completion_tokens_p90": 375,
+              "completion_tokens_per_hour": 108608.9,
+              "completion_tokens_per_job": 280.3,
+              "input_output_ratio": 5.358,
+              "jobs": 775,
+              "jobs_per_hour": 387.5,
+              "prompt_tokens": 1163938,
+              "prompt_tokens_max": 12044,
+              "prompt_tokens_p50": 820,
+              "prompt_tokens_p90": 3828,
+              "prompt_tokens_per_job": 1501.9,
+              "realized_usd_per_mtok": 0.0701,
+              "usd_per_job": 0.000125
+            },
+            "slots": 4,
+            "stalled_slots": 0,
+            "unknown_stall_slots": 0,
+            "usd_per_day_projected": 1.1611,
+            "usd_per_gb_hour": 0.001789,
+            "usd_per_hour": 0.04838,
+            "warm_verified_slots": 4
+          },
+          {
+            "arm_id": "gemma-4-26b-qat-4bit+gpt-oss-20b",
+            "arm_kind": "set",
+            "base_reward_usd": 0.039577,
+            "completion_tokens": 288004,
+            "covariates": {
+              "busy_fraction": 0.4167,
+              "competing_providers_mean": 606.375,
+              "competing_warm_mean": 259.625,
+              "concurrent_requests_max": 2.75,
+              "concurrent_requests_mean": 0.5333,
+              "gpu_active_gb_mean": 26.9952,
+              "gpu_utilization_mean": 0.4218,
+              "queued_requests_mean": 0.1167,
+              "realized_decode_tps": 95.85,
+              "router_gpu_penalty_ms_est": 2108.975,
+              "saturated_sample_fraction": 0.0,
+              "warm_fraction": 1.0
+            },
+            "excluding_stalled": null,
+            "fully_warm_slots": 4,
+            "gross_usd": 0.055191,
+            "jobs": 553,
+            "measured_hours": 2.0,
+            "models": [
+              "gemma-4-26b-qat-4bit",
+              "gpt-oss-20b"
+            ],
+            "peak_gpu_active_gb": 32.19645388145,
+            "per_slot": [
+              {
+                "advertised_verified": true,
+                "competition": [
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 199,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 592,
+                      "self_percentile": 0.6639,
+                      "self_rank": 200,
+                      "tiers": {
+                        "M1|Max": 103,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 23,
+                        "M2|Max": 35,
+                        "M2|Ultra": 28,
+                        "M3|Max": 27,
+                        "M3|Pro": 3,
+                        "M3|Ultra": 80,
+                        "M4|Base": 1,
+                        "M4|Max": 111,
+                        "M4|Pro": 69,
+                        "M5|Max": 66,
+                        "M5|Pro": 39,
+                        "M5|Ultra": 6
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gemma-4-26b-qat-4bit",
+                    "providers": 592,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 182,
+                    "warm": 192,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 819.0,
+                      "bandwidth_median_gbs": 400.0,
+                      "bandwidth_p90_gbs": 800.0,
+                      "faster_than_self": 56,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 192,
+                      "self_percentile": 0.7083,
+                      "self_rank": 57,
+                      "tiers": {
+                        "M1|Max": 39,
+                        "M1|Ultra": 11,
+                        "M2|Max": 11,
+                        "M2|Ultra": 7,
+                        "M3|Max": 10,
+                        "M3|Ultra": 19,
+                        "M4|Max": 34,
+                        "M4|Pro": 25,
+                        "M5|Max": 20,
+                        "M5|Pro": 16
+                      }
+                    }
+                  },
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 400.0,
+                      "bandwidth_p90_gbs": 800.0,
+                      "faster_than_self": 147,
+                      "gpu_cores_median": 32.0,
+                      "memory_median_gb": 64.0,
+                      "n": 626,
+                      "self_percentile": 0.7652,
+                      "self_rank": 148,
+                      "tiers": {
+                        "M1|Max": 108,
+                        "M1|Pro": 11,
+                        "M1|Ultra": 23,
+                        "M2|Base": 1,
+                        "M2|Max": 52,
+                        "M2|Pro": 11,
+                        "M2|Ultra": 25,
+                        "M3|Base": 1,
+                        "M3|Max": 21,
+                        "M3|Pro": 5,
+                        "M3|Ultra": 56,
+                        "M4|Base": 50,
+                        "M4|Max": 90,
+                        "M4|Pro": 85,
+                        "M5|Base": 11,
+                        "M5|Max": 44,
+                        "M5|Pro": 29,
+                        "M5|Ultra": 3
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gpt-oss-20b",
+                    "providers": 626,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 157,
+                    "warm": 321,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 410.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 107,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 321,
+                      "self_percentile": 0.6667,
+                      "self_rank": 108,
+                      "tiers": {
+                        "M1|Max": 62,
+                        "M1|Ultra": 13,
+                        "M2|Max": 27,
+                        "M2|Pro": 2,
+                        "M2|Ultra": 17,
+                        "M3|Max": 10,
+                        "M3|Pro": 1,
+                        "M3|Ultra": 48,
+                        "M4|Base": 4,
+                        "M4|Max": 54,
+                        "M4|Pro": 40,
+                        "M5|Max": 27,
+                        "M5|Pro": 13,
+                        "M5|Ultra": 3
+                      }
+                    }
+                  }
+                ],
+                "covariates": {
+                  "advertised_mismatch_samples": 0,
+                  "busy_fraction": 0.8333,
+                  "busy_seconds": 1500.0,
+                  "concurrency_samples": 30,
+                  "concurrent_requests_max": 3.0,
+                  "concurrent_requests_mean": 0.9333,
+                  "gpu_active_gb_max": 31.209,
+                  "gpu_active_gb_mean": 27.807,
+                  "gpu_active_gb_min": 26.174,
+                  "gpu_utilization_mean": 0.4345,
+                  "kv_grant_gb_mean": {
+                    "gemma-4-26b-qat-4bit": 12.715,
+                    "gpt-oss-20b": 15.258
+                  },
+                  "over_admitted": true,
+                  "queued_requests_max": 1.0,
+                  "queued_requests_mean": 0.0333,
+                  "realized_decode_tps": 103.61,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 153,
+                  "router_gpu_penalty_ms_est": 2172.4,
+                  "samples": 30,
+                  "saturated_sample_fraction": 0.0,
+                  "tokens_generated_counter_reset": false,
+                  "tokens_generated_delta": 155421,
+                  "trust_levels": [
+                    "self_signed"
+                  ],
+                  "warm_fraction": 1.0
+                },
+                "fleet_delta": {
+                  "cancellations_received_delta": 16,
+                  "last_24h_requests_end": 2982045,
+                  "last_24h_requests_start": 2978908,
+                  "requests_served_delta": 153,
+                  "tokens_generated_delta": 155421
+                },
+                "gross_usd": 0.017867,
+                "measure_from": "2026-09-27T17:50:36.637236+00:00",
+                "measured_hours": 0.5,
+                "round_index": 0,
+                "shape": {
+                  "completion_tokens": 155421,
+                  "gross_usd": 0.017867,
+                  "input_output_ratio": 1.437,
+                  "jobs": 153,
+                  "jobs_per_hour": 306.0,
+                  "prompt_tokens": 223416
+                },
+                "slot_index": 2,
+                "stall_evidence": {
+                  "fleet_24h_counter_moved": true,
+                  "fleet_busy": true,
+                  "jobs_in_ledger": 153,
+                  "other_providers_serving_our_models": 339,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 153,
+                  "rule": "stalled iff the provider served nothing (coordinator counter delta 0 and no ledger jobs) while the fleet was demonstrably not idle",
+                  "verdict_reason": "the provider served work"
+                },
+                "stalled": false,
+                "usd_per_hour": 0.035734,
+                "warm_ok": true,
+                "warm_seconds": 11.32
+              },
+              {
+                "advertised_verified": true,
+                "competition": [
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 202,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 591,
+                      "self_percentile": 0.6582,
+                      "self_rank": 203,
+                      "tiers": {
+                        "M1|Max": 106,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 24,
+                        "M2|Max": 36,
+                        "M2|Ultra": 29,
+                        "M3|Max": 25,
+                        "M3|Pro": 3,
+                        "M3|Ultra": 81,
+                        "M4|Base": 1,
+                        "M4|Max": 106,
+                        "M4|Pro": 68,
+                        "M5|Max": 67,
+                        "M5|Pro": 38,
+                        "M5|Ultra": 6
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gemma-4-26b-qat-4bit",
+                    "providers": 591,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 200,
+                    "warm": 172,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 819.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 59,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 172,
+                      "self_percentile": 0.657,
+                      "self_rank": 60,
+                      "tiers": {
+                        "M1|Max": 31,
+                        "M1|Ultra": 5,
+                        "M2|Max": 6,
+                        "M2|Ultra": 7,
+                        "M3|Max": 8,
+                        "M3|Ultra": 20,
+                        "M4|Max": 32,
+                        "M4|Pro": 22,
+                        "M5|Max": 28,
+                        "M5|Pro": 13
+                      }
+                    }
+                  },
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 400.0,
+                      "bandwidth_p90_gbs": 800.0,
+                      "faster_than_self": 146,
+                      "gpu_cores_median": 32.0,
+                      "memory_median_gb": 64.0,
+                      "n": 623,
+                      "self_percentile": 0.7657,
+                      "self_rank": 147,
+                      "tiers": {
+                        "M1|Max": 114,
+                        "M1|Pro": 12,
+                        "M1|Ultra": 22,
+                        "M2|Base": 1,
+                        "M2|Max": 53,
+                        "M2|Pro": 10,
+                        "M2|Ultra": 25,
+                        "M3|Base": 1,
+                        "M3|Max": 21,
+                        "M3|Pro": 5,
+                        "M3|Ultra": 57,
+                        "M4|Base": 50,
+                        "M4|Max": 87,
+                        "M4|Pro": 81,
+                        "M5|Base": 11,
+                        "M5|Max": 43,
+                        "M5|Pro": 27,
+                        "M5|Ultra": 3
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gpt-oss-20b",
+                    "providers": 623,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 175,
+                    "warm": 350,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 400.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 106,
+                      "gpu_cores_median": 38.0,
+                      "memory_median_gb": 64.0,
+                      "n": 350,
+                      "self_percentile": 0.6971,
+                      "self_rank": 107,
+                      "tiers": {
+                        "M1|Max": 76,
+                        "M1|Ultra": 18,
+                        "M2|Max": 37,
+                        "M2|Pro": 2,
+                        "M2|Ultra": 18,
+                        "M3|Max": 12,
+                        "M3|Pro": 1,
+                        "M3|Ultra": 46,
+                        "M4|Base": 5,
+                        "M4|Max": 52,
+                        "M4|Pro": 44,
+                        "M5|Max": 23,
+                        "M5|Pro": 14,
+                        "M5|Ultra": 2
+                      }
+                    }
+                  }
+                ],
+                "covariates": {
+                  "advertised_mismatch_samples": 0,
+                  "busy_fraction": 0.5,
+                  "busy_seconds": 900.0,
+                  "concurrency_samples": 30,
+                  "concurrent_requests_max": 4.0,
+                  "concurrent_requests_mean": 0.7,
+                  "gpu_active_gb_max": 32.196,
+                  "gpu_active_gb_mean": 27.216,
+                  "gpu_active_gb_min": 26.174,
+                  "gpu_utilization_mean": 0.4252,
+                  "kv_grant_gb_mean": {
+                    "gemma-4-26b-qat-4bit": 12.715,
+                    "gpt-oss-20b": 15.258
+                  },
+                  "over_admitted": true,
+                  "queued_requests_max": 7.0,
+                  "queued_requests_mean": 0.3333,
+                  "realized_decode_tps": 75.21,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 163,
+                  "router_gpu_penalty_ms_est": 2126.2,
+                  "samples": 30,
+                  "saturated_sample_fraction": 0.0,
+                  "tokens_generated_counter_reset": false,
+                  "tokens_generated_delta": 67690,
+                  "trust_levels": [
+                    "self_signed"
+                  ],
+                  "warm_fraction": 1.0
+                },
+                "fleet_delta": {
+                  "cancellations_received_delta": 2,
+                  "last_24h_requests_end": 3004691,
+                  "last_24h_requests_start": 3002120,
+                  "requests_served_delta": 170,
+                  "tokens_generated_delta": 72712
+                },
+                "gross_usd": 0.016996,
+                "measure_from": "2026-09-27T19:39:36.684851+00:00",
+                "measured_hours": 0.5,
+                "round_index": 1,
+                "shape": {
+                  "completion_tokens": 72752,
+                  "gross_usd": 0.016996,
+                  "input_output_ratio": 3.358,
+                  "jobs": 170,
+                  "jobs_per_hour": 340.0,
+                  "prompt_tokens": 244282
+                },
+                "slot_index": 5,
+                "stall_evidence": {
+                  "fleet_24h_counter_moved": true,
+                  "fleet_busy": true,
+                  "jobs_in_ledger": 170,
+                  "other_providers_serving_our_models": 375,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 163,
+                  "rule": "stalled iff the provider served nothing (coordinator counter delta 0 and no ledger jobs) while the fleet was demonstrably not idle",
+                  "verdict_reason": "the provider served work"
+                },
+                "stalled": false,
+                "usd_per_hour": 0.033992,
+                "warm_ok": true,
+                "warm_seconds": 11.44
+              },
+              {
+                "advertised_verified": true,
+                "competition": [
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 203,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 592,
+                      "self_percentile": 0.6571,
+                      "self_rank": 204,
+                      "tiers": {
+                        "M1|Max": 107,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 26,
+                        "M2|Max": 37,
+                        "M2|Ultra": 29,
+                        "M3|Max": 25,
+                        "M3|Pro": 2,
+                        "M3|Ultra": 78,
+                        "M4|Base": 1,
+                        "M4|Max": 106,
+                        "M4|Pro": 70,
+                        "M5|Max": 68,
+                        "M5|Pro": 36,
+                        "M5|Ultra": 6
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gemma-4-26b-qat-4bit",
+                    "providers": 592,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 109,
+                    "warm": 280,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 110,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 280,
+                      "self_percentile": 0.6071,
+                      "self_rank": 111,
+                      "tiers": {
+                        "M1|Max": 54,
+                        "M1|Ultra": 10,
+                        "M2|Max": 18,
+                        "M2|Ultra": 16,
+                        "M3|Max": 8,
+                        "M3|Ultra": 43,
+                        "M4|Max": 49,
+                        "M4|Pro": 29,
+                        "M5|Max": 39,
+                        "M5|Pro": 12,
+                        "M5|Ultra": 2
+                      }
+                    }
+                  },
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 400.0,
+                      "bandwidth_p90_gbs": 800.0,
+                      "faster_than_self": 147,
+                      "gpu_cores_median": 32.0,
+                      "memory_median_gb": 64.0,
+                      "n": 627,
+                      "self_percentile": 0.7656,
+                      "self_rank": 148,
+                      "tiers": {
+                        "M1|Max": 112,
+                        "M1|Pro": 13,
+                        "M1|Ultra": 24,
+                        "M2|Base": 1,
+                        "M2|Max": 53,
+                        "M2|Pro": 10,
+                        "M2|Ultra": 24,
+                        "M3|Base": 1,
+                        "M3|Max": 20,
+                        "M3|Pro": 5,
+                        "M3|Ultra": 54,
+                        "M4|Base": 51,
+                        "M4|Max": 85,
+                        "M4|Pro": 85,
+                        "M5|Base": 10,
+                        "M5|Max": 47,
+                        "M5|Pro": 28,
+                        "M5|Ultra": 3,
+                        "M6|Base": 1
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gpt-oss-20b",
+                    "providers": 627,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 86,
+                    "warm": 250,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 400.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 67,
+                      "gpu_cores_median": 32.0,
+                      "memory_median_gb": 64.0,
+                      "n": 250,
+                      "self_percentile": 0.732,
+                      "self_rank": 68,
+                      "tiers": {
+                        "M1|Max": 55,
+                        "M1|Ultra": 13,
+                        "M2|Max": 25,
+                        "M2|Pro": 2,
+                        "M2|Ultra": 12,
+                        "M3|Max": 8,
+                        "M3|Pro": 1,
+                        "M3|Ultra": 26,
+                        "M4|Base": 5,
+                        "M4|Max": 36,
+                        "M4|Pro": 39,
+                        "M5|Max": 15,
+                        "M5|Pro": 10,
+                        "M5|Ultra": 2,
+                        "M6|Base": 1
+                      }
+                    }
+                  }
+                ],
+                "covariates": {
+                  "advertised_mismatch_samples": 0,
+                  "busy_fraction": 0.2,
+                  "busy_seconds": 360.0,
+                  "concurrency_samples": 30,
+                  "concurrent_requests_max": 2.0,
+                  "concurrent_requests_mean": 0.3,
+                  "gpu_active_gb_max": 29.681,
+                  "gpu_active_gb_mean": 26.614,
+                  "gpu_active_gb_min": 26.174,
+                  "gpu_utilization_mean": 0.4158,
+                  "kv_grant_gb_mean": {
+                    "gemma-4-26b-qat-4bit": 12.715,
+                    "gpt-oss-20b": 15.258
+                  },
+                  "over_admitted": true,
+                  "queued_requests_max": 1.0,
+                  "queued_requests_mean": 0.0667,
+                  "realized_decode_tps": 83.85,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 100,
+                  "router_gpu_penalty_ms_est": 2079.2,
+                  "samples": 30,
+                  "saturated_sample_fraction": 0.0,
+                  "tokens_generated_counter_reset": false,
+                  "tokens_generated_delta": 30188,
+                  "trust_levels": [
+                    "self_signed"
+                  ],
+                  "warm_fraction": 1.0
+                },
+                "fleet_delta": {
+                  "cancellations_received_delta": 0,
+                  "last_24h_requests_end": 2976773,
+                  "last_24h_requests_start": 2984483,
+                  "requests_served_delta": 104,
+                  "tokens_generated_delta": 30403
+                },
+                "gross_usd": 0.008749,
+                "measure_from": "2026-09-27T21:28:51.127635+00:00",
+                "measured_hours": 0.5,
+                "round_index": 2,
+                "shape": {
+                  "completion_tokens": 30855,
+                  "gross_usd": 0.008749,
+                  "input_output_ratio": 4.882,
+                  "jobs": 105,
+                  "jobs_per_hour": 210.0,
+                  "prompt_tokens": 150639
+                },
+                "slot_index": 8,
+                "stall_evidence": {
+                  "fleet_24h_counter_moved": true,
+                  "fleet_busy": true,
+                  "jobs_in_ledger": 105,
+                  "other_providers_serving_our_models": 195,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 100,
+                  "rule": "stalled iff the provider served nothing (coordinator counter delta 0 and no ledger jobs) while the fleet was demonstrably not idle",
+                  "verdict_reason": "the provider served work"
+                },
+                "stalled": false,
+                "usd_per_hour": 0.017498,
+                "warm_ok": true,
+                "warm_seconds": 10.7
+              },
+              {
+                "advertised_verified": true,
+                "competition": [
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 204,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 585,
+                      "self_percentile": 0.6513,
+                      "self_rank": 205,
+                      "tiers": {
+                        "M1|Max": 105,
+                        "M1|Pro": 1,
+                        "M1|Ultra": 26,
+                        "M2|Max": 36,
+                        "M2|Ultra": 28,
+                        "M3|Max": 23,
+                        "M3|Pro": 1,
+                        "M3|Ultra": 80,
+                        "M4|Base": 1,
+                        "M4|Max": 107,
+                        "M4|Pro": 67,
+                        "M5|Max": 68,
+                        "M5|Pro": 36,
+                        "M5|Ultra": 6
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gemma-4-26b-qat-4bit",
+                    "providers": 585,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 117,
+                    "warm": 249,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 546.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 90,
+                      "gpu_cores_median": 40.0,
+                      "memory_median_gb": 64.0,
+                      "n": 249,
+                      "self_percentile": 0.6386,
+                      "self_rank": 91,
+                      "tiers": {
+                        "M1|Max": 48,
+                        "M1|Ultra": 16,
+                        "M2|Max": 15,
+                        "M2|Ultra": 12,
+                        "M3|Max": 8,
+                        "M3|Ultra": 28,
+                        "M4|Max": 44,
+                        "M4|Pro": 30,
+                        "M5|Max": 31,
+                        "M5|Pro": 14,
+                        "M5|Ultra": 3
+                      }
+                    }
+                  },
+                  {
+                    "advertising_pool": {
+                      "bandwidth_max_gbs": 1200.0,
+                      "bandwidth_median_gbs": 400.0,
+                      "bandwidth_p90_gbs": 800.0,
+                      "faster_than_self": 147,
+                      "gpu_cores_median": 32.0,
+                      "memory_median_gb": 64.0,
+                      "n": 615,
+                      "self_percentile": 0.761,
+                      "self_rank": 148,
+                      "tiers": {
+                        "M1|Max": 110,
+                        "M1|Pro": 12,
+                        "M1|Ultra": 23,
+                        "M2|Base": 2,
+                        "M2|Max": 52,
+                        "M2|Pro": 10,
+                        "M2|Ultra": 23,
+                        "M3|Base": 1,
+                        "M3|Max": 19,
+                        "M3|Pro": 5,
+                        "M3|Ultra": 56,
+                        "M4|Base": 49,
+                        "M4|Max": 85,
+                        "M4|Pro": 79,
+                        "M5|Base": 9,
+                        "M5|Max": 47,
+                        "M5|Pro": 29,
+                        "M5|Ultra": 3,
+                        "M6|Base": 1
+                      }
+                    },
+                    "decode_tps_median": null,
+                    "decode_tps_p90": null,
+                    "model": "gpt-oss-20b",
+                    "providers": 615,
+                    "self_decode_tps": null,
+                    "self_decode_tps_percentile": null,
+                    "serving": 95,
+                    "warm": 263,
+                    "warm_pool": {
+                      "bandwidth_max_gbs": 819.0,
+                      "bandwidth_median_gbs": 400.0,
+                      "bandwidth_p90_gbs": 819.0,
+                      "faster_than_self": 76,
+                      "gpu_cores_median": 32.0,
+                      "memory_median_gb": 64.0,
+                      "n": 263,
+                      "self_percentile": 0.711,
+                      "self_rank": 77,
+                      "tiers": {
+                        "M1|Max": 56,
+                        "M1|Ultra": 8,
+                        "M2|Max": 26,
+                        "M2|Pro": 2,
+                        "M2|Ultra": 14,
+                        "M3|Max": 9,
+                        "M3|Pro": 1,
+                        "M3|Ultra": 39,
+                        "M4|Base": 6,
+                        "M4|Max": 39,
+                        "M4|Pro": 34,
+                        "M5|Max": 16,
+                        "M5|Pro": 12,
+                        "M6|Base": 1
+                      }
+                    }
+                  }
+                ],
+                "covariates": {
+                  "advertised_mismatch_samples": 0,
+                  "busy_fraction": 0.1333,
+                  "busy_seconds": 240.0,
+                  "concurrency_samples": 30,
+                  "concurrent_requests_max": 2.0,
+                  "concurrent_requests_mean": 0.2,
+                  "gpu_active_gb_max": 28.27,
+                  "gpu_active_gb_mean": 26.344,
+                  "gpu_active_gb_min": 26.174,
+                  "gpu_utilization_mean": 0.4116,
+                  "kv_grant_gb_mean": {
+                    "gemma-4-26b-qat-4bit": 12.715,
+                    "gpt-oss-20b": 15.258
+                  },
+                  "over_admitted": true,
+                  "queued_requests_max": 1.0,
+                  "queued_requests_mean": 0.0333,
+                  "realized_decode_tps": 120.73,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 125,
+                  "router_gpu_penalty_ms_est": 2058.1,
+                  "samples": 30,
+                  "saturated_sample_fraction": 0.0,
+                  "tokens_generated_counter_reset": false,
+                  "tokens_generated_delta": 28976,
+                  "trust_levels": [
+                    "self_signed"
+                  ],
+                  "warm_fraction": 1.0
+                },
+                "fleet_delta": {
+                  "cancellations_received_delta": 0,
+                  "last_24h_requests_end": 2999144,
+                  "last_24h_requests_start": 2984791,
+                  "requests_served_delta": 127,
+                  "tokens_generated_delta": 30249
+                },
+                "gross_usd": 0.011579,
+                "measure_from": "2026-09-27T23:18:00.563119+00:00",
+                "measured_hours": 0.5,
+                "round_index": 3,
+                "shape": {
+                  "completion_tokens": 28976,
+                  "gross_usd": 0.011579,
+                  "input_output_ratio": 6.215,
+                  "jobs": 125,
+                  "jobs_per_hour": 250.0,
+                  "prompt_tokens": 180074
+                },
+                "slot_index": 11,
+                "stall_evidence": {
+                  "fleet_24h_counter_moved": true,
+                  "fleet_busy": true,
+                  "jobs_in_ledger": 125,
+                  "other_providers_serving_our_models": 212,
+                  "requests_served_counter_reset": false,
+                  "requests_served_delta": 125,
+                  "rule": "stalled iff the provider served nothing (coordinator counter delta 0 and no ledger jobs) while the fleet was demonstrably not idle",
+                  "verdict_reason": "the provider served work"
+                },
+                "stalled": false,
+                "usd_per_hour": 0.023158,
+                "warm_ok": true,
+                "warm_seconds": 9.93
+              }
+            ],
+            "per_slot_spread_usd_per_hour": [
+              0.017498,
+              0.035734
+            ],
+            "per_slot_usd_per_hour": [
+              0.035734,
+              0.033992,
+              0.017498,
+              0.023158
+            ],
+            "prompt_tokens": 798411,
+            "resident_gb": 30.94,
+            "shape": {
+              "completion_tokens": 288004,
+              "completion_tokens_max": 12475,
+              "completion_tokens_p50": 111,
+              "completion_tokens_p90": 842,
+              "completion_tokens_per_hour": 144001.1,
+              "completion_tokens_per_job": 520.8,
+              "input_output_ratio": 2.772,
+              "jobs": 553,
+              "jobs_per_hour": 276.5,
+              "prompt_tokens": 798411,
+              "prompt_tokens_max": 11204,
+              "prompt_tokens_p50": 720,
+              "prompt_tokens_p90": 3661,
+              "prompt_tokens_per_job": 1443.8,
+              "realized_usd_per_mtok": 0.0508,
+              "usd_per_job": 0.0001
+            },
+            "slots": 4,
+            "stalled_slots": 0,
+            "unknown_stall_slots": 0,
+            "usd_per_day_projected": 0.6623,
+            "usd_per_gb_hour": 0.000892,
+            "usd_per_hour": 0.027595,
+            "warm_verified_slots": 4
+          }
+        ],
+        "rounds": 4,
+        "settle_seconds": 360.0,
+        "slot_minutes": 30.0,
+        "slots_completed": 12,
+        "status": "complete",
+        "warm_method": "local-endpoint"
+      },
+      "generated_at": "2026-09-27T23:53:56.455668+00:00",
+      "ledger_coverage": {
+        "earliest": "2026-09-23T11:03:17.785244+00:00",
+        "hours_spanned": 108.81,
+        "latest": "2026-09-27T23:51:48.244270+00:00",
+        "note": "The earnings API returns at most 1000 rows with no pagination, so history before this tool started running cannot be recovered.",
+        "rows_stored": 29713
+      },
+      "machine": {
+        "chip": "Apple M4 Max",
+        "darkbloom_version": "0.9.10",
+        "gpu_cores": 40,
+        "idle_timeout_mins": 0,
+        "inference_memory_gb": 60.0,
+        "machine_ref": "m-13de92368cbcdd7f",
+        "macos": "27.0",
+        "max_model_slots": 3,
+        "memory_budget_gb": 60.0,
+        "ram_gb": 64.0,
+        "trust_level": "self_signed"
+      },
+      "method": {
+        "base_reward_handling": "excluded from per-model yield (not attributable to a model); reported separately as an availability floor",
+        "exposure_denominator": "exposed (hours the model was advertised)",
+        "exposure_source": "samples",
+        "memory_headroom_factor": 1.2,
+        "resident_gb_source": "darkbloom models list --json: estimated_memory_gb",
+        "revenue_source": "/v1/provider/account-earnings per-job ledger rows",
+        "spam_signature_definition": "non-base-reward jobs with exactly 25 prompt tokens",
+        "spam_signature_excluded": false,
+        "yield_metric": "usd_per_gb_hour = gross_usd / (resident_gb * exposed_hours)"
+      },
+      "network_capacity": {
+        "models": 9,
+        "per_model": {
+          "EigenLabs/Qwen3.8-27B-4bit-mtp": {
+            "active_requests": 7,
+            "pressure": 0.07216,
+            "warm_providers": 97
+          },
+          "Qwen3.5-9B": {
+            "active_requests": 1,
+            "pressure": 0.01031,
+            "warm_providers": 97
+          },
+          "gemma-4-26b-8bit": {
+            "active_requests": 0,
+            "pressure": 0.0,
+            "warm_providers": 1
+          },
+          "gemma-4-26b-qat-4bit": {
+            "active_requests": 34,
+            "pressure": 0.08076,
+            "warm_providers": 421
+          },
+          "gpt-oss-20b": {
+            "active_requests": 160,
+            "pressure": 0.40921,
+            "warm_providers": 391
+          },
+          "nvidia-nemotron-3.5-lightning": {
+            "active_requests": 1,
+            "pressure": 0.01818,
+            "warm_providers": 55
+          },
+          "qwen3.5-35b-a3b": {
+            "active_requests": 5,
+            "pressure": 0.06667,
+            "warm_providers": 75
+          },
+          "qwen3.6-35b-a3b-vl-mtp-mxfp8": {
+            "active_requests": 17,
+            "pressure": 0.06296,
+            "warm_providers": 270
+          },
+          "ternary-bonsai-2-27b": {
+            "active_requests": 0,
+            "pressure": 0.0,
+            "warm_providers": 43
+          }
+        },
+        "url": "https://api.darkbloom.dev/v1/models/capacity"
+      },
+      "price_feed": {
+        "fallback_input_usd_per_mtok": 0.049999999999999996,
+        "fallback_output_usd_per_mtok": 0.19999999999999998,
+        "input_token_share_assumed": 0.85,
+        "models": 12,
+        "output_token_share_assumed": 0.15,
+        "prices_usd_per_mtok": {
+          "EigenLabs/Qwen3.8-27B-4bit-mtp": {
+            "blended": 0.38864999999999994,
+            "input": 0.06899999999999999,
+            "output": 2.1999999999999997
+          },
+          "Qwen3.5-9B": {
+            "blended": 0.08750000000000001,
+            "input": 0.08,
+            "output": 0.13
+          },
+          "gemma-4-26b": {
+            "blended": 0.0687,
+            "input": 0.041999999999999996,
+            "output": 0.22
+          },
+          "gemma-4-26b-8bit": {
+            "blended": 0.0687,
+            "input": 0.041999999999999996,
+            "output": 0.22
+          },
+          "gemma-4-26b-qat-4bit": {
+            "blended": 0.0687,
+            "input": 0.041999999999999996,
+            "output": 0.22
+          },
+          "gpt-oss-20b": {
+            "blended": 0.0288,
+            "input": 0.018,
+            "output": 0.09
+          },
+          "nvidia-nemotron-3.5-lightning": {
+            "blended": 0.060149999999999995,
+            "input": 0.039,
+            "output": 0.18
+          },
+          "qwen3-vl-30b-a3b-instruct": {
+            "blended": 0.13649999999999998,
+            "input": 0.09,
+            "output": 0.39999999999999997
+          },
+          "qwen3.5-35b-a3b": {
+            "blended": 0.1805,
+            "input": 0.08,
+            "output": 0.75
+          },
+          "qwen3.6-35b-a3b-vl-mtp-mxfp8": {
+            "blended": 0.1475,
+            "input": 0.049999999999999996,
+            "output": 0.7
+          },
+          "qwen3.8-flash-next": {
+            "blended": 0.17049999999999998,
+            "input": 0.13,
+            "output": 0.39999999999999997
+          },
+          "ternary-bonsai-2-27b": {
+            "blended": 0.13874999999999998,
+            "input": 0.075,
+            "output": 0.5
+          }
+        },
+        "url": "https://api.darkbloom.dev/v1/pricing"
+      },
+      "price_reconciliation": {
+        "actual_usd": 1.168917,
+        "aggregate_residual_pct": 0.7,
+        "models_checked": 3,
+        "per_model": [
+          {
+            "actual_usd": 1.128346,
+            "jobs": 7995,
+            "model": "gemma-4-26b-qat-4bit",
+            "predicted_usd": 1.136054,
+            "residual_pct": 0.68
+          },
+          {
+            "actual_usd": 0.039045,
+            "jobs": 406,
+            "model": "gpt-oss-20b",
+            "predicted_usd": 0.039464,
+            "residual_pct": 1.07
+          },
+          {
+            "actual_usd": 0.001526,
+            "jobs": 5,
+            "model": "ternary-bonsai-2-27b",
+            "predicted_usd": 0.001528,
+            "residual_pct": 0.15
+          }
+        ],
+        "predicted_usd": 1.177046,
+        "verdict": "price feed reproduces payouts (worst model within 5%); projections trustworthy",
+        "worst_model_residual_pct": 1.07
+      },
+      "recommendation": {
+        "basis": "measured-low-confidence",
+        "budget_gb_total": 60.0,
+        "budget_gb_used": 48.656,
+        "candidates": [
+          {
+            "basis": "measured",
+            "blocked_reason": null,
+            "budget_gb": 20.933,
+            "demand_prior": 0.005548,
+            "exposed_hours": 23.992,
+            "jobs": 7995,
+            "model": "gemma-4-26b-qat-4bit",
+            "resident_gb": 17.444,
+            "servable": true,
+            "usd_per_gb_hour": 0.002696,
+            "usd_per_hour": 0.04703
+          },
+          {
+            "basis": "measured",
+            "blocked_reason": null,
+            "budget_gb": 16.195,
+            "demand_prior": 0.011785,
+            "exposed_hours": 2.422,
+            "jobs": 406,
+            "model": "gpt-oss-20b",
+            "resident_gb": 13.496,
+            "servable": true,
+            "usd_per_gb_hour": 0.001194,
+            "usd_per_hour": 0.016118
+          },
+          {
+            "basis": "measured-low-confidence",
+            "blocked_reason": null,
+            "budget_gb": 11.527,
+            "demand_prior": 0.0,
+            "exposed_hours": 2.429,
+            "jobs": 5,
+            "model": "ternary-bonsai-2-27b",
+            "resident_gb": 9.606,
+            "servable": true,
+            "usd_per_gb_hour": 6.5e-05,
+            "usd_per_hour": 0.000628
+          },
+          {
+            "basis": "untested",
+            "blocked_reason": "weights not downloaded (`darkbloom models download`)",
+            "budget_gb": 19.584,
+            "demand_prior": 0.028047,
+            "exposed_hours": 0.0,
+            "jobs": 0,
+            "model": "EigenLabs/Qwen3.8-27B-4bit-mtp",
+            "resident_gb": 16.32,
+            "servable": false,
+            "usd_per_gb_hour": null,
+            "usd_per_hour": null
+          },
+          {
+            "basis": "untested",
+            "blocked_reason": "weights not downloaded (`darkbloom models download`)",
+            "budget_gb": 7.337,
+            "demand_prior": 0.000902,
+            "exposed_hours": 0.0,
+            "jobs": 0,
+            "model": "Qwen3.5-9B",
+            "resident_gb": 6.114,
+            "servable": false,
+            "usd_per_gb_hour": null,
+            "usd_per_hour": null
+          },
+          {
+            "basis": "untested",
+            "blocked_reason": "weights not downloaded (`darkbloom models download`)",
+            "budget_gb": 33.583,
+            "demand_prior": null,
+            "exposed_hours": 0.0,
+            "jobs": 0,
+            "model": "gemma-4-26b",
+            "resident_gb": 27.986,
+            "servable": false,
+            "usd_per_gb_hour": null,
+            "usd_per_hour": null
+          },
+          {
+            "basis": "untested",
+            "blocked_reason": "weights not downloaded (`darkbloom models download`)",
+            "budget_gb": 33.583,
+            "demand_prior": 0.0,
+            "exposed_hours": 0.0,
+            "jobs": 0,
+            "model": "gemma-4-26b-8bit",
+            "resident_gb": 27.986,
+            "servable": false,
+            "usd_per_gb_hour": null,
+            "usd_per_hour": null
+          },
+          {
+            "basis": "untested",
+            "blocked_reason": null,
+            "budget_gb": 24.847,
+            "demand_prior": 0.001094,
+            "exposed_hours": 0.0,
+            "jobs": 0,
+            "model": "nvidia-nemotron-3.5-lightning",
+            "resident_gb": 20.706,
+            "servable": true,
+            "usd_per_gb_hour": null,
+            "usd_per_hour": null
+          },
+          {
+            "basis": "untested",
+            "blocked_reason": null,
+            "budget_gb": 27.985,
+            "demand_prior": 0.012033,
+            "exposed_hours": 0.0,
+            "jobs": 0,
+            "model": "qwen3.5-35b-a3b",
+            "resident_gb": 23.32,
+            "servable": true,
+            "usd_per_gb_hour": null,
+            "usd_per_hour": null
+          },
+          {
+            "basis": "untested",
+            "blocked_reason": null,
+            "budget_gb": 28.541,
+            "demand_prior": 0.009287,
+            "exposed_hours": 0.0,
+            "jobs": 0,
+            "model": "qwen3.6-35b-a3b-vl-mtp-mxfp8",
+            "resident_gb": 23.784,
+            "servable": true,
+            "usd_per_gb_hour": null,
+            "usd_per_hour": null
+          }
+        ],
+        "expected_usd_per_day": 1.5306,
+        "expected_usd_per_hour": 0.063777,
+        "expected_usd_per_hour_basis": "summed-singles-upper-bound",
+        "models": [
+          "gemma-4-26b-qat-4bit",
+          "gpt-oss-20b",
+          "ternary-bonsai-2-27b"
+        ],
+        "notes": [
+          "$0.0638/h is an UPPER BOUND, not a prediction: no measurement of this set exists, so single-model rates were added. Expect the real figure to be lower. Darkbloom charges a machine for co-residency in ways a single-model run never sees \u2014 one resident model keeps the whole KV budget while two split it fair-share, every in-flight request adds routing cost to every model on the box, and the concurrency cap is per machine rather than per model. Measure the set directly \u2014 one arm is the whole set, the other its strongest member: dbyield experiment --arm gemma-4-26b-qat-4bit,gpt-oss-20b,ternary-bonsai-2-27b --arm gemma-4-26b-qat-4bit",
+          "memory figures include a 1.20x headroom factor over `estimated_memory_gb`, because real resident overhead exceeds the estimate and an over-subscribed set evicts itself. Verify with `dbyield verify-residency`."
+        ],
+        "slots_total": 3,
+        "slots_used": 3,
+        "untested_ranked_for_experiment": [
+          {
+            "basis": "untested",
+            "blocked_reason": null,
+            "budget_gb": 27.985,
+            "demand_prior": 0.012033,
+            "exposed_hours": 0.0,
+            "jobs": 0,
+            "model": "qwen3.5-35b-a3b",
+            "resident_gb": 23.32,
+            "servable": true,
+            "usd_per_gb_hour": null,
+            "usd_per_hour": null
+          },
+          {
+            "basis": "untested",
+            "blocked_reason": null,
+            "budget_gb": 28.541,
+            "demand_prior": 0.009287,
+            "exposed_hours": 0.0,
+            "jobs": 0,
+            "model": "qwen3.6-35b-a3b-vl-mtp-mxfp8",
+            "resident_gb": 23.784,
+            "servable": true,
+            "usd_per_gb_hour": null,
+            "usd_per_hour": null
+          },
+          {
+            "basis": "untested",
+            "blocked_reason": null,
+            "budget_gb": 24.847,
+            "demand_prior": 0.001094,
+            "exposed_hours": 0.0,
+            "jobs": 0,
+            "model": "nvidia-nemotron-3.5-lightning",
+            "resident_gb": 20.706,
+            "servable": true,
+            "usd_per_gb_hour": null,
+            "usd_per_hour": null
+          }
+        ]
+      },
+      "schema": "dbyield-report/v1",
+      "tool": {
+        "name": "dbyield",
+        "version": "0.1.0"
+      },
+      "window": {
+        "end": "2026-09-27T23:53:52.062886+00:00",
+        "exposure": {
+          "fully_warm_hours": 23.9571,
+          "observed_end": "2026-09-27T23:53:33.798869+00:00",
+          "observed_hours": 23.992,
+          "observed_interval_count": 1,
+          "observed_start": "2026-09-26T23:54:02.766599+00:00",
+          "peak_gpu_active_gb": 34.66326427273452,
+          "per_model_hours": {
+            "gemma-4-26b-qat-4bit": 23.992,
+            "gpt-oss-20b": 2.4224,
+            "ternary-bonsai-2-27b": 2.4286
+          },
+          "per_model_warm_hours": {
+            "gemma-4-26b-qat-4bit": 23.992,
+            "gpt-oss-20b": 2.4231,
+            "ternary-bonsai-2-27b": 2.4152
+          },
+          "sample_count": 4798,
+          "serving_hours": 23.992,
+          "source": "samples",
+          "unobserved_hours": 0.0
+        },
+        "hours": 24.0,
+        "models": [
+          {
+            "completion_tokens": 2294923,
+            "confidence_note": null,
+            "confident": true,
+            "exposed_hours": 23.992,
+            "gross_usd": 1.128346,
+            "jobs": 7995,
+            "jobs_per_hour": 333.237,
+            "model": "gemma-4-26b-qat-4bit",
+            "predicted_usd_from_price_feed": 1.136054,
+            "price_residual_pct": 0.68,
+            "prompt_tokens": 15027872,
+            "resident_gb": 17.44423647299409,
+            "resident_gb_source": "darkbloom models list: estimated_memory_gb",
+            "spam_signature_jobs": 0,
+            "usd_per_gb_hour": 0.002696,
+            "usd_per_hour": 0.04703,
+            "usd_per_hour_warm": 0.04703,
+            "usd_per_mtok": 0.065136,
+            "usd_per_mtok_completion": 0.491671,
+            "warm_hours": 23.992
+          },
+          {
+            "completion_tokens": 313119,
+            "confidence_note": null,
+            "confident": true,
+            "exposed_hours": 2.4224,
+            "gross_usd": 0.039045,
+            "jobs": 406,
+            "jobs_per_hour": 167.603,
+            "model": "gpt-oss-20b",
+            "predicted_usd_from_price_feed": 0.039464,
+            "price_residual_pct": 1.07,
+            "prompt_tokens": 626853,
+            "resident_gb": 13.496213668584824,
+            "resident_gb_source": "darkbloom models list: estimated_memory_gb",
+            "spam_signature_jobs": 0,
+            "usd_per_gb_hour": 0.001194,
+            "usd_per_hour": 0.016118,
+            "usd_per_hour_warm": 0.016114,
+            "usd_per_mtok": 0.041538,
+            "usd_per_mtok_completion": 0.124697,
+            "warm_hours": 2.4231
+          },
+          {
+            "completion_tokens": 2795,
+            "confidence_note": "only 5 paid jobs (<30)",
+            "confident": false,
+            "exposed_hours": 2.4286,
+            "gross_usd": 0.001526,
+            "jobs": 5,
+            "jobs_per_hour": 2.059,
+            "model": "ternary-bonsai-2-27b",
+            "predicted_usd_from_price_feed": 0.001528,
+            "price_residual_pct": 0.15,
+            "prompt_tokens": 1744,
+            "resident_gb": 9.606195230036974,
+            "resident_gb_source": "darkbloom models list: estimated_memory_gb",
+            "spam_signature_jobs": 0,
+            "usd_per_gb_hour": 6.5e-05,
+            "usd_per_hour": 0.000628,
+            "usd_per_hour_warm": 0.000632,
+            "usd_per_mtok": 0.336197,
+            "usd_per_mtok_completion": 0.545975,
+            "warm_hours": 2.4152
+          }
+        ],
+        "start": "2026-09-26T23:53:52.062886+00:00",
+        "totals": {
+          "base_reward_rows": 262,
+          "base_reward_usd": 0.534917,
+          "base_reward_usd_per_hour": 0.022296,
+          "excluded_spam_jobs": 0,
+          "excluded_spam_usd": 0.0,
+          "model_gross_usd": 1.168917,
+          "revenue_outside_observed_window_rows": 0,
+          "revenue_outside_observed_window_usd": 0.0,
+          "total_gross_usd": 1.703834
+        }
+      }
+    }
+  ],
+  "schema": "dbyield-bundle/v1",
+  "sharing_note": "Aggregates only. Contains no account_id, provider_id, provider_key or job_id. machine_ref is a salted one-way HMAC of the provider machine id.",
+  "tool": {
+    "name": "dbyield",
+    "version": "0.1.0"
+  }
+}

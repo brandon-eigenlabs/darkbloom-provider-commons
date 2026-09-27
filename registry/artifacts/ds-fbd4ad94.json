@@ -1,0 +1,43 @@
+{
+  "agent": "brandon-curtis",
+  "availability": {
+    "obtainability": "open"
+  },
+  "content": {
+    "bytes": 3292,
+    "filename": "e2-hedging-2026-09-27.json",
+    "sha256": "fbd4ad94e5b17518ebe2eb46f523dd6723a172ff4c476284292f35c36a665b6d"
+  },
+  "created": "2026-09-27T16:43:56Z",
+  "description": "",
+  "id": "ds-fbd4ad94",
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "id": "sk-2e8f7b2f",
+      "rel": "applies"
+    }
+  ],
+  "schema": "rc.v1",
+  "tags": [
+    "darkbloom",
+    "exploratory",
+    "co-residency"
+  ],
+  "title": "Darkbloom co-residency: second-model job share and lull conditioning, 11 paired slots (EXPLORATORY)",
+  "type": "dataset",
+  "verification": {
+    "attested_by": {
+      "addr": "0x44AA8c1d7213E36902c72AF22dC68C4BFcA649Ab",
+      "sig": "0x7e24d4b46a3d7a6aa411ed1df6ae84d268206903547bb594c3ac8a79def04ec256d22f948d1ee221351689d0fd8f1d4fa6407fe9f2aaf42840041311703c30a81b",
+      "statement": {
+        "attests": "ds-fbd4ad94",
+        "criteria": "EXPLORATORY, retrospective: rules declared in docs/CAMPAIGN-2026-09-27.md section 3 before the analysis was run, but the paired slots already existed, so this is NOT pre-registered and carries no prereg link. Produced by analysis/hedging.py over 11 recorded paired slots, measured windows only, 5-minute buckets, reference model gemma-4-26b-qat-4bit. The hedging question is reported as NOT ASKABLE under the declared floor of 6 lull buckets; the second-model job shares stand on their own.",
+        "observed": "2026-09-26T02:26:01Z",
+        "sha256": "fbd4ad94e5b17518ebe2eb46f523dd6723a172ff4c476284292f35c36a665b6d"
+      }
+    },
+    "criteria": "EXPLORATORY, retrospective: rules declared in docs/CAMPAIGN-2026-09-27.md section 3 before the analysis was run, but the paired slots already existed, so this is NOT pre-registered and carries no prereg link. Produced by analysis/hedging.py over 11 recorded paired slots, measured windows only, 5-minute buckets, reference model gemma-4-26b-qat-4bit. The hedging question is reported as NOT ASKABLE under the declared floor of 6 lull buckets; the second-model job shares stand on their own.",
+    "tier": "T3"
+  }
+}

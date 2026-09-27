@@ -1,0 +1,989 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/darkbloom-community/darkbloom-yield/main/schema/dbyield-report-v1.schema.json",
+  "title": "dbyield-report/v1",
+  "description": "A Darkbloom provider yield report: earnings per model normalized by resident memory, plus the exposure accounting and price-feed reconciliation needed to trust the numbers. Aggregates only \u2014 no account, provider or job identifiers ever appear. Objects are open (additionalProperties allowed) so a newer dbyield can add fields without invalidating a consumer.",
+  "type": "object",
+  "required": [
+    "schema",
+    "tool",
+    "generated_at",
+    "machine",
+    "method",
+    "window",
+    "caveats"
+  ],
+  "properties": {
+    "schema": {
+      "const": "dbyield-report/v1"
+    },
+    "tool": {
+      "type": "object",
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "machine": {
+      "description": "Hardware class, plus a salted one-way pseudonym. Hardware is kept deliberately: a $/GB-hour figure is meaningless without knowing what it ran on.",
+      "type": "object",
+      "required": [
+        "machine_ref"
+      ],
+      "properties": {
+        "machine_ref": {
+          "type": "string",
+          "pattern": "^m-[0-9a-f]{16}$",
+          "description": "HMAC-SHA256(local salt, machine id), truncated. Stable across reports from the same machine; the salt never leaves the machine, so this is not reversible."
+        },
+        "chip": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "examples": [
+            "Apple M4 Max"
+          ]
+        },
+        "ram_gb": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "gpu_cores": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "inference_memory_gb": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "memory_budget_gb": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "max_model_slots": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "macos": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "darkbloom_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "idle_timeout_mins": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "trust_level": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "method": {
+      "description": "Self-describing methodology. Present so a report is interpretable without the tool that produced it.",
+      "type": "object",
+      "required": [
+        "yield_metric",
+        "exposure_denominator",
+        "exposure_source"
+      ],
+      "properties": {
+        "yield_metric": {
+          "type": "string"
+        },
+        "exposure_denominator": {
+          "type": "string"
+        },
+        "exposure_source": {
+          "enum": [
+            "samples",
+            "ledger-span"
+          ],
+          "description": "`samples` = exposure measured from recorded provider state. `ledger-span` = inferred from the span between a model's first and last payout; a lower bound that overstates $/GB-hour and must not be compared against `samples`."
+        },
+        "resident_gb_source": {
+          "type": "string"
+        },
+        "revenue_source": {
+          "type": "string"
+        },
+        "base_reward_handling": {
+          "type": "string"
+        },
+        "spam_signature_excluded": {
+          "type": "boolean"
+        },
+        "spam_signature_definition": {
+          "type": "string"
+        },
+        "memory_headroom_factor": {
+          "type": "number",
+          "minimum": 1.0
+        }
+      }
+    },
+    "window": {
+      "type": "object",
+      "required": [
+        "start",
+        "end",
+        "hours",
+        "totals",
+        "models"
+      ],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "hours": {
+          "type": "number"
+        },
+        "exposure": {
+          "$ref": "#/$defs/exposure"
+        },
+        "totals": {
+          "type": "object",
+          "properties": {
+            "model_gross_usd": {
+              "type": "number"
+            },
+            "base_reward_usd": {
+              "type": "number"
+            },
+            "base_reward_rows": {
+              "type": "integer"
+            },
+            "base_reward_usd_per_hour": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "total_gross_usd": {
+              "type": "number"
+            },
+            "excluded_spam_jobs": {
+              "type": "integer"
+            },
+            "excluded_spam_usd": {
+              "type": "number"
+            },
+            "revenue_outside_observed_window_usd": {
+              "type": "number",
+              "description": "Earned inside the requested window but outside any sampled interval. Reported, never divided: there is no measured exposure to divide it by."
+            },
+            "revenue_outside_observed_window_rows": {
+              "type": "integer"
+            }
+          }
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/modelYield"
+          }
+        }
+      }
+    },
+    "price_feed": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "models": {
+          "type": "integer"
+        },
+        "error": {
+          "type": "string"
+        },
+        "input_token_share_assumed": {
+          "type": "number"
+        },
+        "output_token_share_assumed": {
+          "type": "number"
+        },
+        "prices_usd_per_mtok": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "input": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "output": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "blended": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "price_reconciliation": {
+      "description": "Does the public price feed predict actual payouts? The honesty check on every projection in the report.",
+      "type": "object",
+      "properties": {
+        "models_checked": {
+          "type": "integer"
+        },
+        "actual_usd": {
+          "type": "number"
+        },
+        "predicted_usd": {
+          "type": "number"
+        },
+        "aggregate_residual_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "worst_model_residual_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "verdict": {
+          "type": "string"
+        },
+        "per_model": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "model": {
+                "type": "string"
+              },
+              "actual_usd": {
+                "type": "number"
+              },
+              "predicted_usd": {
+                "type": "number"
+              },
+              "residual_pct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "jobs": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "network_capacity": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "models": {
+          "type": "integer"
+        },
+        "error": {
+          "type": "string"
+        },
+        "per_model": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "warm_providers": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "active_requests": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "pressure": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "active_requests / max(1, warm_providers). Competition proxy, not a rate."
+              }
+            }
+          }
+        }
+      }
+    },
+    "ledger_coverage": {
+      "type": "object",
+      "properties": {
+        "rows_stored": {
+          "type": "integer"
+        },
+        "earliest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hours_spanned": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "current_config": {
+      "type": "object",
+      "properties": {
+        "advertised_models": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "config_drift": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "Present and non-null when provider.toml disagrees with the launchd plist. The plist wins.",
+          "properties": {
+            "plist_models": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "config_enabled_models": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "resident_gb": {
+          "type": "number"
+        },
+        "measured_usd_per_hour": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "recommendation": {
+      "$ref": "#/$defs/plan"
+    },
+    "experiment": {
+      "$ref": "#/$defs/experiment"
+    },
+    "caveats": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Machine-generated limitations of this particular report. Consumers should surface these, not strip them."
+    }
+  },
+  "$defs": {
+    "exposure": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "enum": [
+            "samples",
+            "ledger-span"
+          ]
+        },
+        "sample_count": {
+          "type": "integer"
+        },
+        "observed_hours": {
+          "type": "number"
+        },
+        "unobserved_hours": {
+          "type": "number",
+          "description": "Wall-clock inside the window that was not sampled (sampler down, machine asleep, daemon stopped). Excluded from every denominator rather than credited."
+        },
+        "serving_hours": {
+          "type": "number"
+        },
+        "fully_warm_hours": {
+          "type": "number"
+        },
+        "peak_gpu_active_gb": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "observed_start": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "observed_end": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "observed_interval_count": {
+          "type": "integer"
+        },
+        "per_model_hours": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "per_model_warm_hours": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "modelYield": {
+      "type": "object",
+      "required": [
+        "model",
+        "jobs",
+        "gross_usd",
+        "exposed_hours"
+      ],
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "jobs": {
+          "type": "integer"
+        },
+        "spam_signature_jobs": {
+          "type": "integer"
+        },
+        "prompt_tokens": {
+          "type": "integer"
+        },
+        "completion_tokens": {
+          "type": "integer"
+        },
+        "gross_usd": {
+          "type": "number"
+        },
+        "exposed_hours": {
+          "type": "number"
+        },
+        "warm_hours": {
+          "type": "number"
+        },
+        "resident_gb": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "resident_gb_source": {
+          "type": "string"
+        },
+        "usd_per_hour": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "usd_per_gb_hour": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "THE headline metric: gross_usd / (resident_gb * exposed_hours). Comparable across models on one machine, and across machines of the same hardware class."
+        },
+        "usd_per_hour_warm": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "usd_per_mtok": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "usd_per_mtok_completion": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "jobs_per_hour": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "predicted_usd_from_price_feed": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "price_residual_pct": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "confident": {
+          "type": "boolean",
+          "description": "False when the row rests on too few jobs or too little exposure to be more than an anecdote. Do not rank on non-confident rows."
+        },
+        "confidence_note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "resident_gb": {
+          "type": "number"
+        },
+        "budget_gb": {
+          "type": "number"
+        },
+        "usd_per_hour": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "usd_per_gb_hour": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "basis": {
+          "enum": [
+            "measured",
+            "measured-low-confidence",
+            "untested"
+          ]
+        },
+        "jobs": {
+          "type": "integer"
+        },
+        "exposed_hours": {
+          "type": "number"
+        },
+        "demand_prior": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "pressure x blended price. A ranking heuristic for choosing what to test next \u2014 NOT an earnings estimate."
+        },
+        "servable": {
+          "type": "boolean"
+        },
+        "blocked_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "plan": {
+      "type": "object",
+      "properties": {
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expected_usd_per_hour": {
+          "type": "number"
+        },
+        "expected_usd_per_day": {
+          "type": "number"
+        },
+        "budget_gb_used": {
+          "type": "number"
+        },
+        "budget_gb_total": {
+          "type": "number"
+        },
+        "slots_used": {
+          "type": "integer"
+        },
+        "slots_total": {
+          "type": "integer"
+        },
+        "basis": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/candidate"
+          }
+        },
+        "untested_ranked_for_experiment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/candidate"
+          }
+        },
+        "expected_usd_per_hour_basis": {
+          "enum": [
+            "none",
+            "measured-single",
+            "measured-set",
+            "summed-singles-upper-bound"
+          ],
+          "description": "How expected_usd_per_hour was derived. 'summed-singles-upper-bound' means no measurement of this set exists and single-model rates were added, which is biased HIGH \u2014 treat it as a ceiling, not a forecast. 'measured-set' means the set was measured as a set and carries no additivity assumption."
+        }
+      }
+    },
+    "experiment": {
+      "description": "A round-robin A/B/C run over model sets. Round-robin ordering (A,B,C,A,B,C...) is what decorrelates the arm from time-of-day demand.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "running",
+            "complete",
+            "aborted"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "finished_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "slot_minutes": {
+          "type": "number"
+        },
+        "rounds": {
+          "type": "integer"
+        },
+        "settle_seconds": {
+          "type": "number"
+        },
+        "slots_completed": {
+          "type": "integer"
+        },
+        "arms": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "machine": {
+          "type": "object"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "arm_id": {
+                "type": "string"
+              },
+              "models": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "slots": {
+                "type": "integer"
+              },
+              "measured_hours": {
+                "type": "number"
+              },
+              "jobs": {
+                "type": "integer"
+              },
+              "prompt_tokens": {
+                "type": "integer"
+              },
+              "completion_tokens": {
+                "type": "integer"
+              },
+              "gross_usd": {
+                "type": "number"
+              },
+              "base_reward_usd": {
+                "type": "number"
+              },
+              "resident_gb": {
+                "type": "number"
+              },
+              "usd_per_hour": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "usd_per_gb_hour": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "usd_per_day_projected": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "per_slot_usd_per_hour": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "per_slot_spread_usd_per_hour": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 0,
+                "maxItems": 2,
+                "description": "[min, max] across slots, or null when an arm has fewer than two slots and there is no spread to report. Reported instead of a confidence interval: a handful of repeats cannot support a parametric one."
+              },
+              "fully_warm_slots": {
+                "type": "integer"
+              },
+              "peak_gpu_active_gb": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "arm_kind": {
+                "enum": [
+                  "single",
+                  "set"
+                ],
+                "description": "'set' means the whole model set was advertised together for every slot. Multi-model results are never assembled by adding single-model measurements: co-residency splits the KV budget fair-share, adds cross-model routing cost per in-flight request, and shares one per-machine concurrency cap, so a sum is an upper bound."
+              },
+              "warm_verified_slots": {
+                "type": "integer",
+                "description": "Slots in which every model of the arm was confirmed resident before the measured window opened."
+              },
+              "shape": {
+                "type": "object",
+                "description": "Size and shape of the demand this arm was actually sent \u2014 jobs/hour, input:output ratio, tokens per job, and p50/p90/max completion length. Revenue per hour mixes job count with job size, and output tokens are priced up to 20x input, so the two have to be separable.",
+                "properties": {
+                  "jobs": {
+                    "type": "integer"
+                  },
+                  "jobs_per_hour": {
+                    "type": "number"
+                  },
+                  "input_output_ratio": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "prompt_tokens_per_job": {
+                    "type": "number"
+                  },
+                  "completion_tokens_per_job": {
+                    "type": "number"
+                  },
+                  "completion_tokens_p50": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "completion_tokens_p90": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "completion_tokens_max": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "usd_per_job": {
+                    "type": "number"
+                  },
+                  "realized_usd_per_mtok": {
+                    "type": "number"
+                  }
+                }
+              },
+              "covariates": {
+                "type": "object",
+                "description": "Per-arm means of the conditions each slot was measured under, so a reader can check whether round-robin actually equalised them. Includes busy_fraction (duty cycle), realized_decode_tps, gpu_utilization_mean and the reconstructable router penalty it implies, and how many providers were competing on the arm's models.",
+                "properties": {
+                  "busy_fraction": {
+                    "type": "number"
+                  },
+                  "warm_fraction": {
+                    "type": "number"
+                  },
+                  "realized_decode_tps": {
+                    "type": "number"
+                  },
+                  "gpu_utilization_mean": {
+                    "type": "number"
+                  },
+                  "router_gpu_penalty_ms_est": {
+                    "type": "number"
+                  },
+                  "competing_providers_mean": {
+                    "type": "number"
+                  },
+                  "competing_warm_mean": {
+                    "type": "number"
+                  }
+                }
+              },
+              "per_slot": {
+                "type": "array",
+                "description": "One entry per slot: its revenue alongside its own conditions. A per-arm mean can otherwise hide a slot measured under different conditions entirely.",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "dry_run": {
+          "type": "boolean",
+          "description": "True when this record is a rehearsal: no provider configuration was changed and no revenue is attributable. Never compare a dry run against a real one."
+        },
+        "warm_method": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "local-endpoint",
+            null
+          ],
+          "description": "How each slot's models were made resident before measuring. null means they were not warmed, in which case a cold arm may record no demand simply for being an unviable routing candidate (~30s cost penalty against a 3s tie window)."
+        }
+      }
+    }
+  }
+}

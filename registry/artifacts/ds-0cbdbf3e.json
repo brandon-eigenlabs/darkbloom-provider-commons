@@ -1,0 +1,47 @@
+{
+  "agent": "brandon-curtis",
+  "availability": {
+    "obtainability": "open"
+  },
+  "content": {
+    "bytes": 65329,
+    "filename": "e1-switch-cost-2026-09-28.json",
+    "sha256": "0cbdbf3eef898590a8a4d9fb76dc190fe786438c405a17d29310ac4588748a3b"
+  },
+  "created": "2026-09-27T23:56:03Z",
+  "description": "",
+  "id": "ds-0cbdbf3e",
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "id": "sk-2e8f7b2f",
+      "rel": "applies"
+    },
+    {
+      "id": "ds-6f9252fe",
+      "rel": "supersedes"
+    }
+  ],
+  "schema": "rc.v1",
+  "tags": [
+    "darkbloom",
+    "exploratory",
+    "switch-cost"
+  ],
+  "title": "Darkbloom switch cost: recovery curve over 59 recorded slots, one M4 Max (EXPLORATORY, pinned)",
+  "type": "dataset",
+  "verification": {
+    "attested_by": {
+      "addr": "0x44AA8c1d7213E36902c72AF22dC68C4BFcA649Ab",
+      "sig": "0xa6594d84f71f150c02a7dd160e2eb8a4c01020006c2f623377fd6b7ffe1d941b511d81f8e9f658d6ed15964751d9645e1f39523be6a638dadde21842d3e584631b",
+      "statement": {
+        "attests": "ds-0cbdbf3e",
+        "criteria": "EXPLORATORY, retrospective: rules declared in docs/CAMPAIGN-2026-09-27.md section 2 before the analysis was run, but the slot archive already existed, so this is NOT pre-registered and carries no prereg link. analysis/switch_cost.py pinned --until 2026-09-27T23:52:00Z so it is re-derivable \u2014 the earlier unpinned snapshot ds-6f9252fe was not. 59 non-dry recorded slots from 8 campaigns; Apple M4 Max 64GB 40-core, macOS 27.0, Darkbloom 0.9.9-0.9.10. Revenue divided only by exposure observed inside a slot window; base_reward excluded. The cold-vs-resident split is POST-HOC. Supersedes ds-6f9252fe: same method, 12 more switches, and the resident-switch figure there (1.54x at n=5) was small-n noise \u2014 it is 0.96x at n=8.",
+        "observed": "2026-09-27T23:52:00Z",
+        "sha256": "0cbdbf3eef898590a8a4d9fb76dc190fe786438c405a17d29310ac4588748a3b"
+      }
+    },
+    "criteria": "EXPLORATORY, retrospective: rules declared in docs/CAMPAIGN-2026-09-27.md section 2 before the analysis was run, but the slot archive already existed, so this is NOT pre-registered and carries no prereg link. analysis/switch_cost.py pinned --until 2026-09-27T23:52:00Z so it is re-derivable \u2014 the earlier unpinned snapshot ds-6f9252fe was not. 59 non-dry recorded slots from 8 campaigns; Apple M4 Max 64GB 40-core, macOS 27.0, Darkbloom 0.9.9-0.9.10. Revenue divided only by exposure observed inside a slot window; base_reward excluded. The cold-vs-resident split is POST-HOC. Supersedes ds-6f9252fe: same method, 12 more switches, and the resident-switch figure there (1.54x at n=5) was small-n noise \u2014 it is 0.96x at n=8.",
+    "tier": "T3"
+  }
+}

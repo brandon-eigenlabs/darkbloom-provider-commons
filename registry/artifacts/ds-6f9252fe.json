@@ -1,0 +1,43 @@
+{
+  "agent": "brandon-curtis",
+  "availability": {
+    "obtainability": "open"
+  },
+  "content": {
+    "bytes": 60435,
+    "filename": "e1-switch-cost-2026-09-27.json",
+    "sha256": "6f9252fe8e12c97537257340975ec582018dbfc78bb954e991ad439a8a1ffc0f"
+  },
+  "created": "2026-09-27T16:43:56Z",
+  "description": "",
+  "id": "ds-6f9252fe",
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "id": "sk-2e8f7b2f",
+      "rel": "applies"
+    }
+  ],
+  "schema": "rc.v1",
+  "tags": [
+    "darkbloom",
+    "exploratory",
+    "switch-cost"
+  ],
+  "title": "Darkbloom switch cost: recovery curve over 47 recorded slots, one M4 Max (EXPLORATORY)",
+  "type": "dataset",
+  "verification": {
+    "attested_by": {
+      "addr": "0x44AA8c1d7213E36902c72AF22dC68C4BFcA649Ab",
+      "sig": "0x4f380cbdfc492b93543bc4625deeaa1ac57727a246247de877e002b8d69c4b63343801e7c67e07f8385262671995170f1f51fb7c7e48594b03115329256c0b2b1c",
+      "statement": {
+        "attests": "ds-6f9252fe",
+        "criteria": "EXPLORATORY, retrospective: rules declared in docs/CAMPAIGN-2026-09-27.md section 2 before the analysis was run, but the slot archive already existed, so this is NOT pre-registered and carries no prereg link. Produced by analysis/switch_cost.py over 47 non-dry recorded slots from 7 campaigns, Apple M4 Max 64GB 40-core, macOS 27.0, Darkbloom 0.9.9-0.9.10. Revenue divided only by exposure observed inside a slot window; base_reward excluded. The cold-vs-resident split is POST-HOC and labelled so in the payload.",
+        "observed": "2026-09-26T02:26:01Z",
+        "sha256": "6f9252fe8e12c97537257340975ec582018dbfc78bb954e991ad439a8a1ffc0f"
+      }
+    },
+    "criteria": "EXPLORATORY, retrospective: rules declared in docs/CAMPAIGN-2026-09-27.md section 2 before the analysis was run, but the slot archive already existed, so this is NOT pre-registered and carries no prereg link. Produced by analysis/switch_cost.py over 47 non-dry recorded slots from 7 campaigns, Apple M4 Max 64GB 40-core, macOS 27.0, Darkbloom 0.9.9-0.9.10. Revenue divided only by exposure observed inside a slot window; base_reward excluded. The cold-vs-resident split is POST-HOC and labelled so in the payload.",
+    "tier": "T3"
+  }
+}

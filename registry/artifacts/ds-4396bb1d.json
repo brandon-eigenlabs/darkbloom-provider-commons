@@ -1,0 +1,51 @@
+{
+  "agent": "brandon-curtis",
+  "availability": {
+    "obtainability": "open"
+  },
+  "content": {
+    "bytes": 16062,
+    "filename": "e3-coresidency-2026-09-27.json",
+    "sha256": "4396bb1d546b1584df0f51d2fdb7d053ab995da2b92bde3abfe0d4c3e9282be8"
+  },
+  "created": "2026-09-27T23:55:48Z",
+  "description": "",
+  "id": "ds-4396bb1d",
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "id": "sk-2e8f7b2f",
+      "rel": "applies"
+    },
+    {
+      "id": "ds-95c94025",
+      "rel": "prereg"
+    },
+    {
+      "id": "ds-89931087",
+      "rel": "derived-from"
+    }
+  ],
+  "schema": "rc.v1",
+  "tags": [
+    "darkbloom",
+    "co-residency",
+    "preregistered"
+  ],
+  "title": "E3 analysis: co-residency decomposition under the pre-registered rules",
+  "type": "dataset",
+  "verification": {
+    "attested_by": {
+      "addr": "0x44AA8c1d7213E36902c72AF22dC68C4BFcA649Ab",
+      "sig": "0x2037b02ae9f6e35421b8f3488665d8506a01f9486e6ae12cf91e3ad26ce9fa0972290bc41274fff50b7a6d867c31927621e889a1c0dec52228df3d4ccd3672f61b",
+      "statement": {
+        "attests": "ds-4396bb1d",
+        "criteria": "Output of analysis/e3_report.py over campaign 20260927T163134Z-ec7ccc, pinned --until 2026-09-27T23:52:00Z so it is re-derivable. Implements pre-registration ds-95c94025: the five validity clauses, the arm-2 traffic-inert premise check at its declared 5% threshold, medians with min-max and no intervals, and the rule that two arms whose per-slot ranges overlap are reported as NO RESULT. Written while the campaign was on slot 4 of 12. Q3 was declared exploratory before any data existed.",
+        "observed": "2026-09-27T23:48:00Z",
+        "sha256": "4396bb1d546b1584df0f51d2fdb7d053ab995da2b92bde3abfe0d4c3e9282be8"
+      }
+    },
+    "criteria": "Output of analysis/e3_report.py over campaign 20260927T163134Z-ec7ccc, pinned --until 2026-09-27T23:52:00Z so it is re-derivable. Implements pre-registration ds-95c94025: the five validity clauses, the arm-2 traffic-inert premise check at its declared 5% threshold, medians with min-max and no intervals, and the rule that two arms whose per-slot ranges overlap are reported as NO RESULT. Written while the campaign was on slot 4 of 12. Q3 was declared exploratory before any data existed.",
+    "tier": "T3"
+  }
+}

@@ -1,0 +1,630 @@
+{
+ "analysis": "E3 co-residency decomposition (pre-registered)",
+ "arm2_premise_check": {
+  "declared_threshold": 0.05,
+  "holds": true,
+  "reference_jobs": 770,
+  "second_model_jobs": 5,
+  "second_over_reference": 0.00649,
+  "verdict": "HOLDS \u2014 ternary-bonsai took 5 jobs to gemma's 770 (0.65% < 5%), so arm 2 is traffic-inert"
+ },
+ "arms": {
+  "gemma-4-26b-qat-4bit": {
+   "all_valid": {
+    "gpu_utilization_mean": 0.2416,
+    "median_usd_per_gb_hour": 0.00556557,
+    "median_usd_per_hour": 0.096841,
+    "slots": 4,
+    "spread_usd_per_gb_hour": [
+     0.00392598,
+     0.00777305
+    ],
+    "spread_usd_per_hour": [
+     0.068312,
+     0.135251
+    ],
+    "total_hours": 2.0,
+    "total_jobs": 1474
+   },
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "models": [
+    "gemma-4-26b-qat-4bit"
+   ],
+   "per_model_jobs": {
+    "gemma-4-26b-qat-4bit": 1474
+   },
+   "per_model_usd": {
+    "gemma-4-26b-qat-4bit": 0.198624
+   },
+   "resident_gb": 17.4,
+   "routing_worked": {
+    "gpu_utilization_mean": 0.2416,
+    "median_usd_per_gb_hour": 0.00556557,
+    "median_usd_per_hour": 0.096841,
+    "slots": 4,
+    "spread_usd_per_gb_hour": [
+     0.00392598,
+     0.00777305
+    ],
+    "spread_usd_per_hour": [
+     0.068312,
+     0.135251
+    ],
+    "total_hours": 2.0,
+    "total_jobs": 1474
+   },
+   "slots": [
+    {
+     "busy_fraction": 0.7,
+     "gpu_utilization_mean": 0.2441,
+     "jobs": 353,
+     "measure_from": "2026-09-27T16:37:37.069392+00:00",
+     "measured_hours": 0.5,
+     "per_model": {
+      "gemma-4-26b-qat-4bit": {
+       "jobs": 353,
+       "micro": 49318
+      }
+     },
+     "realized_decode_tps": 64.96,
+     "round_index": 0,
+     "slot_index": 0,
+     "stall_reason": "the provider served work",
+     "stalled": false,
+     "usd": 0.049318,
+     "usd_per_hour": 0.098635
+    },
+    {
+     "busy_fraction": 0.5333,
+     "gpu_utilization_mean": 0.2368,
+     "jobs": 309,
+     "measure_from": "2026-09-27T18:26:44.972108+00:00",
+     "measured_hours": 0.5,
+     "per_model": {
+      "gemma-4-26b-qat-4bit": {
+       "jobs": 309,
+       "micro": 34156
+      }
+     },
+     "realized_decode_tps": 101.95,
+     "round_index": 1,
+     "slot_index": 3,
+     "stall_reason": "the provider served work",
+     "stalled": false,
+     "usd": 0.034156,
+     "usd_per_hour": 0.068312
+    },
+    {
+     "busy_fraction": 0.9,
+     "gpu_utilization_mean": 0.2477,
+     "jobs": 372,
+     "measure_from": "2026-09-27T20:15:56.297486+00:00",
+     "measured_hours": 0.5,
+     "per_model": {
+      "gemma-4-26b-qat-4bit": {
+       "jobs": 372,
+       "micro": 67626
+      }
+     },
+     "realized_decode_tps": 21.72,
+     "round_index": 2,
+     "slot_index": 6,
+     "stall_reason": "the provider served work",
+     "stalled": false,
+     "usd": 0.067626,
+     "usd_per_hour": 0.135251
+    },
+    {
+     "busy_fraction": 0.5667,
+     "gpu_utilization_mean": 0.2391,
+     "jobs": 440,
+     "measure_from": "2026-09-27T22:05:05.640852+00:00",
+     "measured_hours": 0.5,
+     "per_model": {
+      "gemma-4-26b-qat-4bit": {
+       "jobs": 440,
+       "micro": 47524
+      }
+     },
+     "realized_decode_tps": 55.78,
+     "round_index": 3,
+     "slot_index": 9,
+     "stall_reason": "the provider served work",
+     "stalled": false,
+     "usd": 0.047524,
+     "usd_per_hour": 0.095047
+    }
+   ],
+   "stalled_slots": 0,
+   "unknown_stall_slots": 0
+  },
+  "gemma-4-26b-qat-4bit+gpt-oss-20b": {
+   "all_valid": {
+    "gpu_utilization_mean": 0.4205,
+    "median_usd_per_gb_hour": 0.00092476,
+    "median_usd_per_hour": 0.028575,
+    "slots": 4,
+    "spread_usd_per_gb_hour": [
+     0.00056628,
+     0.00115644
+    ],
+    "spread_usd_per_hour": [
+     0.017498,
+     0.035734
+    ],
+    "total_hours": 2.0,
+    "total_jobs": 553
+   },
+   "arm_id": "gemma-4-26b-qat-4bit+gpt-oss-20b",
+   "models": [
+    "gemma-4-26b-qat-4bit",
+    "gpt-oss-20b"
+   ],
+   "per_model_jobs": {
+    "gemma-4-26b-qat-4bit": 268,
+    "gpt-oss-20b": 285
+   },
+   "per_model_usd": {
+    "gemma-4-26b-qat-4bit": 0.026358,
+    "gpt-oss-20b": 0.028833
+   },
+   "resident_gb": 30.9,
+   "routing_worked": {
+    "gpu_utilization_mean": 0.4205,
+    "median_usd_per_gb_hour": 0.00092476,
+    "median_usd_per_hour": 0.028575,
+    "slots": 4,
+    "spread_usd_per_gb_hour": [
+     0.00056628,
+     0.00115644
+    ],
+    "spread_usd_per_hour": [
+     0.017498,
+     0.035734
+    ],
+    "total_hours": 2.0,
+    "total_jobs": 553
+   },
+   "slots": [
+    {
+     "busy_fraction": 0.8333,
+     "gpu_utilization_mean": 0.4345,
+     "jobs": 153,
+     "measure_from": "2026-09-27T17:50:36.637236+00:00",
+     "measured_hours": 0.5,
+     "per_model": {
+      "gemma-4-26b-qat-4bit": {
+       "jobs": 1,
+       "micro": 31
+      },
+      "gpt-oss-20b": {
+       "jobs": 152,
+       "micro": 17836
+      }
+     },
+     "realized_decode_tps": 103.61,
+     "round_index": 0,
+     "slot_index": 2,
+     "stall_reason": "the provider served work",
+     "stalled": false,
+     "usd": 0.017867,
+     "usd_per_hour": 0.035734
+    },
+    {
+     "busy_fraction": 0.5,
+     "gpu_utilization_mean": 0.4252,
+     "jobs": 170,
+     "measure_from": "2026-09-27T19:39:36.684851+00:00",
+     "measured_hours": 0.5,
+     "per_model": {
+      "gemma-4-26b-qat-4bit": {
+       "jobs": 99,
+       "micro": 10596
+      },
+      "gpt-oss-20b": {
+       "jobs": 71,
+       "micro": 6400
+      }
+     },
+     "realized_decode_tps": 75.21,
+     "round_index": 1,
+     "slot_index": 5,
+     "stall_reason": "the provider served work",
+     "stalled": false,
+     "usd": 0.016996,
+     "usd_per_hour": 0.033992
+    },
+    {
+     "busy_fraction": 0.2,
+     "gpu_utilization_mean": 0.4158,
+     "jobs": 105,
+     "measure_from": "2026-09-27T21:28:51.127635+00:00",
+     "measured_hours": 0.5,
+     "per_model": {
+      "gemma-4-26b-qat-4bit": {
+       "jobs": 57,
+       "micro": 5731
+      },
+      "gpt-oss-20b": {
+       "jobs": 48,
+       "micro": 3018
+      }
+     },
+     "realized_decode_tps": 83.85,
+     "round_index": 2,
+     "slot_index": 8,
+     "stall_reason": "the provider served work",
+     "stalled": false,
+     "usd": 0.008749,
+     "usd_per_hour": 0.017498
+    },
+    {
+     "busy_fraction": 0.1333,
+     "gpu_utilization_mean": 0.4116,
+     "jobs": 125,
+     "measure_from": "2026-09-27T23:18:00.563119+00:00",
+     "measured_hours": 0.5,
+     "per_model": {
+      "gemma-4-26b-qat-4bit": {
+       "jobs": 111,
+       "micro": 10000
+      },
+      "gpt-oss-20b": {
+       "jobs": 14,
+       "micro": 1579
+      }
+     },
+     "realized_decode_tps": 120.73,
+     "round_index": 3,
+     "slot_index": 11,
+     "stall_reason": "the provider served work",
+     "stalled": false,
+     "usd": 0.011579,
+     "usd_per_hour": 0.023158
+    }
+   ],
+   "stalled_slots": 0,
+   "unknown_stall_slots": 0
+  },
+  "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b": {
+   "all_valid": {
+    "gpu_utilization_mean": 0.3853,
+    "median_usd_per_gb_hour": 0.00171707,
+    "median_usd_per_hour": 0.046361,
+    "slots": 4,
+    "spread_usd_per_gb_hour": [
+     0.00043593,
+     0.00329737
+    ],
+    "spread_usd_per_hour": [
+     0.01177,
+     0.089029
+    ],
+    "total_hours": 2.0,
+    "total_jobs": 775
+   },
+   "arm_id": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+   "models": [
+    "gemma-4-26b-qat-4bit",
+    "ternary-bonsai-2-27b"
+   ],
+   "per_model_jobs": {
+    "gemma-4-26b-qat-4bit": 770,
+    "ternary-bonsai-2-27b": 5
+   },
+   "per_model_usd": {
+    "gemma-4-26b-qat-4bit": 0.095235,
+    "ternary-bonsai-2-27b": 0.001526
+   },
+   "resident_gb": 27.0,
+   "routing_worked": {
+    "gpu_utilization_mean": 0.3853,
+    "median_usd_per_gb_hour": 0.00171707,
+    "median_usd_per_hour": 0.046361,
+    "slots": 4,
+    "spread_usd_per_gb_hour": [
+     0.00043593,
+     0.00329737
+    ],
+    "spread_usd_per_hour": [
+     0.01177,
+     0.089029
+    ],
+    "total_hours": 2.0,
+    "total_jobs": 775
+   },
+   "slots": [
+    {
+     "busy_fraction": 0.5,
+     "gpu_utilization_mean": 0.3877,
+     "jobs": 187,
+     "measure_from": "2026-09-27T17:14:11.808205+00:00",
+     "measured_hours": 0.5,
+     "per_model": {
+      "gemma-4-26b-qat-4bit": {
+       "jobs": 184,
+       "micro": 24980
+      },
+      "ternary-bonsai-2-27b": {
+       "jobs": 3,
+       "micro": 1502
+      }
+     },
+     "realized_decode_tps": 76.87,
+     "round_index": 0,
+     "slot_index": 1,
+     "stall_reason": "the provider served work",
+     "stalled": false,
+     "usd": 0.026482,
+     "usd_per_hour": 0.052964
+    },
+    {
+     "busy_fraction": 0.6333,
+     "gpu_utilization_mean": 0.388,
+     "jobs": 286,
+     "measure_from": "2026-09-27T19:03:11.074726+00:00",
+     "measured_hours": 0.5,
+     "per_model": {
+      "gemma-4-26b-qat-4bit": {
+       "jobs": 286,
+       "micro": 44515
+      }
+     },
+     "realized_decode_tps": 75.46,
+     "round_index": 1,
+     "slot_index": 4,
+     "stall_reason": "the provider served work",
+     "stalled": false,
+     "usd": 0.044515,
+     "usd_per_hour": 0.089029
+    },
+    {
+     "busy_fraction": 0.3333,
+     "gpu_utilization_mean": 0.383,
+     "jobs": 227,
+     "measure_from": "2026-09-27T20:52:23.299320+00:00",
+     "measured_hours": 0.5,
+     "per_model": {
+      "gemma-4-26b-qat-4bit": {
+       "jobs": 226,
+       "micro": 19867
+      },
+      "ternary-bonsai-2-27b": {
+       "jobs": 1,
+       "micro": 12
+      }
+     },
+     "realized_decode_tps": 78.47,
+     "round_index": 2,
+     "slot_index": 7,
+     "stall_reason": "the provider served work",
+     "stalled": false,
+     "usd": 0.019879,
+     "usd_per_hour": 0.039758
+    },
+    {
+     "busy_fraction": 0.0667,
+     "gpu_utilization_mean": 0.3798,
+     "jobs": 75,
+     "measure_from": "2026-09-27T22:41:36.768278+00:00",
+     "measured_hours": 0.5,
+     "per_model": {
+      "gemma-4-26b-qat-4bit": {
+       "jobs": 74,
+       "micro": 5873
+      },
+      "ternary-bonsai-2-27b": {
+       "jobs": 1,
+       "micro": 12
+      }
+     },
+     "realized_decode_tps": 90.11,
+     "round_index": 3,
+     "slot_index": 10,
+     "stall_reason": "the provider served work",
+     "stalled": false,
+     "usd": 0.005885,
+     "usd_per_hour": 0.01177
+    }
+   ],
+   "stalled_slots": 0,
+   "unknown_stall_slots": 0
+  }
+ },
+ "caveats": [
+  "One machine, one coordinator, trust level self_signed. Nothing here transfers to another hardware class without being measured there.",
+  "Medians with min-max, never means with intervals: at 4 slots per arm a parametric interval implies precision this design cannot support.",
+  "$/GB-h uses the pinned estimated_memory_gb in resident_gb_assumed, which understates true occupancy (activations, KV cache, fragmentation).",
+  "A delta whose arms' ranges overlap is reported as no result. That is the pre-registered rule and it is the rule this project has broken three times."
+ ],
+ "deltas": {
+  "memory_mediated": {
+   "all_valid": {
+    "from_arm": "gemma-4-26b-qat-4bit",
+    "from_slots": 4,
+    "to_arm": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+    "to_slots": 4,
+    "usd_per_gb_hour": {
+     "difference": -0.0038485,
+     "from_median": 0.00556557,
+     "from_spread": [
+      0.00392598,
+      0.00777305
+     ],
+     "separated": true,
+     "separation_reason": "ranges disjoint",
+     "to_median": 0.00171707,
+     "to_spread": [
+      0.00043593,
+      0.00329737
+     ],
+     "verdict": "-0.0038485 $/GB-h \u2014 ranges disjoint"
+    },
+    "usd_per_hour": {
+     "difference": -0.05048,
+     "from_median": 0.096841,
+     "from_spread": [
+      0.068312,
+      0.135251
+     ],
+     "separated": false,
+     "separation_reason": "the arms' per-slot ranges overlap",
+     "to_median": 0.046361,
+     "to_spread": [
+      0.01177,
+      0.089029
+     ],
+     "verdict": "NO RESULT \u2014 the arms' per-slot ranges overlap, so a difference of -0.05048 $/h is not distinguishable from demand variance at this n"
+    }
+   },
+   "meaning": "(arm2 - arm1): co-residency penalty via the memory channels",
+   "routing_worked": {
+    "from_arm": "gemma-4-26b-qat-4bit",
+    "from_slots": 4,
+    "to_arm": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+    "to_slots": 4,
+    "usd_per_gb_hour": {
+     "difference": -0.0038485,
+     "from_median": 0.00556557,
+     "from_spread": [
+      0.00392598,
+      0.00777305
+     ],
+     "separated": true,
+     "separation_reason": "ranges disjoint",
+     "to_median": 0.00171707,
+     "to_spread": [
+      0.00043593,
+      0.00329737
+     ],
+     "verdict": "-0.0038485 $/GB-h \u2014 ranges disjoint"
+    },
+    "usd_per_hour": {
+     "difference": -0.05048,
+     "from_median": 0.096841,
+     "from_spread": [
+      0.068312,
+      0.135251
+     ],
+     "separated": false,
+     "separation_reason": "the arms' per-slot ranges overlap",
+     "to_median": 0.046361,
+     "to_spread": [
+      0.01177,
+      0.089029
+     ],
+     "verdict": "NO RESULT \u2014 the arms' per-slot ranges overlap, so a difference of -0.05048 $/h is not distinguishable from demand variance at this n"
+    }
+   }
+  },
+  "traffic_mediated": {
+   "all_valid": {
+    "from_arm": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+    "from_slots": 4,
+    "to_arm": "gemma-4-26b-qat-4bit+gpt-oss-20b",
+    "to_slots": 4,
+    "usd_per_gb_hour": {
+     "difference": -0.00079231,
+     "from_median": 0.00171707,
+     "from_spread": [
+      0.00043593,
+      0.00329737
+     ],
+     "separated": false,
+     "separation_reason": "the arms' per-slot ranges overlap",
+     "to_median": 0.00092476,
+     "to_spread": [
+      0.00056628,
+      0.00115644
+     ],
+     "verdict": "NO RESULT \u2014 the arms' per-slot ranges overlap, so a difference of -0.00079231 $/GB-h is not distinguishable from demand variance at this n"
+    },
+    "usd_per_hour": {
+     "difference": -0.017786,
+     "from_median": 0.046361,
+     "from_spread": [
+      0.01177,
+      0.089029
+     ],
+     "separated": false,
+     "separation_reason": "the arms' per-slot ranges overlap",
+     "to_median": 0.028575,
+     "to_spread": [
+      0.017498,
+      0.035734
+     ],
+     "verdict": "NO RESULT \u2014 the arms' per-slot ranges overlap, so a difference of -0.017786 $/h is not distinguishable from demand variance at this n"
+    }
+   },
+   "meaning": "(arm3 - arm2): the additional penalty once the second model competes for work",
+   "routing_worked": {
+    "from_arm": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+    "from_slots": 4,
+    "to_arm": "gemma-4-26b-qat-4bit+gpt-oss-20b",
+    "to_slots": 4,
+    "usd_per_gb_hour": {
+     "difference": -0.00079231,
+     "from_median": 0.00171707,
+     "from_spread": [
+      0.00043593,
+      0.00329737
+     ],
+     "separated": false,
+     "separation_reason": "the arms' per-slot ranges overlap",
+     "to_median": 0.00092476,
+     "to_spread": [
+      0.00056628,
+      0.00115644
+     ],
+     "verdict": "NO RESULT \u2014 the arms' per-slot ranges overlap, so a difference of -0.00079231 $/GB-h is not distinguishable from demand variance at this n"
+    },
+    "usd_per_hour": {
+     "difference": -0.017786,
+     "from_median": 0.046361,
+     "from_spread": [
+      0.01177,
+      0.089029
+     ],
+     "separated": false,
+     "separation_reason": "the arms' per-slot ranges overlap",
+     "to_median": 0.028575,
+     "to_spread": [
+      0.017498,
+      0.035734
+     ],
+     "verdict": "NO RESULT \u2014 the arms' per-slot ranges overlap, so a difference of -0.017786 $/h is not distinguishable from demand variance at this n"
+    }
+   }
+  }
+ },
+ "design": {
+  "arms": {
+   "gemma-4-26b-qat-4bit": [
+    "gemma-4-26b-qat-4bit"
+   ],
+   "gemma-4-26b-qat-4bit+gpt-oss-20b": [
+    "gemma-4-26b-qat-4bit",
+    "gpt-oss-20b"
+   ],
+   "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b": [
+    "gemma-4-26b-qat-4bit",
+    "ternary-bonsai-2-27b"
+   ]
+  },
+  "rounds": 4,
+  "settle_seconds": 360.0,
+  "slot_minutes": 30.0
+ },
+ "experiment": "20260927T163134Z-ec7ccc",
+ "ledger_covers_to": "2026-09-27T23:51:48.244270+00:00",
+ "prereg": "ds-95c94025",
+ "resident_gb_assumed": {
+  "gemma-4-26b-qat-4bit": 17.4,
+  "gpt-oss-20b": 13.5,
+  "ternary-bonsai-2-27b": 9.6
+ },
+ "scope": "pinned to --until",
+ "slots_excluded_by_validity_rule": [],
+ "status": "complete",
+ "until_cutoff": "2026-09-27T23:52:00Z"
+}

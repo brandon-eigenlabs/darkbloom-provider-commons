@@ -1,0 +1,47 @@
+{
+  "agent": "brandon-curtis",
+  "availability": {
+    "obtainability": "open"
+  },
+  "content": {
+    "bytes": 112265,
+    "filename": "dbyield-20260927T235356Z.json",
+    "sha256": "899310871838778b3f7c3b0546302d2cd3eab277864b33b721b46ee20c815c93"
+  },
+  "created": "2026-09-27T23:55:37Z",
+  "description": "",
+  "id": "ds-89931087",
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "id": "sk-2e8f7b2f",
+      "rel": "applies"
+    },
+    {
+      "id": "ds-95c94025",
+      "rel": "prereg"
+    }
+  ],
+  "schema": "rc.v1",
+  "tags": [
+    "darkbloom",
+    "co-residency",
+    "preregistered"
+  ],
+  "title": "Darkbloom yield: co-residency decomposition, M4 Max 64GB, 3 arms x 4 rounds, 2026-09-27",
+  "type": "dataset",
+  "verification": {
+    "attested_by": {
+      "addr": "0x44AA8c1d7213E36902c72AF22dC68C4BFcA649Ab",
+      "sig": "0x72bdf3da5d8e463727b5f5bf307dde1ab6dc525cedc3afd0aaf3433d6188defb2248dd8b80b834d5afd1604048ea591e077729ddb3287c8dc6078eb685807da51c",
+      "statement": {
+        "attests": "ds-89931087",
+        "criteria": "dbyield 0.1.0 export; Apple M4 Max 64GB 40-core, macOS 27.0, Darkbloom 0.9.10, 60GB inference budget, max_model_slots 3, trust self_signed; 1 campaign, 12 measured 30-minute slots, 3 arms x 4 round-robin rounds, 6-minute settle, every arm warmed via the loopback endpoint with residency verified against the daemon; 12/12 slots valid under the pre-registered validity rule, 0 stalled; machine_ref is HMAC-SHA256 under a local salt that never leaves the machine. Pre-registered as ds-95c94025, anchored before the first slot. Analysis pinned at 2026-09-27T23:52:00Z.",
+        "observed": "2026-09-27T23:48:00Z",
+        "sha256": "899310871838778b3f7c3b0546302d2cd3eab277864b33b721b46ee20c815c93"
+      }
+    },
+    "criteria": "dbyield 0.1.0 export; Apple M4 Max 64GB 40-core, macOS 27.0, Darkbloom 0.9.10, 60GB inference budget, max_model_slots 3, trust self_signed; 1 campaign, 12 measured 30-minute slots, 3 arms x 4 round-robin rounds, 6-minute settle, every arm warmed via the loopback endpoint with residency verified against the daemon; 12/12 slots valid under the pre-registered validity rule, 0 stalled; machine_ref is HMAC-SHA256 under a local salt that never leaves the machine. Pre-registered as ds-95c94025, anchored before the first slot. Analysis pinned at 2026-09-27T23:52:00Z.",
+    "tier": "T3"
+  }
+}

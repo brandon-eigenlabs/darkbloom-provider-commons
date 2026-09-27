@@ -1,0 +1,13 @@
+{
+  "anchored": "pending",
+  "created": "2026-09-27T16:25:46Z",
+  "heads": {
+    "0x44aa8c1d7213e36902c72af22dc68c4bfca649ab.jsonl": "75138e14e7f780d4823566a5412d28106c4f06fde9f5b2eb05341ccafba0c3b3"
+  },
+  "leaves": [
+    "cac34b45876a32a7a7c204ca4e3777f188a39af3bf352b871df6ba6d925b6ef7"
+  ],
+  "ots_proof": "anchor-20260927T162546Z.root.ots",
+  "root": "cac34b45876a32a7a7c204ca4e3777f188a39af3bf352b871df6ba6d925b6ef7",
+  "schema": "rc.v1"
+}

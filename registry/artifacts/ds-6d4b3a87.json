@@ -1,0 +1,47 @@
+{
+  "agent": "brandon-curtis",
+  "availability": {
+    "obtainability": "open"
+  },
+  "content": {
+    "bytes": 3754,
+    "filename": "e2-hedging-2026-09-28.json",
+    "sha256": "6d4b3a878841cc4cdec2fd8a86077e4a91cdc4a47b94fddd68d3df2240da3285"
+  },
+  "created": "2026-09-27T23:56:13Z",
+  "description": "",
+  "id": "ds-6d4b3a87",
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "id": "sk-2e8f7b2f",
+      "rel": "applies"
+    },
+    {
+      "id": "ds-fbd4ad94",
+      "rel": "supersedes"
+    }
+  ],
+  "schema": "rc.v1",
+  "tags": [
+    "darkbloom",
+    "exploratory",
+    "co-residency"
+  ],
+  "title": "Darkbloom co-residency: second-model share and lull conditioning, 19 paired slots (EXPLORATORY, pinned)",
+  "type": "dataset",
+  "verification": {
+    "attested_by": {
+      "addr": "0x44AA8c1d7213E36902c72AF22dC68C4BFcA649Ab",
+      "sig": "0xf6510dd05df398947da6900a6f4f1a1dd2d1f1f5e781b0a8379c12731f0df3fc2aaf6bcbd6b3699f818b3335b98307e877bfcbb4eb0506cd6b72b266b9550a1a1b",
+      "statement": {
+        "attests": "ds-6d4b3a87",
+        "criteria": "EXPLORATORY, retrospective over the pooled archive: rules declared in docs/CAMPAIGN-2026-09-27.md section 3 before the analysis was run, but most of these slots already existed, so this pooled view is NOT pre-registered and carries no prereg link. The pre-registered subset is ds-4396bb1d. analysis/hedging.py pinned --until 2026-09-27T23:52:00Z; 19 paired slots, measured windows only, 5-minute buckets, reference model gemma-4-26b-qat-4bit. Supersedes ds-fbd4ad94, which was unpinned and therefore not re-derivable.",
+        "observed": "2026-09-27T23:52:00Z",
+        "sha256": "6d4b3a878841cc4cdec2fd8a86077e4a91cdc4a47b94fddd68d3df2240da3285"
+      }
+    },
+    "criteria": "EXPLORATORY, retrospective over the pooled archive: rules declared in docs/CAMPAIGN-2026-09-27.md section 3 before the analysis was run, but most of these slots already existed, so this pooled view is NOT pre-registered and carries no prereg link. The pre-registered subset is ds-4396bb1d. analysis/hedging.py pinned --until 2026-09-27T23:52:00Z; 19 paired slots, measured windows only, 5-minute buckets, reference model gemma-4-26b-qat-4bit. Supersedes ds-fbd4ad94, which was unpinned and therefore not re-derivable.",
+    "tier": "T3"
+  }
+}

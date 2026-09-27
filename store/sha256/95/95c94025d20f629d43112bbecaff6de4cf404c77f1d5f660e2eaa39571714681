@@ -1,0 +1,92 @@
+{
+ "schema": "dbyield-prereg/v1",
+ "id": "e3-coresidency-2026-09-27",
+ "title": "E3: splitting the Darkbloom co-residency penalty into memory- and traffic-mediated halves",
+ "written_at": "2026-09-27T16:30:00Z",
+ "written_before_first_slot": true,
+ "full_design_document": "docs/CAMPAIGN-2026-09-27.md section 4",
+ "applies_method": "sk-6817ec3d",
+
+ "machine": {
+  "chip": "Apple M4 Max",
+  "ram_gb": 64,
+  "gpu_cores": 40,
+  "macos": "27.0",
+  "darkbloom_version": "0.9.10",
+  "inference_memory_budget_gb": 60.0,
+  "max_model_slots": 3,
+  "trust_level": "self_signed",
+  "note": "One machine, one coordinator. Nothing here generalises to other hardware classes; that is what the companion task is for."
+ },
+
+ "design": "round-robin, 3 arms, 4 rounds",
+ "arms": [
+  {"id": "1", "models": ["gemma-4-26b-qat-4bit"], "est_resident_gb": 17.4,
+   "memory_channel": "baseline", "traffic_channel": "baseline",
+   "role": "reference arm, shared with 15 previously recorded gemma-solo slots"},
+  {"id": "2", "models": ["gemma-4-26b-qat-4bit", "ternary-bonsai-2-27b"], "est_resident_gb": 27.0,
+   "memory_channel": "active", "traffic_channel": "expected inert",
+   "role": "isolates the memory-mediated co-residency penalty"},
+  {"id": "3", "models": ["gemma-4-26b-qat-4bit", "gpt-oss-20b"], "est_resident_gb": 30.9,
+   "memory_channel": "active", "traffic_channel": "active",
+   "role": "adds the traffic-mediated penalty on top of arm 2"}
+ ],
+ "rounds_per_arm": 4,
+ "slot_minutes": 30,
+ "settle_minutes": 6,
+ "total_slots": 12,
+ "est_duration_hours": 7.3,
+ "warm": "every arm warmed through the provider loopback endpoint before its measured window, residency verified against the daemon",
+
+ "validity_rule": "A slot is valid iff (1) applied and advertised_verified are true and covariates.advertised_mismatch_samples == 0; (2) restart_ok is true; (3) fully_warm is true, i.e. every model in the arm was resident at measure start; (4) covariates.samples >= 0.8 x the expected sample count for the slot; (5) the ledger has been ingested with coverage through the slot's ended_at. A valid slot is additionally classified stalled iff covariates.requests_served_delta == 0 while the fleet was not idle. Every headline number is reported twice: over all valid slots, and over valid non-stalled slots.",
+
+ "arm2_premise_check": {
+  "claim": "arm 2's second model is traffic-inert, which is what makes (3 - 2) mean the traffic-mediated penalty",
+  "threshold": "ternary-bonsai-2-27b's pooled job rate across arm-2 slots is below 5% of gemma's in the same slots",
+  "if_it_fails": "report arms 1/2/3 as three configurations and drop the decomposition claim entirely",
+  "historical_evidence": "0 of 1174 jobs over 4 previously recorded gemma+ternary-bonsai slots; contrast gpt-oss-20b at 296 of 1214 jobs over 3 gemma+gpt-oss slots"
+ },
+
+ "questions": [
+  {"id": "Q1", "status": "confirmatory",
+   "question": "Is the memory-mediated share of the co-residency penalty larger than the traffic-mediated share?",
+   "estimator": "(arm2 - arm1) versus (arm3 - arm2) on per-arm median $/h",
+   "prior": "yes - the already-measured -17% pair was approximately arm 2, so most of the known penalty is memory-mediated",
+   "size_correction": "the two second models differ in size (9.6 vs 13.5 GB); covariates.gpu_utilization_mean is the recorded correction"},
+  {"id": "Q2", "status": "confirmatory",
+   "question": "Do arms 2 and 3 earn less per resident GB-hour than arm 1?",
+   "estimator": "per-arm median $/GB-h with min-max across slots",
+   "prior": "yes"},
+  {"id": "Q3", "status": "exploratory",
+   "question": "In arms 2 and 3, does the second model's job rate rise when gemma's collapses?",
+   "unit": "5-minute bucket of wall clock inside the measured window",
+   "rules": [
+    {"name": "hard lull", "definition": "gemma's job count in the bucket is exactly 0", "strength": "primary"},
+    {"name": "soft lull", "definition": "gemma's job count in the bucket is in the bottom quintile of that slot's own buckets", "strength": "suggestive only; a quiet bucket is not a collapse"}
+   ],
+   "askability_floor": 6,
+   "if_below_floor": "report 'not askable in this campaign', never 'no'",
+   "note": "the soft rule was added after running E2 over already-recorded slots and before any E3 slot ran; E2 returned only 4 hard-lull buckets out of 62, below the floor"}
+ ],
+
+ "planned_analysis": "Per arm, median $/h and median $/GB-h, each reported with the min-max across slots. No standard errors, no parametric confidence intervals, no +/- figures: at n=4 per arm they would imply precision the design cannot support. (2 - 1) and (3 - 2) reported on medians with both arms' ranges beside them. If two arms' ranges overlap, the difference between them is reported as 'no result', not as a small effect. Q3 reported as a contingency table with the count of qualifying lull buckets stated before any rate. Any quantity projected rather than measured is labelled summed-singles-upper-bound.",
+
+ "not_answered_by_this_campaign": [
+  "The absolute co-residency interaction coefficient measured_set - (measured_A + measured_B): that needs solo arms for both second models, which would cost 16-20 slots, and rounds beat breadth.",
+  "Whether a dynamic controller can beat a static choice: that needs the predictability study, a sampler change and days of fixed-configuration data.",
+  "Anything about other hardware classes or trust levels."
+ ],
+
+ "abort_conditions": [
+  "advertised_verified fails on any slot - this is the failure mode that produces attributable-looking garbage",
+  "another controller is moving the model set (foreign_change)",
+  "the provider fails to come back serving after a restart"
+ ],
+ "on_exit": "restore the original advertised model set on every exit path including signals, and print the exact command to restore it by hand if the restore itself fails",
+
+ "companion_retrospective_analyses": {
+  "note": "E1 and E2 are retrospective analyses of data that already existed when their rules were written. They are exploratory, they are NOT covered by this pre-registration, and anything published from them must not carry a prereg: link to it.",
+  "E1": "price one model switch from 47 already-recorded slots",
+  "E2": "the Q3 hedging rule applied to 11 already-recorded paired slots"
+ }
+}

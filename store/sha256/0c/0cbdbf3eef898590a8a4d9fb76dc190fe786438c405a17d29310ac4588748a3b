@@ -1,0 +1,2669 @@
+{
+ "analysis": "E1 switch cost",
+ "bucket_minutes": 2.0,
+ "cold_load_split": {
+  "cold": {
+   "arms": [
+    "gemma-4-26b-qat-4bit",
+    "gemma-4-26b-qat-4bit+gpt-oss-20b",
+    "gemma-4-26b-qat-4bit+qwen3.6-35b-a3b-vl-mtp-mxfp8",
+    "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+    "nvidia-nemotron-3.5-lightning",
+    "qwen3.6-35b-a3b-vl-mtp-mxfp8",
+    "ternary-bonsai-2-27b"
+   ],
+   "curve": [
+    {
+     "base_reward_usd_per_hour": 0.01543,
+     "exposure_hours": 1.35,
+     "jobs": 348,
+     "jobs_per_hour": 257.8,
+     "t_from_min": 0.0,
+     "t_to_min": 2.0,
+     "usd_per_hour": 0.0346
+    },
+    {
+     "base_reward_usd_per_hour": 0.01858,
+     "exposure_hours": 1.3333,
+     "jobs": 452,
+     "jobs_per_hour": 339.0,
+     "t_from_min": 2.0,
+     "t_to_min": 4.0,
+     "usd_per_hour": 0.05814
+    },
+    {
+     "base_reward_usd_per_hour": 0.0169,
+     "exposure_hours": 1.3333,
+     "jobs": 517,
+     "jobs_per_hour": 387.8,
+     "t_from_min": 4.0,
+     "t_to_min": 6.0,
+     "usd_per_hour": 0.05787
+    },
+    {
+     "base_reward_usd_per_hour": 0.02075,
+     "exposure_hours": 1.3333,
+     "jobs": 514,
+     "jobs_per_hour": 385.5,
+     "t_from_min": 6.0,
+     "t_to_min": 8.0,
+     "usd_per_hour": 0.06471
+    },
+    {
+     "base_reward_usd_per_hour": 0.01778,
+     "exposure_hours": 1.3333,
+     "jobs": 627,
+     "jobs_per_hour": 470.2,
+     "t_from_min": 8.0,
+     "t_to_min": 10.0,
+     "usd_per_hour": 0.0581
+    },
+    {
+     "base_reward_usd_per_hour": 0.025,
+     "exposure_hours": 1.3333,
+     "jobs": 685,
+     "jobs_per_hour": 513.8,
+     "t_from_min": 10.0,
+     "t_to_min": 12.0,
+     "usd_per_hour": 0.06478
+    },
+    {
+     "base_reward_usd_per_hour": 0.02044,
+     "exposure_hours": 1.3248,
+     "jobs": 620,
+     "jobs_per_hour": 468.0,
+     "t_from_min": 12.0,
+     "t_to_min": 14.0,
+     "usd_per_hour": 0.05983
+    },
+    {
+     "base_reward_usd_per_hour": 0.02586,
+     "exposure_hours": 1.2084,
+     "jobs": 431,
+     "jobs_per_hour": 356.7,
+     "t_from_min": 14.0,
+     "t_to_min": 16.0,
+     "usd_per_hour": 0.0513
+    },
+    {
+     "base_reward_usd_per_hour": 0.02604,
+     "exposure_hours": 1.2,
+     "jobs": 414,
+     "jobs_per_hour": 345.0,
+     "t_from_min": 16.0,
+     "t_to_min": 18.0,
+     "usd_per_hour": 0.05632
+    },
+    {
+     "base_reward_usd_per_hour": 0.02083,
+     "exposure_hours": 1.2,
+     "jobs": 488,
+     "jobs_per_hour": 406.7,
+     "t_from_min": 18.0,
+     "t_to_min": 20.0,
+     "usd_per_hour": 0.06044
+    },
+    {
+     "base_reward_usd_per_hour": 0.02257,
+     "exposure_hours": 1.2,
+     "jobs": 497,
+     "jobs_per_hour": 414.2,
+     "t_from_min": 20.0,
+     "t_to_min": 22.0,
+     "usd_per_hour": 0.06155
+    },
+    {
+     "base_reward_usd_per_hour": 0.02257,
+     "exposure_hours": 1.2,
+     "jobs": 506,
+     "jobs_per_hour": 421.7,
+     "t_from_min": 22.0,
+     "t_to_min": 24.0,
+     "usd_per_hour": 0.06254
+    },
+    {
+     "base_reward_usd_per_hour": 0.02777,
+     "exposure_hours": 1.2,
+     "jobs": 506,
+     "jobs_per_hour": 421.7,
+     "t_from_min": 24.0,
+     "t_to_min": 26.0,
+     "usd_per_hour": 0.05366
+    },
+    {
+     "base_reward_usd_per_hour": 0.0243,
+     "exposure_hours": 1.2,
+     "jobs": 590,
+     "jobs_per_hour": 491.7,
+     "t_from_min": 26.0,
+     "t_to_min": 28.0,
+     "usd_per_hour": 0.06236
+    },
+    {
+     "base_reward_usd_per_hour": 0.02257,
+     "exposure_hours": 1.2,
+     "jobs": 608,
+     "jobs_per_hour": 506.7,
+     "t_from_min": 28.0,
+     "t_to_min": 30.0,
+     "usd_per_hour": 0.07426
+    },
+    {
+     "base_reward_usd_per_hour": 0.0243,
+     "exposure_hours": 1.2,
+     "jobs": 599,
+     "jobs_per_hour": 499.2,
+     "t_from_min": 30.0,
+     "t_to_min": 32.0,
+     "usd_per_hour": 0.06715
+    },
+    {
+     "base_reward_usd_per_hour": 0.02257,
+     "exposure_hours": 1.2,
+     "jobs": 585,
+     "jobs_per_hour": 487.5,
+     "t_from_min": 32.0,
+     "t_to_min": 34.0,
+     "usd_per_hour": 0.07411
+    },
+    {
+     "base_reward_usd_per_hour": 0.02604,
+     "exposure_hours": 1.2,
+     "jobs": 560,
+     "jobs_per_hour": 466.7,
+     "t_from_min": 34.0,
+     "t_to_min": 36.0,
+     "usd_per_hour": 0.06834
+    }
+   ],
+   "first_2min_ratio": 0.585,
+   "first_2min_usd_per_hour": 0.0346,
+   "plateau_usd_per_hour": 0.05914,
+   "slots": 43,
+   "switch_cost_usd_spread": {
+    "max": 0.01203,
+    "median": 0.00032,
+    "min": -0.01392,
+    "n": 40
+   }
+  },
+  "resident": {
+   "arms": [
+    "gemma-4-26b-qat-4bit",
+    "qwen3.6-35b-a3b-vl-mtp-mxfp8"
+   ],
+   "curve": [
+    {
+     "base_reward_usd_per_hour": 0.00781,
+     "exposure_hours": 0.2667,
+     "jobs": 109,
+     "jobs_per_hour": 408.8,
+     "t_from_min": 0.0,
+     "t_to_min": 2.0,
+     "usd_per_hour": 0.07626
+    },
+    {
+     "base_reward_usd_per_hour": 0.01182,
+     "exposure_hours": 0.2667,
+     "jobs": 172,
+     "jobs_per_hour": 645.0,
+     "t_from_min": 2.0,
+     "t_to_min": 4.0,
+     "usd_per_hour": 0.09089
+    },
+    {
+     "base_reward_usd_per_hour": 0.01529,
+     "exposure_hours": 0.2667,
+     "jobs": 115,
+     "jobs_per_hour": 431.2,
+     "t_from_min": 4.0,
+     "t_to_min": 6.0,
+     "usd_per_hour": 0.06202
+    },
+    {
+     "base_reward_usd_per_hour": 0.01167,
+     "exposure_hours": 0.2667,
+     "jobs": 126,
+     "jobs_per_hour": 472.5,
+     "t_from_min": 6.0,
+     "t_to_min": 8.0,
+     "usd_per_hour": 0.07302
+    },
+    {
+     "base_reward_usd_per_hour": 0.01181,
+     "exposure_hours": 0.2667,
+     "jobs": 106,
+     "jobs_per_hour": 397.5,
+     "t_from_min": 8.0,
+     "t_to_min": 10.0,
+     "usd_per_hour": 0.07994
+    },
+    {
+     "base_reward_usd_per_hour": 0.02343,
+     "exposure_hours": 0.2667,
+     "jobs": 89,
+     "jobs_per_hour": 333.8,
+     "t_from_min": 10.0,
+     "t_to_min": 12.0,
+     "usd_per_hour": 0.04144
+    },
+    {
+     "base_reward_usd_per_hour": 0.02343,
+     "exposure_hours": 0.2667,
+     "jobs": 110,
+     "jobs_per_hour": 412.5,
+     "t_from_min": 12.0,
+     "t_to_min": 14.0,
+     "usd_per_hour": 0.06632
+    },
+    {
+     "base_reward_usd_per_hour": 0.02343,
+     "exposure_hours": 0.2667,
+     "jobs": 134,
+     "jobs_per_hour": 502.5,
+     "t_from_min": 14.0,
+     "t_to_min": 16.0,
+     "usd_per_hour": 0.07924
+    },
+    {
+     "base_reward_usd_per_hour": 0.02343,
+     "exposure_hours": 0.2667,
+     "jobs": 84,
+     "jobs_per_hour": 315.0,
+     "t_from_min": 16.0,
+     "t_to_min": 18.0,
+     "usd_per_hour": 0.09189
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.2667,
+     "jobs": 107,
+     "jobs_per_hour": 401.2,
+     "t_from_min": 18.0,
+     "t_to_min": 20.0,
+     "usd_per_hour": 0.05565
+    },
+    {
+     "base_reward_usd_per_hour": 0.02343,
+     "exposure_hours": 0.2667,
+     "jobs": 145,
+     "jobs_per_hour": 543.8,
+     "t_from_min": 20.0,
+     "t_to_min": 22.0,
+     "usd_per_hour": 0.11666
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.2667,
+     "jobs": 140,
+     "jobs_per_hour": 525.0,
+     "t_from_min": 22.0,
+     "t_to_min": 24.0,
+     "usd_per_hour": 0.10154
+    },
+    {
+     "base_reward_usd_per_hour": 0.02343,
+     "exposure_hours": 0.2667,
+     "jobs": 124,
+     "jobs_per_hour": 465.0,
+     "t_from_min": 24.0,
+     "t_to_min": 26.0,
+     "usd_per_hour": 0.08052
+    },
+    {
+     "base_reward_usd_per_hour": 0.02343,
+     "exposure_hours": 0.2667,
+     "jobs": 133,
+     "jobs_per_hour": 498.8,
+     "t_from_min": 26.0,
+     "t_to_min": 28.0,
+     "usd_per_hour": 0.08373
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.2667,
+     "jobs": 190,
+     "jobs_per_hour": 712.5,
+     "t_from_min": 28.0,
+     "t_to_min": 30.0,
+     "usd_per_hour": 0.08727
+    },
+    {
+     "base_reward_usd_per_hour": 0.02343,
+     "exposure_hours": 0.2667,
+     "jobs": 127,
+     "jobs_per_hour": 476.2,
+     "t_from_min": 30.0,
+     "t_to_min": 32.0,
+     "usd_per_hour": 0.08487
+    },
+    {
+     "base_reward_usd_per_hour": 0.00781,
+     "exposure_hours": 0.2667,
+     "jobs": 134,
+     "jobs_per_hour": 502.5,
+     "t_from_min": 32.0,
+     "t_to_min": 34.0,
+     "usd_per_hour": 0.05347
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.2667,
+     "jobs": 131,
+     "jobs_per_hour": 491.2,
+     "t_from_min": 34.0,
+     "t_to_min": 36.0,
+     "usd_per_hour": 0.05212
+    }
+   ],
+   "first_2min_ratio": 0.957,
+   "first_2min_usd_per_hour": 0.07626,
+   "plateau_usd_per_hour": 0.07969,
+   "slots": 8,
+   "switch_cost_usd_spread": {
+    "max": 0.00912,
+    "median": 0.00086,
+    "min": -0.00825,
+    "n": 8
+   }
+  },
+  "unknown": {
+   "arms": [
+    "gemma-4-26b-qat-4bit",
+    "nvidia-nemotron-3.5-lightning",
+    "qwen3.6-35b-a3b-vl-mtp-mxfp8"
+   ],
+   "curve": [
+    {
+     "base_reward_usd_per_hour": 0.02771,
+     "exposure_hours": 0.2389,
+     "jobs": 118,
+     "jobs_per_hour": 493.9,
+     "t_from_min": 0.0,
+     "t_to_min": 2.0,
+     "usd_per_hour": 0.0819
+    },
+    {
+     "base_reward_usd_per_hour": 0.00735,
+     "exposure_hours": 0.2333,
+     "jobs": 126,
+     "jobs_per_hour": 540.0,
+     "t_from_min": 2.0,
+     "t_to_min": 4.0,
+     "usd_per_hour": 0.13244
+    },
+    {
+     "base_reward_usd_per_hour": 0.02322,
+     "exposure_hours": 0.2333,
+     "jobs": 129,
+     "jobs_per_hour": 552.9,
+     "t_from_min": 4.0,
+     "t_to_min": 6.0,
+     "usd_per_hour": 0.08717
+    },
+    {
+     "base_reward_usd_per_hour": 0.01386,
+     "exposure_hours": 0.2333,
+     "jobs": 139,
+     "jobs_per_hour": 595.7,
+     "t_from_min": 6.0,
+     "t_to_min": 8.0,
+     "usd_per_hour": 0.09499
+    },
+    {
+     "base_reward_usd_per_hour": 0.02678,
+     "exposure_hours": 0.2333,
+     "jobs": 120,
+     "jobs_per_hour": 514.3,
+     "t_from_min": 8.0,
+     "t_to_min": 10.0,
+     "usd_per_hour": 0.07866
+    },
+    {
+     "base_reward_usd_per_hour": 0.03571,
+     "exposure_hours": 0.2333,
+     "jobs": 97,
+     "jobs_per_hour": 415.7,
+     "t_from_min": 10.0,
+     "t_to_min": 12.0,
+     "usd_per_hour": 0.06289
+    },
+    {
+     "base_reward_usd_per_hour": 0.00944,
+     "exposure_hours": 0.2206,
+     "jobs": 107,
+     "jobs_per_hour": 485.0,
+     "t_from_min": 12.0,
+     "t_to_min": 14.0,
+     "usd_per_hour": 0.07683
+    },
+    {
+     "base_reward_usd_per_hour": 0.02294,
+     "exposure_hours": 0.1816,
+     "jobs": 84,
+     "jobs_per_hour": 462.6,
+     "t_from_min": 14.0,
+     "t_to_min": 16.0,
+     "usd_per_hour": 0.07248
+    },
+    {
+     "base_reward_usd_per_hour": 0.025,
+     "exposure_hours": 0.1667,
+     "jobs": 65,
+     "jobs_per_hour": 390.0,
+     "t_from_min": 16.0,
+     "t_to_min": 18.0,
+     "usd_per_hour": 0.09335
+    },
+    {
+     "base_reward_usd_per_hour": 0.025,
+     "exposure_hours": 0.1667,
+     "jobs": 63,
+     "jobs_per_hour": 378.0,
+     "t_from_min": 18.0,
+     "t_to_min": 20.0,
+     "usd_per_hour": 0.10291
+    },
+    {
+     "base_reward_usd_per_hour": 0.03749,
+     "exposure_hours": 0.1667,
+     "jobs": 62,
+     "jobs_per_hour": 372.0,
+     "t_from_min": 20.0,
+     "t_to_min": 22.0,
+     "usd_per_hour": 0.10676
+    },
+    {
+     "base_reward_usd_per_hour": 0.0125,
+     "exposure_hours": 0.1667,
+     "jobs": 56,
+     "jobs_per_hour": 336.0,
+     "t_from_min": 22.0,
+     "t_to_min": 24.0,
+     "usd_per_hour": 0.04667
+    },
+    {
+     "base_reward_usd_per_hour": 0.025,
+     "exposure_hours": 0.1667,
+     "jobs": 55,
+     "jobs_per_hour": 330.0,
+     "t_from_min": 24.0,
+     "t_to_min": 26.0,
+     "usd_per_hour": 0.05
+    },
+    {
+     "base_reward_usd_per_hour": 0.025,
+     "exposure_hours": 0.1667,
+     "jobs": 72,
+     "jobs_per_hour": 432.0,
+     "t_from_min": 26.0,
+     "t_to_min": 28.0,
+     "usd_per_hour": 0.07244
+    },
+    {
+     "base_reward_usd_per_hour": 0.025,
+     "exposure_hours": 0.1667,
+     "jobs": 52,
+     "jobs_per_hour": 312.0,
+     "t_from_min": 28.0,
+     "t_to_min": 30.0,
+     "usd_per_hour": 0.05194
+    },
+    {
+     "base_reward_usd_per_hour": 0.03749,
+     "exposure_hours": 0.1667,
+     "jobs": 72,
+     "jobs_per_hour": 432.0,
+     "t_from_min": 30.0,
+     "t_to_min": 32.0,
+     "usd_per_hour": 0.05393
+    },
+    {
+     "base_reward_usd_per_hour": 0.0125,
+     "exposure_hours": 0.1667,
+     "jobs": 53,
+     "jobs_per_hour": 318.0,
+     "t_from_min": 32.0,
+     "t_to_min": 34.0,
+     "usd_per_hour": 0.04511
+    },
+    {
+     "base_reward_usd_per_hour": 0.025,
+     "exposure_hours": 0.1667,
+     "jobs": 41,
+     "jobs_per_hour": 246.0,
+     "t_from_min": 34.0,
+     "t_to_min": 36.0,
+     "usd_per_hour": 0.05139
+    }
+   ],
+   "first_2min_ratio": 1.079,
+   "first_2min_usd_per_hour": 0.0819,
+   "plateau_usd_per_hour": 0.07589,
+   "slots": 8,
+   "switch_cost_usd_spread": {
+    "max": 0.00391,
+    "median": 0.00012,
+    "min": -0.01858,
+    "n": 7
+   }
+  }
+ },
+ "cold_load_split_status": "POST-HOC \u2014 suggested by the per-arm curves above, not declared before the run",
+ "ledger_covers_to": "2026-09-27T23:51:48.244270+00:00",
+ "ledger_rows": 29713,
+ "per_arm": {
+  "gemma-4-26b-qat-4bit": {
+   "curve": [
+    {
+     "base_reward_usd_per_hour": 0.02238,
+     "exposure_hours": 0.7444,
+     "jobs": 314,
+     "jobs_per_hour": 421.8,
+     "t_from_min": 0.0,
+     "t_to_min": 2.0,
+     "usd_per_hour": 0.06168
+    },
+    {
+     "base_reward_usd_per_hour": 0.00852,
+     "exposure_hours": 0.7333,
+     "jobs": 456,
+     "jobs_per_hour": 621.8,
+     "t_from_min": 2.0,
+     "t_to_min": 4.0,
+     "usd_per_hour": 0.08342
+    },
+    {
+     "base_reward_usd_per_hour": 0.02452,
+     "exposure_hours": 0.7333,
+     "jobs": 480,
+     "jobs_per_hour": 654.5,
+     "t_from_min": 4.0,
+     "t_to_min": 6.0,
+     "usd_per_hour": 0.08615
+    },
+    {
+     "base_reward_usd_per_hour": 0.02095,
+     "exposure_hours": 0.7333,
+     "jobs": 494,
+     "jobs_per_hour": 673.6,
+     "t_from_min": 6.0,
+     "t_to_min": 8.0,
+     "usd_per_hour": 0.09357
+    },
+    {
+     "base_reward_usd_per_hour": 0.02272,
+     "exposure_hours": 0.7333,
+     "jobs": 415,
+     "jobs_per_hour": 565.9,
+     "t_from_min": 8.0,
+     "t_to_min": 10.0,
+     "usd_per_hour": 0.07144
+    },
+    {
+     "base_reward_usd_per_hour": 0.02556,
+     "exposure_hours": 0.7333,
+     "jobs": 420,
+     "jobs_per_hour": 572.7,
+     "t_from_min": 10.0,
+     "t_to_min": 12.0,
+     "usd_per_hour": 0.06701
+    },
+    {
+     "base_reward_usd_per_hour": 0.01156,
+     "exposure_hours": 0.7206,
+     "jobs": 440,
+     "jobs_per_hour": 610.6,
+     "t_from_min": 12.0,
+     "t_to_min": 14.0,
+     "usd_per_hour": 0.07979
+    },
+    {
+     "base_reward_usd_per_hour": 0.03204,
+     "exposure_hours": 0.6502,
+     "jobs": 321,
+     "jobs_per_hour": 493.7,
+     "t_from_min": 14.0,
+     "t_to_min": 16.0,
+     "usd_per_hour": 0.06376
+    },
+    {
+     "base_reward_usd_per_hour": 0.02631,
+     "exposure_hours": 0.6333,
+     "jobs": 237,
+     "jobs_per_hour": 374.2,
+     "t_from_min": 16.0,
+     "t_to_min": 18.0,
+     "usd_per_hour": 0.05728
+    },
+    {
+     "base_reward_usd_per_hour": 0.02302,
+     "exposure_hours": 0.6333,
+     "jobs": 332,
+     "jobs_per_hour": 524.2,
+     "t_from_min": 18.0,
+     "t_to_min": 20.0,
+     "usd_per_hour": 0.0659
+    },
+    {
+     "base_reward_usd_per_hour": 0.02302,
+     "exposure_hours": 0.6333,
+     "jobs": 370,
+     "jobs_per_hour": 584.2,
+     "t_from_min": 20.0,
+     "t_to_min": 22.0,
+     "usd_per_hour": 0.08242
+    },
+    {
+     "base_reward_usd_per_hour": 0.01973,
+     "exposure_hours": 0.6333,
+     "jobs": 362,
+     "jobs_per_hour": 571.6,
+     "t_from_min": 22.0,
+     "t_to_min": 24.0,
+     "usd_per_hour": 0.06841
+    },
+    {
+     "base_reward_usd_per_hour": 0.0296,
+     "exposure_hours": 0.6333,
+     "jobs": 378,
+     "jobs_per_hour": 596.8,
+     "t_from_min": 24.0,
+     "t_to_min": 26.0,
+     "usd_per_hour": 0.06694
+    },
+    {
+     "base_reward_usd_per_hour": 0.02631,
+     "exposure_hours": 0.6333,
+     "jobs": 412,
+     "jobs_per_hour": 650.5,
+     "t_from_min": 26.0,
+     "t_to_min": 28.0,
+     "usd_per_hour": 0.07919
+    },
+    {
+     "base_reward_usd_per_hour": 0.02302,
+     "exposure_hours": 0.6333,
+     "jobs": 491,
+     "jobs_per_hour": 775.3,
+     "t_from_min": 28.0,
+     "t_to_min": 30.0,
+     "usd_per_hour": 0.08636
+    },
+    {
+     "base_reward_usd_per_hour": 0.02302,
+     "exposure_hours": 0.6333,
+     "jobs": 403,
+     "jobs_per_hour": 636.3,
+     "t_from_min": 30.0,
+     "t_to_min": 32.0,
+     "usd_per_hour": 0.08312
+    },
+    {
+     "base_reward_usd_per_hour": 0.01316,
+     "exposure_hours": 0.6333,
+     "jobs": 371,
+     "jobs_per_hour": 585.8,
+     "t_from_min": 32.0,
+     "t_to_min": 34.0,
+     "usd_per_hour": 0.07631
+    },
+    {
+     "base_reward_usd_per_hour": 0.0296,
+     "exposure_hours": 0.6333,
+     "jobs": 342,
+     "jobs_per_hour": 540.0,
+     "t_from_min": 34.0,
+     "t_to_min": 36.0,
+     "usd_per_hour": 0.07087
+    }
+   ],
+   "slots": 24,
+   "switch_cost_usd_spread": {
+    "max": 0.00912,
+    "median": -0.00013,
+    "min": -0.01858,
+    "n": 22
+   }
+  },
+  "gemma-4-26b-qat-4bit+gpt-oss-20b": {
+   "curve": [
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 105,
+     "jobs_per_hour": 450.0,
+     "t_from_min": 0.0,
+     "t_to_min": 2.0,
+     "usd_per_hour": 0.03013
+    },
+    {
+     "base_reward_usd_per_hour": 0.01768,
+     "exposure_hours": 0.2333,
+     "jobs": 65,
+     "jobs_per_hour": 278.6,
+     "t_from_min": 2.0,
+     "t_to_min": 4.0,
+     "usd_per_hour": 0.03283
+    },
+    {
+     "base_reward_usd_per_hour": 0.00921,
+     "exposure_hours": 0.2333,
+     "jobs": 112,
+     "jobs_per_hour": 480.0,
+     "t_from_min": 4.0,
+     "t_to_min": 6.0,
+     "usd_per_hour": 0.03961
+    },
+    {
+     "base_reward_usd_per_hour": 0.01799,
+     "exposure_hours": 0.2333,
+     "jobs": 112,
+     "jobs_per_hour": 480.0,
+     "t_from_min": 6.0,
+     "t_to_min": 8.0,
+     "usd_per_hour": 0.06257
+    },
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 161,
+     "jobs_per_hour": 690.0,
+     "t_from_min": 8.0,
+     "t_to_min": 10.0,
+     "usd_per_hour": 0.05605
+    },
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 164,
+     "jobs_per_hour": 702.9,
+     "t_from_min": 10.0,
+     "t_to_min": 12.0,
+     "usd_per_hour": 0.06075
+    },
+    {
+     "base_reward_usd_per_hour": 0.02678,
+     "exposure_hours": 0.2333,
+     "jobs": 123,
+     "jobs_per_hour": 527.1,
+     "t_from_min": 12.0,
+     "t_to_min": 14.0,
+     "usd_per_hour": 0.05686
+    },
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 136,
+     "jobs_per_hour": 582.9,
+     "t_from_min": 14.0,
+     "t_to_min": 16.0,
+     "usd_per_hour": 0.06253
+    },
+    {
+     "base_reward_usd_per_hour": 0.02678,
+     "exposure_hours": 0.2333,
+     "jobs": 98,
+     "jobs_per_hour": 420.0,
+     "t_from_min": 16.0,
+     "t_to_min": 18.0,
+     "usd_per_hour": 0.04938
+    },
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 93,
+     "jobs_per_hour": 398.6,
+     "t_from_min": 18.0,
+     "t_to_min": 20.0,
+     "usd_per_hour": 0.03496
+    },
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 92,
+     "jobs_per_hour": 394.3,
+     "t_from_min": 20.0,
+     "t_to_min": 22.0,
+     "usd_per_hour": 0.03528
+    },
+    {
+     "base_reward_usd_per_hour": 0.02678,
+     "exposure_hours": 0.2333,
+     "jobs": 81,
+     "jobs_per_hour": 347.1,
+     "t_from_min": 22.0,
+     "t_to_min": 24.0,
+     "usd_per_hour": 0.03279
+    },
+    {
+     "base_reward_usd_per_hour": 0.02678,
+     "exposure_hours": 0.2333,
+     "jobs": 103,
+     "jobs_per_hour": 441.4,
+     "t_from_min": 24.0,
+     "t_to_min": 26.0,
+     "usd_per_hour": 0.04119
+    },
+    {
+     "base_reward_usd_per_hour": 0.02678,
+     "exposure_hours": 0.2333,
+     "jobs": 139,
+     "jobs_per_hour": 595.7,
+     "t_from_min": 26.0,
+     "t_to_min": 28.0,
+     "usd_per_hour": 0.04977
+    },
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 102,
+     "jobs_per_hour": 437.1,
+     "t_from_min": 28.0,
+     "t_to_min": 30.0,
+     "usd_per_hour": 0.04575
+    },
+    {
+     "base_reward_usd_per_hour": 0.02678,
+     "exposure_hours": 0.2333,
+     "jobs": 113,
+     "jobs_per_hour": 484.3,
+     "t_from_min": 30.0,
+     "t_to_min": 32.0,
+     "usd_per_hour": 0.04765
+    },
+    {
+     "base_reward_usd_per_hour": 0.02678,
+     "exposure_hours": 0.2333,
+     "jobs": 134,
+     "jobs_per_hour": 574.3,
+     "t_from_min": 32.0,
+     "t_to_min": 34.0,
+     "usd_per_hour": 0.07065
+    },
+    {
+     "base_reward_usd_per_hour": 0.00893,
+     "exposure_hours": 0.2333,
+     "jobs": 114,
+     "jobs_per_hour": 488.6,
+     "t_from_min": 34.0,
+     "t_to_min": 36.0,
+     "usd_per_hour": 0.04533
+    }
+   ],
+   "slots": 7,
+   "switch_cost_usd_spread": {
+    "max": 0.00454,
+    "median": 0.00053,
+    "min": -0.00233,
+    "n": 7
+   }
+  },
+  "gemma-4-26b-qat-4bit+qwen3.6-35b-a3b-vl-mtp-mxfp8": {
+   "curve": [
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 41,
+     "jobs_per_hour": 307.5,
+     "t_from_min": 0.0,
+     "t_to_min": 2.0,
+     "usd_per_hour": 0.06006
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 87,
+     "jobs_per_hour": 652.5,
+     "t_from_min": 2.0,
+     "t_to_min": 4.0,
+     "usd_per_hour": 0.16217
+    },
+    {
+     "base_reward_usd_per_hour": 0.01319,
+     "exposure_hours": 0.1333,
+     "jobs": 46,
+     "jobs_per_hour": 345.0,
+     "t_from_min": 4.0,
+     "t_to_min": 6.0,
+     "usd_per_hour": 0.10705
+    },
+    {
+     "base_reward_usd_per_hour": 0.01543,
+     "exposure_hours": 0.1333,
+     "jobs": 32,
+     "jobs_per_hour": 240.0,
+     "t_from_min": 6.0,
+     "t_to_min": 8.0,
+     "usd_per_hour": 0.04176
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 98,
+     "jobs_per_hour": 735.0,
+     "t_from_min": 8.0,
+     "t_to_min": 10.0,
+     "usd_per_hour": 0.1177
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 108,
+     "jobs_per_hour": 810.0,
+     "t_from_min": 10.0,
+     "t_to_min": 12.0,
+     "usd_per_hour": 0.13078
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 107,
+     "jobs_per_hour": 802.5,
+     "t_from_min": 12.0,
+     "t_to_min": 14.0,
+     "usd_per_hour": 0.11315
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 84,
+     "jobs_per_hour": 630.0,
+     "t_from_min": 14.0,
+     "t_to_min": 16.0,
+     "usd_per_hour": 0.09838
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 86,
+     "jobs_per_hour": 645.0,
+     "t_from_min": 16.0,
+     "t_to_min": 18.0,
+     "usd_per_hour": 0.0895
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 85,
+     "jobs_per_hour": 637.5,
+     "t_from_min": 18.0,
+     "t_to_min": 20.0,
+     "usd_per_hour": 0.0917
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 73,
+     "jobs_per_hour": 547.5,
+     "t_from_min": 20.0,
+     "t_to_min": 22.0,
+     "usd_per_hour": 0.08822
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 90,
+     "jobs_per_hour": 675.0,
+     "t_from_min": 22.0,
+     "t_to_min": 24.0,
+     "usd_per_hour": 0.09943
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 77,
+     "jobs_per_hour": 577.5,
+     "t_from_min": 24.0,
+     "t_to_min": 26.0,
+     "usd_per_hour": 0.08734
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 68,
+     "jobs_per_hour": 510.0,
+     "t_from_min": 26.0,
+     "t_to_min": 28.0,
+     "usd_per_hour": 0.09255
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 79,
+     "jobs_per_hour": 592.5,
+     "t_from_min": 28.0,
+     "t_to_min": 30.0,
+     "usd_per_hour": 0.09011
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 95,
+     "jobs_per_hour": 712.5,
+     "t_from_min": 30.0,
+     "t_to_min": 32.0,
+     "usd_per_hour": 0.10279
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 101,
+     "jobs_per_hour": 757.5,
+     "t_from_min": 32.0,
+     "t_to_min": 34.0,
+     "usd_per_hour": 0.10805
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 89,
+     "jobs_per_hour": 667.5,
+     "t_from_min": 34.0,
+     "t_to_min": 36.0,
+     "usd_per_hour": 0.09664
+    }
+   ],
+   "slots": 4,
+   "switch_cost_usd_spread": {
+    "max": 0.00517,
+    "median": 0.00379,
+    "min": -0.00841,
+    "n": 4
+   }
+  },
+  "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b": {
+   "curve": [
+    {
+     "base_reward_usd_per_hour": 0.00781,
+     "exposure_hours": 0.2667,
+     "jobs": 65,
+     "jobs_per_hour": 243.8,
+     "t_from_min": 0.0,
+     "t_to_min": 2.0,
+     "usd_per_hour": 0.03288
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.2667,
+     "jobs": 88,
+     "jobs_per_hour": 330.0,
+     "t_from_min": 2.0,
+     "t_to_min": 4.0,
+     "usd_per_hour": 0.03501
+    },
+    {
+     "base_reward_usd_per_hour": 0.01304,
+     "exposure_hours": 0.2667,
+     "jobs": 99,
+     "jobs_per_hour": 371.2,
+     "t_from_min": 4.0,
+     "t_to_min": 6.0,
+     "usd_per_hour": 0.03724
+    },
+    {
+     "base_reward_usd_per_hour": 0.01085,
+     "exposure_hours": 0.2667,
+     "jobs": 107,
+     "jobs_per_hour": 401.2,
+     "t_from_min": 6.0,
+     "t_to_min": 8.0,
+     "usd_per_hour": 0.06734
+    },
+    {
+     "base_reward_usd_per_hour": 0.01942,
+     "exposure_hours": 0.2667,
+     "jobs": 141,
+     "jobs_per_hour": 528.8,
+     "t_from_min": 8.0,
+     "t_to_min": 10.0,
+     "usd_per_hour": 0.0628
+    },
+    {
+     "base_reward_usd_per_hour": 0.02343,
+     "exposure_hours": 0.2667,
+     "jobs": 152,
+     "jobs_per_hour": 570.0,
+     "t_from_min": 10.0,
+     "t_to_min": 12.0,
+     "usd_per_hour": 0.06198
+    },
+    {
+     "base_reward_usd_per_hour": 0.01614,
+     "exposure_hours": 0.2582,
+     "jobs": 147,
+     "jobs_per_hour": 569.4,
+     "t_from_min": 12.0,
+     "t_to_min": 14.0,
+     "usd_per_hour": 0.05318
+    },
+    {
+     "base_reward_usd_per_hour": 0.02678,
+     "exposure_hours": 0.2333,
+     "jobs": 57,
+     "jobs_per_hour": 244.3,
+     "t_from_min": 14.0,
+     "t_to_min": 16.0,
+     "usd_per_hour": 0.0253
+    },
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 94,
+     "jobs_per_hour": 402.9,
+     "t_from_min": 16.0,
+     "t_to_min": 18.0,
+     "usd_per_hour": 0.09637
+    },
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 113,
+     "jobs_per_hour": 484.3,
+     "t_from_min": 18.0,
+     "t_to_min": 20.0,
+     "usd_per_hour": 0.06753
+    },
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 132,
+     "jobs_per_hour": 565.7,
+     "t_from_min": 20.0,
+     "t_to_min": 22.0,
+     "usd_per_hour": 0.09052
+    },
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 127,
+     "jobs_per_hour": 544.3,
+     "t_from_min": 22.0,
+     "t_to_min": 24.0,
+     "usd_per_hour": 0.07365
+    },
+    {
+     "base_reward_usd_per_hour": 0.02678,
+     "exposure_hours": 0.2333,
+     "jobs": 91,
+     "jobs_per_hour": 390.0,
+     "t_from_min": 24.0,
+     "t_to_min": 26.0,
+     "usd_per_hour": 0.04494
+    },
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 146,
+     "jobs_per_hour": 625.7,
+     "t_from_min": 26.0,
+     "t_to_min": 28.0,
+     "usd_per_hour": 0.07093
+    },
+    {
+     "base_reward_usd_per_hour": 0.02678,
+     "exposure_hours": 0.2333,
+     "jobs": 145,
+     "jobs_per_hour": 621.4,
+     "t_from_min": 28.0,
+     "t_to_min": 30.0,
+     "usd_per_hour": 0.07269
+    },
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 160,
+     "jobs_per_hour": 685.7,
+     "t_from_min": 30.0,
+     "t_to_min": 32.0,
+     "usd_per_hour": 0.07578
+    },
+    {
+     "base_reward_usd_per_hour": 0.01785,
+     "exposure_hours": 0.2333,
+     "jobs": 147,
+     "jobs_per_hour": 630.0,
+     "t_from_min": 32.0,
+     "t_to_min": 34.0,
+     "usd_per_hour": 0.07859
+    },
+    {
+     "base_reward_usd_per_hour": 0.03571,
+     "exposure_hours": 0.2333,
+     "jobs": 159,
+     "jobs_per_hour": 681.4,
+     "t_from_min": 34.0,
+     "t_to_min": 36.0,
+     "usd_per_hour": 0.08253
+    }
+   ],
+   "slots": 8,
+   "switch_cost_usd_spread": {
+    "max": 0.01203,
+    "median": 0.00275,
+    "min": -0.00269,
+    "n": 8
+   }
+  },
+  "nvidia-nemotron-3.5-lightning": {
+   "curve": [
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.2667,
+     "jobs": 11,
+     "jobs_per_hour": 41.2,
+     "t_from_min": 0.0,
+     "t_to_min": 2.0,
+     "usd_per_hour": 0.01872
+    },
+    {
+     "base_reward_usd_per_hour": 0.0292,
+     "exposure_hours": 0.2667,
+     "jobs": 20,
+     "jobs_per_hour": 75.0,
+     "t_from_min": 2.0,
+     "t_to_min": 4.0,
+     "usd_per_hour": 0.04896
+    },
+    {
+     "base_reward_usd_per_hour": 0.0126,
+     "exposure_hours": 0.2667,
+     "jobs": 12,
+     "jobs_per_hour": 45.0,
+     "t_from_min": 4.0,
+     "t_to_min": 6.0,
+     "usd_per_hour": 0.03979
+    },
+    {
+     "base_reward_usd_per_hour": 0.02514,
+     "exposure_hours": 0.2667,
+     "jobs": 13,
+     "jobs_per_hour": 48.8,
+     "t_from_min": 6.0,
+     "t_to_min": 8.0,
+     "usd_per_hour": 0.04871
+    },
+    {
+     "base_reward_usd_per_hour": 0.01481,
+     "exposure_hours": 0.2667,
+     "jobs": 16,
+     "jobs_per_hour": 60.0,
+     "t_from_min": 8.0,
+     "t_to_min": 10.0,
+     "usd_per_hour": 0.03639
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.2667,
+     "jobs": 15,
+     "jobs_per_hour": 56.2,
+     "t_from_min": 10.0,
+     "t_to_min": 12.0,
+     "usd_per_hour": 0.04886
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.2667,
+     "jobs": 15,
+     "jobs_per_hour": 56.2,
+     "t_from_min": 12.0,
+     "t_to_min": 14.0,
+     "usd_per_hour": 0.04826
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.2667,
+     "jobs": 14,
+     "jobs_per_hour": 52.5,
+     "t_from_min": 14.0,
+     "t_to_min": 16.0,
+     "usd_per_hour": 0.04035
+    },
+    {
+     "base_reward_usd_per_hour": 0.02343,
+     "exposure_hours": 0.2667,
+     "jobs": 11,
+     "jobs_per_hour": 41.2,
+     "t_from_min": 16.0,
+     "t_to_min": 18.0,
+     "usd_per_hour": 0.02961
+    },
+    {
+     "base_reward_usd_per_hour": 0.02343,
+     "exposure_hours": 0.2667,
+     "jobs": 13,
+     "jobs_per_hour": 48.8,
+     "t_from_min": 18.0,
+     "t_to_min": 20.0,
+     "usd_per_hour": 0.0563
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.2667,
+     "jobs": 9,
+     "jobs_per_hour": 33.8,
+     "t_from_min": 20.0,
+     "t_to_min": 22.0,
+     "usd_per_hour": 0.0348
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.2667,
+     "jobs": 13,
+     "jobs_per_hour": 48.8,
+     "t_from_min": 22.0,
+     "t_to_min": 24.0,
+     "usd_per_hour": 0.05222
+    },
+    {
+     "base_reward_usd_per_hour": 0.02343,
+     "exposure_hours": 0.2667,
+     "jobs": 17,
+     "jobs_per_hour": 63.8,
+     "t_from_min": 24.0,
+     "t_to_min": 26.0,
+     "usd_per_hour": 0.03881
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.2667,
+     "jobs": 5,
+     "jobs_per_hour": 18.8,
+     "t_from_min": 26.0,
+     "t_to_min": 28.0,
+     "usd_per_hour": 0.02458
+    },
+    {
+     "base_reward_usd_per_hour": 0.02343,
+     "exposure_hours": 0.2667,
+     "jobs": 19,
+     "jobs_per_hour": 71.2,
+     "t_from_min": 28.0,
+     "t_to_min": 30.0,
+     "usd_per_hour": 0.0652
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.2667,
+     "jobs": 13,
+     "jobs_per_hour": 48.8,
+     "t_from_min": 30.0,
+     "t_to_min": 32.0,
+     "usd_per_hour": 0.0332
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.2667,
+     "jobs": 16,
+     "jobs_per_hour": 60.0,
+     "t_from_min": 32.0,
+     "t_to_min": 34.0,
+     "usd_per_hour": 0.04303
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.2667,
+     "jobs": 15,
+     "jobs_per_hour": 56.2,
+     "t_from_min": 34.0,
+     "t_to_min": 36.0,
+     "usd_per_hour": 0.04741
+    }
+   ],
+   "slots": 8,
+   "switch_cost_usd_spread": {
+    "max": 0.00216,
+    "median": 0.0,
+    "min": -0.00137,
+    "n": 8
+   }
+  },
+  "qwen3.6-35b-a3b-vl-mtp-mxfp8": {
+   "curve": [
+    {
+     "base_reward_usd_per_hour": 0.00256,
+     "exposure_hours": 0.1444,
+     "jobs": 35,
+     "jobs_per_hour": 242.3,
+     "t_from_min": 0.0,
+     "t_to_min": 2.0,
+     "usd_per_hour": 0.0783
+    },
+    {
+     "base_reward_usd_per_hour": 0.02365,
+     "exposure_hours": 0.1333,
+     "jobs": 34,
+     "jobs_per_hour": 255.0,
+     "t_from_min": 2.0,
+     "t_to_min": 4.0,
+     "usd_per_hour": 0.1486
+    },
+    {
+     "base_reward_usd_per_hour": 0.01249,
+     "exposure_hours": 0.1333,
+     "jobs": 12,
+     "jobs_per_hour": 90.0,
+     "t_from_min": 4.0,
+     "t_to_min": 6.0,
+     "usd_per_hour": 0.05102
+    },
+    {
+     "base_reward_usd_per_hour": 0.00864,
+     "exposure_hours": 0.1333,
+     "jobs": 20,
+     "jobs_per_hour": 150.0,
+     "t_from_min": 6.0,
+     "t_to_min": 8.0,
+     "usd_per_hour": 0.06121
+    },
+    {
+     "base_reward_usd_per_hour": 0.008,
+     "exposure_hours": 0.1333,
+     "jobs": 22,
+     "jobs_per_hour": 165.0,
+     "t_from_min": 8.0,
+     "t_to_min": 10.0,
+     "usd_per_hour": 0.07145
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 12,
+     "jobs_per_hour": 90.0,
+     "t_from_min": 10.0,
+     "t_to_min": 12.0,
+     "usd_per_hour": 0.01344
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 5,
+     "jobs_per_hour": 37.5,
+     "t_from_min": 12.0,
+     "t_to_min": 14.0,
+     "usd_per_hour": 0.01088
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 37,
+     "jobs_per_hour": 277.5,
+     "t_from_min": 14.0,
+     "t_to_min": 16.0,
+     "usd_per_hour": 0.07834
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 37,
+     "jobs_per_hour": 277.5,
+     "t_from_min": 16.0,
+     "t_to_min": 18.0,
+     "usd_per_hour": 0.13147
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 22,
+     "jobs_per_hour": 165.0,
+     "t_from_min": 18.0,
+     "t_to_min": 20.0,
+     "usd_per_hour": 0.08716
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 28,
+     "jobs_per_hour": 210.0,
+     "t_from_min": 20.0,
+     "t_to_min": 22.0,
+     "usd_per_hour": 0.15127
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 29,
+     "jobs_per_hour": 217.5,
+     "t_from_min": 22.0,
+     "t_to_min": 24.0,
+     "usd_per_hour": 0.10914
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 19,
+     "jobs_per_hour": 142.5,
+     "t_from_min": 24.0,
+     "t_to_min": 26.0,
+     "usd_per_hour": 0.07288
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 25,
+     "jobs_per_hour": 187.5,
+     "t_from_min": 26.0,
+     "t_to_min": 28.0,
+     "usd_per_hour": 0.09013
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 14,
+     "jobs_per_hour": 105.0,
+     "t_from_min": 28.0,
+     "t_to_min": 30.0,
+     "usd_per_hour": 0.0698
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 14,
+     "jobs_per_hour": 105.0,
+     "t_from_min": 30.0,
+     "t_to_min": 32.0,
+     "usd_per_hour": 0.06151
+    },
+    {
+     "base_reward_usd_per_hour": 0.01562,
+     "exposure_hours": 0.1333,
+     "jobs": 3,
+     "jobs_per_hour": 22.5,
+     "t_from_min": 32.0,
+     "t_to_min": 34.0,
+     "usd_per_hour": 0.01256
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.1333,
+     "jobs": 13,
+     "jobs_per_hour": 97.5,
+     "t_from_min": 34.0,
+     "t_to_min": 36.0,
+     "usd_per_hour": 0.03167
+    }
+   ],
+   "slots": 6,
+   "switch_cost_usd_spread": {
+    "max": 0.00317,
+    "median": 0.00126,
+    "min": -0.00825,
+    "n": 4
+   }
+  },
+  "ternary-bonsai-2-27b": {
+   "curve": [
+    {
+     "base_reward_usd_per_hour": 0.0,
+     "exposure_hours": 0.0667,
+     "jobs": 4,
+     "jobs_per_hour": 60.0,
+     "t_from_min": 0.0,
+     "t_to_min": 2.0,
+     "usd_per_hour": 0.00884
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.0667,
+     "jobs": 0,
+     "jobs_per_hour": 0.0,
+     "t_from_min": 2.0,
+     "t_to_min": 4.0,
+     "usd_per_hour": 0.0
+    },
+    {
+     "base_reward_usd_per_hour": 0.02451,
+     "exposure_hours": 0.0667,
+     "jobs": 0,
+     "jobs_per_hour": 0.0,
+     "t_from_min": 4.0,
+     "t_to_min": 6.0,
+     "usd_per_hour": 0.0
+    },
+    {
+     "base_reward_usd_per_hour": 0.0248,
+     "exposure_hours": 0.0667,
+     "jobs": 1,
+     "jobs_per_hour": 15.0,
+     "t_from_min": 6.0,
+     "t_to_min": 8.0,
+     "usd_per_hour": 0.00018
+    },
+    {
+     "base_reward_usd_per_hour": 0.0,
+     "exposure_hours": 0.0667,
+     "jobs": 0,
+     "jobs_per_hour": 0.0,
+     "t_from_min": 8.0,
+     "t_to_min": 10.0,
+     "usd_per_hour": 0.0
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.0667,
+     "jobs": 0,
+     "jobs_per_hour": 0.0,
+     "t_from_min": 10.0,
+     "t_to_min": 12.0,
+     "usd_per_hour": 0.0
+    },
+    {
+     "base_reward_usd_per_hour": 0.03125,
+     "exposure_hours": 0.0667,
+     "jobs": 0,
+     "jobs_per_hour": 0.0,
+     "t_from_min": 12.0,
+     "t_to_min": 14.0,
+     "usd_per_hour": 0.0
+    },
+    {
+     "base_reward_usd_per_hour": 0.0,
+     "exposure_hours": 0.0064,
+     "jobs": 0,
+     "jobs_per_hour": 0.0,
+     "t_from_min": 14.0,
+     "t_to_min": 16.0,
+     "usd_per_hour": 0.0
+    },
+    {
+     "base_reward_usd_per_hour": null,
+     "exposure_hours": 0.0,
+     "jobs": 0,
+     "jobs_per_hour": null,
+     "t_from_min": 16.0,
+     "t_to_min": 18.0,
+     "usd_per_hour": null
+    },
+    {
+     "base_reward_usd_per_hour": null,
+     "exposure_hours": 0.0,
+     "jobs": 0,
+     "jobs_per_hour": null,
+     "t_from_min": 18.0,
+     "t_to_min": 20.0,
+     "usd_per_hour": null
+    },
+    {
+     "base_reward_usd_per_hour": null,
+     "exposure_hours": 0.0,
+     "jobs": 0,
+     "jobs_per_hour": null,
+     "t_from_min": 20.0,
+     "t_to_min": 22.0,
+     "usd_per_hour": null
+    },
+    {
+     "base_reward_usd_per_hour": null,
+     "exposure_hours": 0.0,
+     "jobs": 0,
+     "jobs_per_hour": null,
+     "t_from_min": 22.0,
+     "t_to_min": 24.0,
+     "usd_per_hour": null
+    },
+    {
+     "base_reward_usd_per_hour": null,
+     "exposure_hours": 0.0,
+     "jobs": 0,
+     "jobs_per_hour": null,
+     "t_from_min": 24.0,
+     "t_to_min": 26.0,
+     "usd_per_hour": null
+    },
+    {
+     "base_reward_usd_per_hour": null,
+     "exposure_hours": 0.0,
+     "jobs": 0,
+     "jobs_per_hour": null,
+     "t_from_min": 26.0,
+     "t_to_min": 28.0,
+     "usd_per_hour": null
+    },
+    {
+     "base_reward_usd_per_hour": null,
+     "exposure_hours": 0.0,
+     "jobs": 0,
+     "jobs_per_hour": null,
+     "t_from_min": 28.0,
+     "t_to_min": 30.0,
+     "usd_per_hour": null
+    },
+    {
+     "base_reward_usd_per_hour": null,
+     "exposure_hours": 0.0,
+     "jobs": 0,
+     "jobs_per_hour": null,
+     "t_from_min": 30.0,
+     "t_to_min": 32.0,
+     "usd_per_hour": null
+    },
+    {
+     "base_reward_usd_per_hour": null,
+     "exposure_hours": 0.0,
+     "jobs": 0,
+     "jobs_per_hour": null,
+     "t_from_min": 32.0,
+     "t_to_min": 34.0,
+     "usd_per_hour": null
+    },
+    {
+     "base_reward_usd_per_hour": null,
+     "exposure_hours": 0.0,
+     "jobs": 0,
+     "jobs_per_hour": null,
+     "t_from_min": 34.0,
+     "t_to_min": 36.0,
+     "usd_per_hour": null
+    }
+   ],
+   "slots": 2,
+   "switch_cost_usd_spread": {
+    "max": -0.00022,
+    "median": -0.0003,
+    "min": -0.00038,
+    "n": 2
+   }
+  }
+ },
+ "per_slot": [
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 108,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.12239,
+   "exp": "20260924T212749Z-e9e19f",
+   "plateau_jobs": 115,
+   "plateau_usd_per_hour": 0.13444,
+   "slot_index": 0,
+   "started_at": "2026-09-24T21:27:51.916273+00:00",
+   "switch_cost_usd": 0.00161
+  },
+  {
+   "arm_id": "ternary-bonsai-2-27b",
+   "early_hours": 0.1333,
+   "early_jobs": 3,
+   "early_revenue_from_other_models_usd": 0.00021,
+   "early_usd_per_hour": 0.00167,
+   "exp": "20260924T212749Z-e9e19f",
+   "plateau_jobs": 0,
+   "plateau_usd_per_hour": 0.0,
+   "slot_index": 1,
+   "started_at": "2026-09-24T21:42:45.595262+00:00",
+   "switch_cost_usd": -0.00022
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 111,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.11876,
+   "exp": "20260924T212749Z-e9e19f",
+   "plateau_jobs": 10,
+   "plateau_usd_per_hour": 0.01434,
+   "slot_index": 2,
+   "started_at": "2026-09-24T21:56:57.986471+00:00",
+   "switch_cost_usd": -0.01392
+  },
+  {
+   "arm_id": "ternary-bonsai-2-27b",
+   "early_hours": 0.1333,
+   "early_jobs": 2,
+   "early_revenue_from_other_models_usd": 0.00038,
+   "early_usd_per_hour": 0.00284,
+   "exp": "20260924T212749Z-e9e19f",
+   "plateau_jobs": 0,
+   "plateau_usd_per_hour": 0.0,
+   "slot_index": 3,
+   "started_at": "2026-09-24T22:11:05.076977+00:00",
+   "switch_cost_usd": -0.00038
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 103,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.14486,
+   "exp": "20260924T222840Z-99259e",
+   "plateau_jobs": 72,
+   "plateau_usd_per_hour": 0.13299,
+   "slot_index": 0,
+   "started_at": "2026-09-24T22:28:42.404397+00:00",
+   "switch_cost_usd": -0.00158
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+   "early_hours": 0.1333,
+   "early_jobs": 83,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.10013,
+   "exp": "20260924T222840Z-99259e",
+   "plateau_jobs": 73,
+   "plateau_usd_per_hour": 0.13762,
+   "slot_index": 1,
+   "started_at": "2026-09-24T22:42:05.331519+00:00",
+   "switch_cost_usd": 0.005
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 78,
+   "early_revenue_from_other_models_usd": 0.00454,
+   "early_usd_per_hour": 0.11625,
+   "exp": "20260924T233411Z-96c8a3",
+   "plateau_jobs": 300,
+   "plateau_usd_per_hour": 0.1456,
+   "slot_index": 0,
+   "started_at": "2026-09-24T23:34:13.502398+00:00",
+   "switch_cost_usd": 0.00391
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+   "early_hours": 0.1333,
+   "early_jobs": 87,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.09758,
+   "exp": "20260924T233411Z-96c8a3",
+   "plateau_jobs": 170,
+   "plateau_usd_per_hour": 0.07738,
+   "slot_index": 1,
+   "started_at": "2026-09-25T00:11:03.404468+00:00",
+   "switch_cost_usd": -0.00269
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+gpt-oss-20b",
+   "early_hours": 0.1333,
+   "early_jobs": 61,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.03575,
+   "exp": "20260924T233411Z-96c8a3",
+   "plateau_jobs": 215,
+   "plateau_usd_per_hour": 0.05196,
+   "slot_index": 2,
+   "started_at": "2026-09-25T00:47:36.512979+00:00",
+   "switch_cost_usd": 0.00216
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 114,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.05385,
+   "exp": "20260924T233411Z-96c8a3",
+   "plateau_jobs": 191,
+   "plateau_usd_per_hour": 0.06181,
+   "slot_index": 3,
+   "started_at": "2026-09-25T01:24:00.838224+00:00",
+   "switch_cost_usd": 0.00106
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+   "early_hours": 0.1333,
+   "early_jobs": 5,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.002,
+   "exp": "20260924T233411Z-96c8a3",
+   "plateau_jobs": 252,
+   "plateau_usd_per_hour": 0.09222,
+   "slot_index": 4,
+   "started_at": "2026-09-25T02:00:09.545182+00:00",
+   "switch_cost_usd": 0.01203
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+gpt-oss-20b",
+   "early_hours": 0.1333,
+   "early_jobs": 23,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.03729,
+   "exp": "20260924T233411Z-96c8a3",
+   "plateau_jobs": 241,
+   "plateau_usd_per_hour": 0.07133,
+   "slot_index": 5,
+   "started_at": "2026-09-25T02:36:35.817036+00:00",
+   "switch_cost_usd": 0.00454
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 73,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.08479,
+   "exp": "20260924T233411Z-96c8a3",
+   "plateau_jobs": 104,
+   "plateau_usd_per_hour": 0.02996,
+   "slot_index": 6,
+   "started_at": "2026-09-25T03:13:03.326192+00:00",
+   "switch_cost_usd": -0.00731
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+   "early_hours": 0.1333,
+   "early_jobs": 32,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.0121,
+   "exp": "20260924T233411Z-96c8a3",
+   "plateau_jobs": 186,
+   "plateau_usd_per_hour": 0.06436,
+   "slot_index": 7,
+   "started_at": "2026-09-25T03:49:12.199272+00:00",
+   "switch_cost_usd": 0.00697
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+gpt-oss-20b",
+   "early_hours": 0.1333,
+   "early_jobs": 143,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.1034,
+   "exp": "20260924T233411Z-96c8a3",
+   "plateau_jobs": 370,
+   "plateau_usd_per_hour": 0.11327,
+   "slot_index": 8,
+   "started_at": "2026-09-25T04:25:37.666079+00:00",
+   "switch_cost_usd": 0.00132
+  },
+  {
+   "arm_id": "qwen3.6-35b-a3b-vl-mtp-mxfp8",
+   "early_hours": 0.1333,
+   "early_jobs": 15,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.07979,
+   "exp": "20260925T054639Z-c19ae6",
+   "plateau_jobs": 63,
+   "plateau_usd_per_hour": 0.10357,
+   "slot_index": 0,
+   "started_at": "2026-09-25T05:46:41.914494+00:00",
+   "switch_cost_usd": 0.00317
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 68,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.10904,
+   "exp": "20260925T054639Z-c19ae6",
+   "plateau_jobs": 158,
+   "plateau_usd_per_hour": 0.09522,
+   "slot_index": 1,
+   "started_at": "2026-09-25T06:22:50.539236+00:00",
+   "switch_cost_usd": -0.00184
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+qwen3.6-35b-a3b-vl-mtp-mxfp8",
+   "early_hours": 0.1333,
+   "early_jobs": 34,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.08153,
+   "exp": "20260925T054639Z-c19ae6",
+   "plateau_jobs": 41,
+   "plateau_usd_per_hour": 0.01843,
+   "slot_index": 2,
+   "started_at": "2026-09-25T06:59:06.143686+00:00",
+   "switch_cost_usd": -0.00841
+  },
+  {
+   "arm_id": "qwen3.6-35b-a3b-vl-mtp-mxfp8",
+   "early_hours": 0.1333,
+   "early_jobs": 25,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.0749,
+   "exp": "20260925T054639Z-c19ae6",
+   "plateau_jobs": 62,
+   "plateau_usd_per_hour": 0.07992,
+   "slot_index": 3,
+   "started_at": "2026-09-25T07:35:32.188995+00:00",
+   "switch_cost_usd": 0.00067
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 71,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.10555,
+   "exp": "20260925T054639Z-c19ae6",
+   "plateau_jobs": 259,
+   "plateau_usd_per_hour": 0.14018,
+   "slot_index": 4,
+   "started_at": "2026-09-25T08:11:46.549977+00:00",
+   "switch_cost_usd": 0.00462
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+qwen3.6-35b-a3b-vl-mtp-mxfp8",
+   "early_hours": 0.1333,
+   "early_jobs": 32,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.12402,
+   "exp": "20260925T054639Z-c19ae6",
+   "plateau_jobs": 276,
+   "plateau_usd_per_hour": 0.14657,
+   "slot_index": 5,
+   "started_at": "2026-09-25T08:48:01.730558+00:00",
+   "switch_cost_usd": 0.00301
+  },
+  {
+   "arm_id": "qwen3.6-35b-a3b-vl-mtp-mxfp8",
+   "early_hours": 0.1333,
+   "early_jobs": 5,
+   "early_revenue_from_other_models_usd": 0.00068,
+   "early_usd_per_hour": 0.00514,
+   "exp": "20260925T054639Z-c19ae6",
+   "plateau_jobs": 17,
+   "plateau_usd_per_hour": 0.01901,
+   "slot_index": 6,
+   "started_at": "2026-09-25T09:24:34.229760+00:00",
+   "switch_cost_usd": 0.00185
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 2,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.00154,
+   "exp": "20260925T054639Z-c19ae6",
+   "plateau_jobs": 0,
+   "plateau_usd_per_hour": 0.0,
+   "slot_index": 7,
+   "started_at": "2026-09-25T10:00:50.432021+00:00",
+   "switch_cost_usd": -0.00021
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+qwen3.6-35b-a3b-vl-mtp-mxfp8",
+   "early_hours": 0.1333,
+   "early_jobs": 103,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.12751,
+   "exp": "20260925T054639Z-c19ae6",
+   "plateau_jobs": 340,
+   "plateau_usd_per_hour": 0.16176,
+   "slot_index": 8,
+   "started_at": "2026-09-25T10:36:58.960307+00:00",
+   "switch_cost_usd": 0.00457
+  },
+  {
+   "arm_id": "qwen3.6-35b-a3b-vl-mtp-mxfp8",
+   "early_hours": 0.1333,
+   "early_jobs": 56,
+   "early_revenue_from_other_models_usd": 0.00036,
+   "early_usd_per_hour": 0.18582,
+   "exp": "20260925T054639Z-c19ae6",
+   "plateau_jobs": 94,
+   "plateau_usd_per_hour": 0.12397,
+   "slot_index": 9,
+   "started_at": "2026-09-25T11:13:14.732226+00:00",
+   "switch_cost_usd": -0.00825
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 3,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.00402,
+   "exp": "20260925T054639Z-c19ae6",
+   "plateau_jobs": 0,
+   "plateau_usd_per_hour": 0.0,
+   "slot_index": 10,
+   "started_at": "2026-09-25T11:49:26.968120+00:00",
+   "switch_cost_usd": -0.00054
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+qwen3.6-35b-a3b-vl-mtp-mxfp8",
+   "early_hours": 0.1333,
+   "early_jobs": 37,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.03798,
+   "exp": "20260925T054639Z-c19ae6",
+   "plateau_jobs": 219,
+   "plateau_usd_per_hour": 0.07675,
+   "slot_index": 11,
+   "started_at": "2026-09-25T12:25:42.060259+00:00",
+   "switch_cost_usd": 0.00517
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 138,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.13938,
+   "exp": "20260925T163646Z-8c2e40",
+   "plateau_jobs": 0,
+   "plateau_usd_per_hour": 0.0,
+   "slot_index": 0,
+   "started_at": "2026-09-25T16:36:48.153769+00:00",
+   "switch_cost_usd": -0.01858
+  },
+  {
+   "arm_id": "nvidia-nemotron-3.5-lightning",
+   "early_hours": 0.1333,
+   "early_jobs": 14,
+   "early_revenue_from_other_models_usd": 0.00031,
+   "early_usd_per_hour": 0.07796,
+   "exp": "20260925T163646Z-8c2e40",
+   "plateau_jobs": 27,
+   "plateau_usd_per_hour": 0.09061,
+   "slot_index": 1,
+   "started_at": "2026-09-25T17:12:49.718739+00:00",
+   "switch_cost_usd": 0.00169
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 67,
+   "early_revenue_from_other_models_usd": 0.00072,
+   "early_usd_per_hour": 0.04908,
+   "exp": "20260925T163646Z-8c2e40",
+   "plateau_jobs": 213,
+   "plateau_usd_per_hour": 0.06857,
+   "slot_index": 2,
+   "started_at": "2026-09-25T17:49:01.618414+00:00",
+   "switch_cost_usd": 0.0026
+  },
+  {
+   "arm_id": "nvidia-nemotron-3.5-lightning",
+   "early_hours": 0.1333,
+   "early_jobs": 11,
+   "early_revenue_from_other_models_usd": 0.00022,
+   "early_usd_per_hour": 0.08474,
+   "exp": "20260925T163646Z-8c2e40",
+   "plateau_jobs": 31,
+   "plateau_usd_per_hour": 0.0824,
+   "slot_index": 3,
+   "started_at": "2026-09-25T18:25:28.964406+00:00",
+   "switch_cost_usd": -0.00031
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 42,
+   "early_revenue_from_other_models_usd": 0.00248,
+   "early_usd_per_hour": 0.04472,
+   "exp": "20260925T163646Z-8c2e40",
+   "plateau_jobs": 233,
+   "plateau_usd_per_hour": 0.04638,
+   "slot_index": 4,
+   "started_at": "2026-09-25T19:01:44.899307+00:00",
+   "switch_cost_usd": 0.00022
+  },
+  {
+   "arm_id": "nvidia-nemotron-3.5-lightning",
+   "early_hours": 0.1333,
+   "early_jobs": 17,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.08381,
+   "exp": "20260925T163646Z-8c2e40",
+   "plateau_jobs": 23,
+   "plateau_usd_per_hour": 0.07354,
+   "slot_index": 5,
+   "started_at": "2026-09-25T19:38:04.463020+00:00",
+   "switch_cost_usd": -0.00137
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 81,
+   "early_revenue_from_other_models_usd": 0.00103,
+   "early_usd_per_hour": 0.06554,
+   "exp": "20260925T163646Z-8c2e40",
+   "plateau_jobs": 321,
+   "plateau_usd_per_hour": 0.09261,
+   "slot_index": 6,
+   "started_at": "2026-09-25T20:14:12.747218+00:00",
+   "switch_cost_usd": 0.00361
+  },
+  {
+   "arm_id": "nvidia-nemotron-3.5-lightning",
+   "early_hours": 0.1333,
+   "early_jobs": 7,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.06245,
+   "exp": "20260925T163646Z-8c2e40",
+   "plateau_jobs": 32,
+   "plateau_usd_per_hour": 0.07862,
+   "slot_index": 7,
+   "started_at": "2026-09-25T20:50:36.728031+00:00",
+   "switch_cost_usd": 0.00216
+  },
+  {
+   "arm_id": "nvidia-nemotron-3.5-lightning",
+   "early_hours": 0.1333,
+   "early_jobs": 1,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 1e-05,
+   "exp": "20260925T213507Z-9e0a5e",
+   "plateau_jobs": 4,
+   "plateau_usd_per_hour": 0.00091,
+   "slot_index": 0,
+   "started_at": "2026-09-25T21:35:09.564352+00:00",
+   "switch_cost_usd": 0.00012
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 88,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.07186,
+   "exp": "20260925T213507Z-9e0a5e",
+   "plateau_jobs": 161,
+   "plateau_usd_per_hour": 0.03974,
+   "slot_index": 1,
+   "started_at": "2026-09-25T22:11:11.267594+00:00",
+   "switch_cost_usd": -0.00428
+  },
+  {
+   "arm_id": "nvidia-nemotron-3.5-lightning",
+   "early_hours": 0.1333,
+   "early_jobs": 0,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.0,
+   "exp": "20260925T213507Z-9e0a5e",
+   "plateau_jobs": 1,
+   "plateau_usd_per_hour": 0.0,
+   "slot_index": 2,
+   "started_at": "2026-09-25T22:47:26.333577+00:00",
+   "switch_cost_usd": 0.0
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 96,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.06044,
+   "exp": "20260925T213507Z-9e0a5e",
+   "plateau_jobs": 195,
+   "plateau_usd_per_hour": 0.04352,
+   "slot_index": 3,
+   "started_at": "2026-09-25T23:23:41.007489+00:00",
+   "switch_cost_usd": -0.00226
+  },
+  {
+   "arm_id": "nvidia-nemotron-3.5-lightning",
+   "early_hours": 0.1333,
+   "early_jobs": 1,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.00075,
+   "exp": "20260925T213507Z-9e0a5e",
+   "plateau_jobs": 3,
+   "plateau_usd_per_hour": 0.00072,
+   "slot_index": 4,
+   "started_at": "2026-09-25T23:59:55.926624+00:00",
+   "switch_cost_usd": -0.0
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 92,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.08412,
+   "exp": "20260925T213507Z-9e0a5e",
+   "plateau_jobs": 210,
+   "plateau_usd_per_hour": 0.07891,
+   "slot_index": 5,
+   "started_at": "2026-09-26T00:36:12.525777+00:00",
+   "switch_cost_usd": -0.00069
+  },
+  {
+   "arm_id": "nvidia-nemotron-3.5-lightning",
+   "early_hours": 0.1333,
+   "early_jobs": 5,
+   "early_revenue_from_other_models_usd": 0.00022,
+   "early_usd_per_hour": 0.00268,
+   "exp": "20260925T213507Z-9e0a5e",
+   "plateau_jobs": 7,
+   "plateau_usd_per_hour": 0.00134,
+   "slot_index": 6,
+   "started_at": "2026-09-26T01:12:28.227872+00:00",
+   "switch_cost_usd": -0.00018
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 91,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.121,
+   "exp": "20260925T213507Z-9e0a5e",
+   "plateau_jobs": 214,
+   "plateau_usd_per_hour": 0.05455,
+   "slot_index": 7,
+   "started_at": "2026-09-26T01:48:46.043435+00:00",
+   "switch_cost_usd": -0.00886
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 69,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.09459,
+   "exp": "20260927T163134Z-ec7ccc",
+   "plateau_jobs": 227,
+   "plateau_usd_per_hour": 0.09423,
+   "slot_index": 0,
+   "started_at": "2026-09-27T16:31:36.283756+00:00",
+   "switch_cost_usd": -5e-05
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+   "early_hours": 0.1333,
+   "early_jobs": 79,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.04614,
+   "exp": "20260927T163134Z-ec7ccc",
+   "plateau_jobs": 111,
+   "plateau_usd_per_hour": 0.05745,
+   "slot_index": 1,
+   "started_at": "2026-09-27T17:07:37.924810+00:00",
+   "switch_cost_usd": 0.00151
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+gpt-oss-20b",
+   "early_hours": 0.1333,
+   "early_jobs": 45,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.03275,
+   "exp": "20260927T163134Z-ec7ccc",
+   "plateau_jobs": 111,
+   "plateau_usd_per_hour": 0.03673,
+   "slot_index": 2,
+   "started_at": "2026-09-27T17:44:12.693510+00:00",
+   "switch_cost_usd": 0.00053
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 97,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.06464,
+   "exp": "20260927T163134Z-ec7ccc",
+   "plateau_jobs": 196,
+   "plateau_usd_per_hour": 0.06857,
+   "slot_index": 3,
+   "started_at": "2026-09-27T18:20:37.431039+00:00",
+   "switch_cost_usd": 0.00052
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+   "early_hours": 0.1333,
+   "early_jobs": 55,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.05322,
+   "exp": "20260927T163134Z-ec7ccc",
+   "plateau_jobs": 148,
+   "plateau_usd_per_hour": 0.08042,
+   "slot_index": 4,
+   "started_at": "2026-09-27T18:56:45.723189+00:00",
+   "switch_cost_usd": 0.00363
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+gpt-oss-20b",
+   "early_hours": 0.1333,
+   "early_jobs": 42,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.03566,
+   "exp": "20260927T163134Z-ec7ccc",
+   "plateau_jobs": 127,
+   "plateau_usd_per_hour": 0.03263,
+   "slot_index": 5,
+   "started_at": "2026-09-27T19:33:11.919874+00:00",
+   "switch_cost_usd": -0.0004
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 85,
+   "early_revenue_from_other_models_usd": 0.00037,
+   "early_usd_per_hour": 0.08777,
+   "exp": "20260927T163134Z-ec7ccc",
+   "plateau_jobs": 242,
+   "plateau_usd_per_hour": 0.15615,
+   "slot_index": 6,
+   "started_at": "2026-09-27T20:09:37.460883+00:00",
+   "switch_cost_usd": 0.00912
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+   "early_hours": 0.1333,
+   "early_jobs": 10,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.03056,
+   "exp": "20260927T163134Z-ec7ccc",
+   "plateau_jobs": 201,
+   "plateau_usd_per_hour": 0.04454,
+   "slot_index": 7,
+   "started_at": "2026-09-27T20:45:57.089371+00:00",
+   "switch_cost_usd": 0.00187
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+gpt-oss-20b",
+   "early_hours": 0.1333,
+   "early_jobs": 38,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.02367,
+   "exp": "20260927T163134Z-ec7ccc",
+   "plateau_jobs": 48,
+   "plateau_usd_per_hour": 0.00618,
+   "slot_index": 8,
+   "started_at": "2026-09-27T21:22:24.615372+00:00",
+   "switch_cost_usd": -0.00233
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit",
+   "early_hours": 0.1333,
+   "early_jobs": 67,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.04749,
+   "exp": "20260927T163134Z-ec7ccc",
+   "plateau_jobs": 266,
+   "plateau_usd_per_hour": 0.09815,
+   "slot_index": 9,
+   "started_at": "2026-09-27T21:58:51.868802+00:00",
+   "switch_cost_usd": 0.00675
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+   "early_hours": 0.1333,
+   "early_jobs": 8,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.00323,
+   "exp": "20260927T163134Z-ec7ccc",
+   "plateau_jobs": 59,
+   "plateau_usd_per_hour": 0.01534,
+   "slot_index": 10,
+   "started_at": "2026-09-27T22:35:06.462031+00:00",
+   "switch_cost_usd": 0.00161
+  },
+  {
+   "arm_id": "gemma-4-26b-qat-4bit+gpt-oss-20b",
+   "early_hours": 0.1333,
+   "early_jobs": 42,
+   "early_revenue_from_other_models_usd": 0.0,
+   "early_usd_per_hour": 0.02048,
+   "exp": "20260927T163134Z-ec7ccc",
+   "plateau_jobs": 78,
+   "plateau_usd_per_hour": 0.02358,
+   "slot_index": 11,
+   "started_at": "2026-09-27T23:11:37.670344+00:00",
+   "switch_cost_usd": 0.00041
+  }
+ ],
+ "plateau_window_min": [
+  8.0,
+  28.0
+ ],
+ "pooled_curve": [
+  {
+   "base_reward_usd_per_hour": 0.01592,
+   "exposure_hours": 1.8556,
+   "jobs": 575,
+   "jobs_per_hour": 309.9,
+   "t_from_min": 0.0,
+   "t_to_min": 2.0,
+   "usd_per_hour": 0.04668
+  },
+  {
+   "base_reward_usd_per_hour": 0.01617,
+   "exposure_hours": 1.8333,
+   "jobs": 750,
+   "jobs_per_hour": 409.1,
+   "t_from_min": 2.0,
+   "t_to_min": 4.0,
+   "usd_per_hour": 0.07236
+  },
+  {
+   "base_reward_usd_per_hour": 0.01747,
+   "exposure_hours": 1.8333,
+   "jobs": 761,
+   "jobs_per_hour": 415.1,
+   "t_from_min": 4.0,
+   "t_to_min": 6.0,
+   "usd_per_hour": 0.0622
+  },
+  {
+   "base_reward_usd_per_hour": 0.01856,
+   "exposure_hours": 1.8333,
+   "jobs": 779,
+   "jobs_per_hour": 424.9,
+   "t_from_min": 6.0,
+   "t_to_min": 8.0,
+   "usd_per_hour": 0.06977
+  },
+  {
+   "base_reward_usd_per_hour": 0.01806,
+   "exposure_hours": 1.8333,
+   "jobs": 853,
+   "jobs_per_hour": 465.3,
+   "t_from_min": 8.0,
+   "t_to_min": 10.0,
+   "usd_per_hour": 0.06389
+  },
+  {
+   "base_reward_usd_per_hour": 0.02613,
+   "exposure_hours": 1.8333,
+   "jobs": 871,
+   "jobs_per_hour": 475.1,
+   "t_from_min": 10.0,
+   "t_to_min": 12.0,
+   "usd_per_hour": 0.06115
+  },
+  {
+   "base_reward_usd_per_hour": 0.01954,
+   "exposure_hours": 1.8121,
+   "jobs": 837,
+   "jobs_per_hour": 461.9,
+   "t_from_min": 12.0,
+   "t_to_min": 14.0,
+   "usd_per_hour": 0.06286
+  },
+  {
+   "base_reward_usd_per_hour": 0.02515,
+   "exposure_hours": 1.6566,
+   "jobs": 649,
+   "jobs_per_hour": 391.8,
+   "t_from_min": 14.0,
+   "t_to_min": 16.0,
+   "usd_per_hour": 0.05811
+  },
+  {
+   "base_reward_usd_per_hour": 0.02551,
+   "exposure_hours": 1.6333,
+   "jobs": 563,
+   "jobs_per_hour": 344.7,
+   "t_from_min": 16.0,
+   "t_to_min": 18.0,
+   "usd_per_hour": 0.0659
+  },
+  {
+   "base_reward_usd_per_hour": 0.0204,
+   "exposure_hours": 1.6333,
+   "jobs": 658,
+   "jobs_per_hour": 402.9,
+   "t_from_min": 18.0,
+   "t_to_min": 20.0,
+   "usd_per_hour": 0.06399
+  },
+  {
+   "base_reward_usd_per_hour": 0.02423,
+   "exposure_hours": 1.6333,
+   "jobs": 704,
+   "jobs_per_hour": 431.0,
+   "t_from_min": 20.0,
+   "t_to_min": 22.0,
+   "usd_per_hour": 0.07516
+  },
+  {
+   "base_reward_usd_per_hour": 0.02296,
+   "exposure_hours": 1.6333,
+   "jobs": 702,
+   "jobs_per_hour": 429.8,
+   "t_from_min": 22.0,
+   "t_to_min": 24.0,
+   "usd_per_hour": 0.06729
+  },
+  {
+   "base_reward_usd_per_hour": 0.02678,
+   "exposure_hours": 1.6333,
+   "jobs": 685,
+   "jobs_per_hour": 419.4,
+   "t_from_min": 24.0,
+   "t_to_min": 26.0,
+   "usd_per_hour": 0.05768
+  },
+  {
+   "base_reward_usd_per_hour": 0.02423,
+   "exposure_hours": 1.6333,
+   "jobs": 795,
+   "jobs_per_hour": 486.7,
+   "t_from_min": 26.0,
+   "t_to_min": 28.0,
+   "usd_per_hour": 0.06687
+  },
+  {
+   "base_reward_usd_per_hour": 0.02168,
+   "exposure_hours": 1.6333,
+   "jobs": 850,
+   "jobs_per_hour": 520.4,
+   "t_from_min": 28.0,
+   "t_to_min": 30.0,
+   "usd_per_hour": 0.07411
+  },
+  {
+   "base_reward_usd_per_hour": 0.02551,
+   "exposure_hours": 1.6333,
+   "jobs": 798,
+   "jobs_per_hour": 488.6,
+   "t_from_min": 30.0,
+   "t_to_min": 32.0,
+   "usd_per_hour": 0.06869
+  },
+  {
+   "base_reward_usd_per_hour": 0.01913,
+   "exposure_hours": 1.6333,
+   "jobs": 772,
+   "jobs_per_hour": 472.7,
+   "t_from_min": 32.0,
+   "t_to_min": 34.0,
+   "usd_per_hour": 0.06778
+  },
+  {
+   "base_reward_usd_per_hour": 0.02678,
+   "exposure_hours": 1.6333,
+   "jobs": 732,
+   "jobs_per_hour": 448.2,
+   "t_from_min": 34.0,
+   "t_to_min": 36.0,
+   "usd_per_hour": 0.06396
+  }
+ ],
+ "pooled_plateau_exposure_hours": 16.935,
+ "pooled_plateau_usd_per_hour": 0.06422,
+ "scope": "pinned to --until, so this is re-derivable",
+ "slots_admitted": 59,
+ "slots_excluded_beyond_ledger": 0,
+ "slots_excluded_short": 0,
+ "slots_in_headline": 59,
+ "slots_rejected": 30,
+ "status": "exploratory (retrospective; rules declared in docs/CAMPAIGN-2026-09-27.md \u00a72)",
+ "switch_cost_usd_spread": {
+  "max": 0.01203,
+  "median": 0.00052,
+  "min": -0.01858,
+  "n": 55
+ },
+ "until_cutoff": "2026-09-27T23:52:00Z"
+}

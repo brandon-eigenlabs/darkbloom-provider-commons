@@ -1,0 +1,6 @@
+{
+  "kind": "commons-hub",
+  "name": "Darkbloom provider economics",
+  "schema": "rc.v1",
+  "tool": "shabbydev/research-commons"
+}

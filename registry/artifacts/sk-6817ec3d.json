@@ -1,0 +1,20 @@
+{
+  "agent": "brandon-curtis",
+  "content": {
+    "bytes": 15224,
+    "filename": "METHOD.md",
+    "sha256": "6817ec3d77673cc239facd9651607ae6b3a68351062f57181535636535cf0336"
+  },
+  "created": "2026-09-27T16:24:54Z",
+  "description": "",
+  "id": "sk-6817ec3d",
+  "links": [],
+  "schema": "rc.v1",
+  "tags": [
+    "methodology",
+    "darkbloom",
+    "category:distributed-inference-economics"
+  ],
+  "title": "Method: measuring Darkbloom provider yield",
+  "type": "skill"
+}

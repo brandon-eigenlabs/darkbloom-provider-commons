@@ -1,0 +1,390 @@
+# How to measure a Darkbloom provider without fooling yourself
+
+Method notes from running ~40 measured slots across five campaigns on one M4 Max.
+`FINDINGS.md` records *what* we observed; this records *how to observe it* — and
+mostly, the ways we got it wrong first. Every rule below was bought with a mistake.
+
+If you take one thing: **demand variance on this network is larger than every
+effect we set out to measure.** Almost all of the discipline here exists to stop
+that single fact from producing confident nonsense.
+
+---
+
+## 1. Variance is the adversary. Budget rounds, not minutes
+
+Measured per-slot revenue for **one model in one configuration**, 30-minute slots:
+
+```
+gemma-4-26b-qat-4bit, solo:  0.146  0.065  0.034  0.096  0.146  0.140  0.006  $/h
+                                                   ... a 24x spread
+```
+
+Same machine, same model, same advertised set, nothing changed but the clock. Any
+comparison that cannot survive a 24× swing in its inputs is not a comparison.
+
+Consequences:
+
+- **Four rounds per arm minimum.** Three is the floor for saying anything; four
+  is where we stopped being surprised.
+- **More rounds beats longer slots.** Restart count is fixed by `arms × rounds`,
+  so lengthening slots buys sample size without reducing churn — but it does not
+  attack variance, because a longer slot is still *one* draw from the demand
+  distribution. Prefer 4×30min over 2×60min.
+- **Report the spread, never just the mean.** With a handful of repeats a
+  parametric confidence interval implies precision the design cannot support.
+  Min/max across slots is honest; a ± figure is not.
+- **Overlapping ranges mean "no result".** Two means differing by 15% with ranges
+  spanning 4× is not a finding, however much you want it to be.
+
+### The mistake, three times over
+
+We announced conclusions from small n and had to retract each one:
+
+| Claimed | On | Retracted because |
+|---|---|---|
+| "traffic contention is severe, net −30%" | 2 slots | 3rd slot came in high; real effect −1.4% |
+| "gemma wins 2×, ranges don't overlap" | 2 slots/arm | later slots flipped the means |
+| "qwen is the steadier earner" | 2 slots | its range widened to 7× |
+
+Each time the caveat was stated *and the conclusion was still drawn*. Stating a
+caveat does not license the claim. If n is too small, the output is "no result
+yet" — say that instead.
+
+---
+
+## 2. Round-robin, never blocks
+
+Run `A, B, C, A, B, C…`, not `AAA, BBB, CCC`. Demand varies by hour, so a block
+design confounds "this model earns more" with "this model ran during the evening
+peak". Round-robin gives every arm the same spread of clock times.
+
+It works: in one run demand fell through the night (busy 0.70 → 0.60 → 0.28) and
+every arm absorbed the decline roughly equally, so the *comparison* survived even
+though no arm's absolute mean did.
+
+Round-robin does **not** fix a monotone drift within a round, and it cannot rescue
+an arm whose slots all failed. Check `busy_fraction` per slot before trusting a
+round.
+
+---
+
+## 3. An arm is a set, and sets do not decompose
+
+Measure the configuration you intend to run. Do not measure models individually
+and add them up.
+
+Measured directly: adding a second model to a machine **did not add revenue**.
+Across three pairs, total $/h stayed in the same band as the best single model
+while resident GB rose 55–137%. On one pair the sum of singles overstated the
+measured pair by 17%; on another the pair was indistinguishable from the single.
+
+If you must project an unmeasured set, label it an **upper bound** and say why.
+`dbyield plan` emits `summed-singles-upper-bound` for exactly this and refuses to
+call it a measurement.
+
+### Split a pair's revenue by model before interpreting it
+
+**Corrected 2026-09-27 — see `FINDINGS.md` §21.** This section used to read
+"Co-advertised models starve, not share", on the grounds that in 5 of 6 paired slots the
+second model received zero jobs (qwen3.6: 0/7/0/0; ternary-bonsai: 0), and concluded
+"whatever wins the first races keeps winning". **That generalised from two second models
+the network barely wants.** Across all 11 paired slots now on record:
+
+| Second model | slots | its jobs | share of the arm |
+|---|---:|---:|---:|
+| `ternary-bonsai-2-27b` | 4 | 0 | 0.0% |
+| `qwen3.6-35b-a3b-vl-mtp-mxfp8` | 4 | 7 | 0.5% |
+| `gpt-oss-20b` | 3 | 388 | **32.0%** |
+
+`gpt-oss-20b` took work in all three of its slots and **out-earned gemma in one**. There is
+no first-mover lock-in. Starvation tracks whether the network wants the second model, not
+co-residency itself.
+
+The practice the old rule implied is still right, and is the part to keep: **split a pair's
+revenue by model before interpreting it.** If one side is at zero you have measured a single
+model with extra RAM consumed, and should say so. If it is not at zero you are measuring a
+genuine two-model configuration, and the memory-tax reading does not apply.
+
+---
+
+## 4. Warm every arm, and verify residency — don't assume
+
+A settle window excludes cold-start latency from the clock. It does **not** make
+the model resident. Those are different things and only the second one matters,
+because an unwarmed model can fail to attract any traffic at all, which reads as
+"no demand".
+
+The bias is *systematic*, not noise: in a round-robin the freshly switched arm is
+the cold one, every slot.
+
+Practice:
+- Warm explicitly through the provider's loopback endpoint (`--local-endpoint`),
+  which is guaranteed to hit this machine, is free, and never reaches the
+  coordinator. `X-Darkbloom-Route: self` cannot target a machine and is not a
+  substitute — see `FINDINGS.md` §10.
+- **Verify** residency against the daemon afterwards. A successful warm request is
+  evidence, not proof; the model can be evicted again.
+- Record `warm_ok` per slot so a reader can discount the ones that failed.
+- Note `startup_preload = true` often loads models anyway, which makes warming
+  belt-and-braces rather than load-bearing. That is a reason to keep it, not to
+  skip it: when it is redundant it costs 7 seconds.
+
+---
+
+## 5. Verify the switch actually happened
+
+Read the advertised set back from the daemon after applying it. Do not trust the
+exit status of the command that applied it.
+
+An early version wrote `provider.toml` and restarted; launchd relaunched from the
+plist's stale `--model` flags, which win. Every slot reported `restart_ok: true`
+while advertising the wrong models. The data looked perfect and was worthless.
+
+`advertised_verified` is now recorded per slot, and a mismatch aborts the run
+rather than producing attributable-looking garbage.
+
+---
+
+## 6. The numerator and denominator must cover the same clock
+
+Revenue may only be divided by exposure that was actually observed. Dividing days
+of accumulated payouts by minutes of recorded sampling produced **$4.22/hour and
+126,000 jobs/hour** in development.
+
+Record the exact intervals you sampled, count only payouts inside them, and report
+revenue from outside them separately — never divided. Gaps (sampler down, Mac
+asleep, daemon stopped) are not exposure and must not be credited to any model.
+
+---
+
+## 7. Record the conditions, not just the outcome
+
+Revenue alone cannot distinguish "this model earns less" from "this slot was dealt
+a worse hand". Per slot, capture at minimum:
+
+| Covariate | Separates |
+|---|---|
+| `busy_fraction` | idle machine vs. busy-but-unprofitable |
+| `jobs_per_hour` and `$/job` | low volume vs. low value — they move independently |
+| input:output ratio, p50/p90 completion length | a generous hour from a better model |
+| concurrency in-flight / queued vs. cap | demand ceiling vs. **our own** ceiling |
+| KV grant per model | the co-residency penalty, directly |
+| competitors advertising/warm on each model | a crowded market vs. a bad model |
+| coordinator-side request counters | routed volume, immune to local restarts |
+
+Two of these changed conclusions outright. Per-job value revealed that qwen3.6 is
+a low-volume/high-value model (2.6× revenue per job, 3.7× fewer jobs) rather than
+simply worse. Concurrency showed we were never above 4 of 8 in-flight, which
+retired a whole planned experiment.
+
+---
+
+## 8. Instrument before you perturb
+
+We planned to discover whether we were concurrency-limited by *lowering* the cap
+until revenue moved — spending real revenue to locate a knee. Then we found the
+provider already exposes `kv_active_requests` and `kv_waiting_requests` on a
+loopback Prometheus endpoint. Reading the number cost nothing and answered the
+question outright.
+
+Before designing an experiment that perturbs a live earning system, spend an hour
+looking for the counter that already exists. Ask of any planned treatment: *is
+this observable instead?*
+
+Corollary: verify a treatment reaches the thing you think it reaches. We nearly
+built a memory-headroom experiment on filler RAM, having assumed it would move the
+number the router reads. It does not — that number is the provider's own in-process
+MLX accounting, untouchable from outside. `dbyield memory-probe` exists to check
+the mechanism *before* the campaign.
+
+---
+
+## 9. A perfectly healthy provider can earn exactly zero
+
+Twice, for 30 minutes each: connected, trusted, challenge fresh, advertised set
+correct, model resident, 40 GB KV grant, zero errors, **zero log output**, and the
+coordinator's own counter for us did not move by one. Serving 400–500 requests per
+half hour immediately before and after.
+
+Nothing local indicated a problem. `darkbloom status` was clean. `inference_active
+= false` for 30 minutes is indistinguishable from a quiet hour unless you know what
+the rest of the fleet was doing.
+
+This matters twice over:
+
+- **Operationally**, it is the worst failure class — no alarm, no symptom, just
+  absent money. Detect it: advertised + resident + coordinator counter flat +
+  *fleet still busy* ⇒ alert. That last clause is what stops it firing at 4am when
+  zero traffic is correct. (`dbyield watchdog`.)
+- **Statistically**, such slots are not measurements of the arm. How you treat them
+  swings a conclusion: including gemma's two zeros put it level with qwen3.6;
+  excluding them put it clearly ahead. **Report both numbers** and say which question
+  each answers — "what does this model yield when routing works" and "what does
+  this configuration yield in practice" are different questions, and only the
+  second should include stalls.
+
+Decide the validity rule *before* seeing the data, and record enough per slot to
+apply it afterwards.
+
+**This is now computed, not left to the reader (2026-09-27).** `experiment.classify_stall`
+labels every slot `stalled: true | false | null`, records the evidence it used, and each arm
+carries an `excluding_stalled` block beside its headline — absent entirely when nothing was
+excluded, because an identical second copy would imply a distinction the data does not
+contain. `null` means "could not tell" and keeps the slot in the denominator: a restart
+resets the served-request counter (§FINDINGS 6), and excluding a slot on the strength of a
+verdict we do not have would quietly shrink the exposure.
+
+Validated against the known case rather than only against fixtures: run over the whole
+archive it finds **exactly two stalled slots**, both gemma solo, the two this section is
+about, with 259 and 346 other providers serving our model while we served nothing.
+
+**One number in this section does not reproduce.** Re-deriving it from the campaign
+concerned, gemma with its two zeros included is 0.0606 $/h against qwen3.6's 0.0695 — level,
+as claimed, or marginally behind. Excluding them gives 0.1211 $/h, which is **74% ahead, not
+50%**; on `$/GB·h` the gap is wider still (2.4×) because gemma is the smaller model. The
+direction and the "level vs clearly ahead" flip both hold, so the lesson stands, but the
+specific 50% cannot be reconstructed from the recorded slots and should be treated as
+unverified. It is left in the sentence above as "clearly ahead" rather than restated with a
+number we cannot source.
+
+---
+
+## 10. Leave a guard gap between arms
+
+Coordinator-side fault state deliberately survives a provider reconnect. Several
+trackers run on roughly five-minute clocks, so a 30-minute slot cadence can measure
+arm N+1 while arm N's penalties still apply.
+
+We use a 6-minute settle window, sampled but not measured, which doubles as where
+the warm-up load is paid. Cheap insurance; the alternative is longer slots.
+
+(The specific TTLs behind "six minutes" came from source we later found to be
+stale — see §12. The practice is still sound on general grounds: cooldowns exist,
+they are not instant, and a guard gap costs one slot's worth of sampling.)
+
+---
+
+## 11. Never let instrumentation break the experiment
+
+Best-effort telemetry must not be able to kill a run — and above all must not be
+able to skip cleanup.
+
+A timeout reading an HTTP response *body* surfaced as `TimeoutError`, escaped an
+`except RuntimeError`, and killed a 4.8-hour experiment two minutes in. Worse, one
+of those handlers sat inside the `finally` block, so the exception aborted cleanup
+before the provider's model set was restored. It was harmless only by luck: the
+restore target happened to match the running arm.
+
+Rules:
+- Wrap every optional data source so it returns a value or a reason, never raises.
+- Guard **each** cleanup step independently. The restore is a promise; nothing
+  before it may throw and nothing after it may be skipped because something did.
+- If restore fails anyway, print the exact command to fix it by hand.
+- Check that a launched run is a *running* run. We lost 1.9 hours to a dead
+  process because "it started" was taken as "it is working".
+
+---
+
+## 12. Verify the provenance of any mechanism you quote
+
+We explained several findings by quoting Darkbloom's source, from a checkout that
+turned out to be **ten days old, on a fork branch, five releases behind the
+running provider** (`0.9.4` constants vs `0.9.9` live). A `deploy/environments/*.env`
+in such a tree is not the deployed configuration.
+
+`git log -1` and one version-constant check would have caught it in seconds. Do
+both before quoting a coefficient, a gate, or an env default.
+
+**And read the file's own header before citing it as evidence.** We twice quoted
+`deploy/environments/prod.env` as proof of deployed configuration. Its first
+paragraph says it "is not consumed directly" and that the authoritative runtime file
+is elsewhere, with operator overrides preserved — so it shows release defaults and
+silently diverges from production by design. A checked-in env file is almost never
+the running config; treat one as a default until someone reads the live value.
+
+**And when a measurement contradicts a document, the measurement wins.** We read a
+rule saying gemma-4 may only route to machines advertising nothing else, called it
+the explanation for co-advertised starvation, and published it — while holding our
+own data showing gemma earning 401, 502 and 331 jobs on a mixed box, which the
+rule forbids. The contradiction was noticed, labelled a "loose end", and reasoned
+past. That is backwards. A primary observation that refutes a hypothesis outranks
+a config file, and outranks wanting the explanation to be true.
+
+---
+
+## 13. Make the data say what it is
+
+Small representational choices decide whether a report misleads:
+
+- **Mark dry runs.** A rehearsal that writes `applied: true` is indistinguishable
+  from a real run in the archive. Mark it in the record *and* in the report.
+- **Never print `0` for "not measured".** A measured zero and an absent
+  measurement are opposite decisions. Print `—`.
+- **Record absence explicitly.** Missing concurrency samples and genuinely zero
+  concurrency look identical unless the gap is counted.
+- **Name the basis of every derived number** (`measured`, `measured-set`,
+  `summed-singles-upper-bound`, `ledger-span`). A reader cannot discount what is
+  not labelled.
+- **A diagnostic that names the wrong cause is worse than none.** Ours reported
+  "the provider has never been started with `--local-endpoint`" three times while
+  the flag was plainly set and the listener had merely failed to bind. Each time
+  it sent us to the wrong place.
+
+---
+
+## 14. Pre-flight checklist for a run worth running
+
+- [ ] Sampler already running, with ≥2 h of history
+- [ ] No other controller managing model selection (`foreign_change()` clean)
+- [ ] Every arm's models downloaded, catalog-active, and within the memory budget
+- [ ] ≥4 rounds, ≥10-minute slots, round-robin order
+- [ ] Settle window ≥ the longest cooldown you know of
+- [ ] Warming available and verified, or the run explicitly marked unwarmed
+- [ ] A shared reference arm if results must join an earlier campaign
+- [ ] Restore target confirmed, and config backed up
+- [ ] Watchdog running, so a stall is caught live rather than reconstructed
+- [ ] Validity rule for a slot written down **before** looking at results
+
+---
+
+## 15. Reporting honestly
+
+- Lead with n. "0.12 $/h across 2 slots" and "0.12 $/h across 8" are different
+  claims.
+- Give the range beside every mean.
+- Quantify what you excluded and why, and show the result both ways when the
+  choice is arguable.
+- Separate measurement from mechanism. Ours are in different documents for this
+  reason: `FINDINGS.md` §0 marks which claims rest on unverified source.
+- Retract plainly. Correct the claim, correct the artefacts that repeated it, and
+  state what the evidence actually supports — without relitigating.
+
+---
+
+## 16. An analysis over "my whole archive" is not reproducible, even by you
+
+Found by publishing one and watching it drift inside the hour.
+
+`analysis/switch_cost.py` read every recorded slot and every ledger row, which is the
+obvious thing to write and is correct as an *answer*. But it makes the *artifact*
+unverifiable: a campaign was running while its output was published, so re-running the same
+script an hour later gave different numbers — 321 jobs in the first bucket instead of 296 —
+with no code change and no error. A reader who tried to check the published dataset would
+have concluded, reasonably, that it was wrong.
+
+The published content was in fact sound. Pinning the scope to the instant before the new
+campaign started reproduced **every figure exactly**: 47 slots, plateau 0.06569 $/h, cold
+split 35 slots at 0.611×, the switch-cost spread to five decimal places. Nothing was wrong
+except that there was no way to say *which archive* the numbers came from.
+
+So: **any analysis whose input is "everything I have" needs a declared cutoff, recorded
+inside its own output.** Both scripts now take `--until <RFC3339>` and stamp it into the
+payload, along with an explicit `scope` string that says `WHOLE ARCHIVE AS OF RUN TIME — not
+re-derivable` when the flag is absent. The cutoff has to truncate the ledger as well as the
+slot list; pinning one and not the other divides old exposure by new revenue, which is
+`METHOD.md` §6 with extra steps.
+
+This is the small version of the problem `HANDOFF.md` §6.1 describes for `report.build()`:
+six live reads, none of them pinned. The general rule is the same either way — a published
+number needs its inputs named, and "the contents of my home directory at an unspecified
+moment" is not a named input.

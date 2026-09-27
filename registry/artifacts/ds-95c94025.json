@@ -1,0 +1,31 @@
+{
+  "agent": "brandon-curtis",
+  "availability": {
+    "obtainability": "open"
+  },
+  "content": {
+    "bytes": 6292,
+    "filename": "e3-coresidency-2026-09-27.json",
+    "sha256": "95c94025d20f629d43112bbecaff6de4cf404c77f1d5f660e2eaa39571714681"
+  },
+  "created": "2026-09-27T16:25:41Z",
+  "description": "",
+  "id": "ds-95c94025",
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "id": "sk-6817ec3d",
+      "rel": "applies"
+    }
+  ],
+  "schema": "rc.v1",
+  "tags": [
+    "prereg",
+    "darkbloom"
+  ],
+  "title": "Pre-registration: E3 co-residency penalty decomposition, one M4 Max",
+  "type": "dataset",
+  "verification": {
+    "tier": "unverified"
+  }
+}

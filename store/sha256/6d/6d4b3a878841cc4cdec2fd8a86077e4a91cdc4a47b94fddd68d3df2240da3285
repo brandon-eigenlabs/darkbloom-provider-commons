@@ -1,0 +1,125 @@
+{
+ "bucket_minutes": 5.0,
+ "min_lull_buckets": 6,
+ "paired_slots": 19,
+ "per_arm": {
+  "gemma-4-26b-qat-4bit+gpt-oss-20b": {
+   "arm_id": "gemma-4-26b-qat-4bit+gpt-oss-20b",
+   "buckets": 42,
+   "hard": {
+    "askable": true,
+    "lull": 6,
+    "nonlull": 36,
+    "second_jobs_in_lull": 164,
+    "second_jobs_in_nonlull": 509,
+    "second_jobs_per_hour_in_lull": 328.0,
+    "second_jobs_per_hour_in_nonlull": 169.67,
+    "verdict": "second model ran at 328.0/h during lulls vs 169.67/h otherwise \u2014 rises"
+   },
+   "reference": "gemma-4-26b-qat-4bit",
+   "reference_jobs_total": 1094,
+   "second": "gpt-oss-20b",
+   "second_jobs_total": 673,
+   "second_share_of_arm_jobs": 0.3809,
+   "slot_ids": [
+    "20260924T233411Z-96c8a3#2",
+    "20260924T233411Z-96c8a3#5",
+    "20260924T233411Z-96c8a3#8",
+    "20260927T163134Z-ec7ccc#2",
+    "20260927T163134Z-ec7ccc#5",
+    "20260927T163134Z-ec7ccc#8",
+    "20260927T163134Z-ec7ccc#11"
+   ],
+   "slots": 7,
+   "soft": {
+    "askable": true,
+    "lull": 11,
+    "nonlull": 31,
+    "second_jobs_in_lull": 289,
+    "second_jobs_in_nonlull": 384,
+    "second_jobs_per_hour_in_lull": 315.27,
+    "second_jobs_per_hour_in_nonlull": 148.65,
+    "verdict": "second model ran at 315.27/h during lulls vs 148.65/h otherwise \u2014 rises"
+   }
+  },
+  "gemma-4-26b-qat-4bit+qwen3.6-35b-a3b-vl-mtp-mxfp8": {
+   "arm_id": "gemma-4-26b-qat-4bit+qwen3.6-35b-a3b-vl-mtp-mxfp8",
+   "buckets": 24,
+   "hard": {
+    "askable": false,
+    "lull": 4,
+    "nonlull": 20,
+    "second_jobs_in_lull": 0,
+    "second_jobs_in_nonlull": 7,
+    "second_jobs_per_hour_in_lull": 0.0,
+    "second_jobs_per_hour_in_nonlull": 4.2,
+    "verdict": "not askable \u2014 4 hard lull buckets (need 6)"
+   },
+   "reference": "gemma-4-26b-qat-4bit",
+   "reference_jobs_total": 1278,
+   "second": "qwen3.6-35b-a3b-vl-mtp-mxfp8",
+   "second_jobs_total": 7,
+   "second_share_of_arm_jobs": 0.0054,
+   "slot_ids": [
+    "20260925T054639Z-c19ae6#2",
+    "20260925T054639Z-c19ae6#5",
+    "20260925T054639Z-c19ae6#8",
+    "20260925T054639Z-c19ae6#11"
+   ],
+   "slots": 4,
+   "soft": {
+    "askable": true,
+    "lull": 8,
+    "nonlull": 16,
+    "second_jobs_in_lull": 2,
+    "second_jobs_in_nonlull": 5,
+    "second_jobs_per_hour_in_lull": 3.0,
+    "second_jobs_per_hour_in_nonlull": 3.75,
+    "verdict": "second model ran at 3.0/h during lulls vs 3.75/h otherwise \u2014 does not rise"
+   }
+  },
+  "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b": {
+   "arm_id": "gemma-4-26b-qat-4bit+ternary-bonsai-2-27b",
+   "buckets": 44,
+   "hard": {
+    "askable": false,
+    "lull": 2,
+    "nonlull": 42,
+    "second_jobs_in_lull": 1,
+    "second_jobs_in_nonlull": 4,
+    "second_jobs_per_hour_in_lull": 6.0,
+    "second_jobs_per_hour_in_nonlull": 1.14,
+    "verdict": "not askable \u2014 2 hard lull buckets (need 6)"
+   },
+   "reference": "gemma-4-26b-qat-4bit",
+   "reference_jobs_total": 1944,
+   "second": "ternary-bonsai-2-27b",
+   "second_jobs_total": 5,
+   "second_share_of_arm_jobs": 0.0026,
+   "slot_ids": [
+    "20260924T222840Z-99259e#1",
+    "20260924T233411Z-96c8a3#1",
+    "20260924T233411Z-96c8a3#4",
+    "20260924T233411Z-96c8a3#7",
+    "20260927T163134Z-ec7ccc#1",
+    "20260927T163134Z-ec7ccc#4",
+    "20260927T163134Z-ec7ccc#7",
+    "20260927T163134Z-ec7ccc#10"
+   ],
+   "slots": 8,
+   "soft": {
+    "askable": true,
+    "lull": 9,
+    "nonlull": 35,
+    "second_jobs_in_lull": 1,
+    "second_jobs_in_nonlull": 4,
+    "second_jobs_per_hour_in_lull": 1.33,
+    "second_jobs_per_hour_in_nonlull": 1.37,
+    "verdict": "second model ran at 1.33/h during lulls vs 1.37/h otherwise \u2014 does not rise"
+   }
+  }
+ },
+ "reference_model": "gemma-4-26b-qat-4bit",
+ "scope": "pinned to --until, so this is re-derivable",
+ "until_cutoff": "2026-09-27T23:52:00Z"
+}

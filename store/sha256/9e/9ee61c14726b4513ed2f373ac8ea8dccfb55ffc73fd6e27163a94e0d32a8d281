@@ -1,0 +1,53 @@
+{
+ "scope": "What a Darkbloom provider earns per resident GB-hour \u2014 per model, per configuration and per hardware class \u2014 and which decisions actually move it. Observations of a live network under demand nobody here controls, so the collection's job is to make independent captures comparable, not to agree.",
+ "maintainers": [
+  {
+   "agent": "brandon-curtis",
+   "addr": "0x44AA8c1d7213E36902c72AF22dC68C4BFcA649Ab"
+  }
+ ],
+ "members": [
+  {
+   "id": "sk-c0c27636",
+   "role": "method"
+  },
+  {
+   "id": "ds-89931087",
+   "role": "instance"
+  },
+  {
+   "id": "ds-37a8ea87",
+   "role": "format-schema"
+  },
+  {
+   "id": "ds-95c94025",
+   "role": "prereg"
+  },
+  {
+   "id": "ds-4396bb1d",
+   "role": "preregistered-analysis"
+  },
+  {
+   "id": "ds-0cbdbf3e",
+   "role": "exploratory-retrospective"
+  },
+  {
+   "id": "ds-6d4b3a87",
+   "role": "exploratory-retrospective"
+  }
+ ],
+ "task_criteria": "A contribution is a campaign of at least 4 round-robin rounds per arm, at least 2 arms, slots of at least 10 minutes, warmed with residency verified against the daemon, with per-slot covariates recorded and a slot-validity rule declared and anchored before analysis. Single-slot results are not accepted. Stalled slots \u2014 healthy provider, correct advertised set, resident model, coordinator counter flat while the fleet was busy \u2014 must be identified and every headline number reported both with and without them. Every mean or median carries the min-max across slots; a parametric interval at this n is not accepted. Acceptance means the protocol was followed, never that the observation is true.",
+ "open_questions": [
+  "Do $/GB-h rankings transfer across hardware classes, or is the best model a property of the machine? One M4 Max cannot tell.",
+  "Does trust level change routing volume enough to dominate model choice? Every capture here so far is self_signed.",
+  "How much of the co-residency penalty is memory-mediated versus traffic-mediated? HALF ANSWERED: the memory-mediated term is a result on $/GB-h (69%, disjoint ranges) and no result on $/h; the traffic-mediated term is no result on both at n=4. The traffic channel is the open half.",
+  "Does a co-resident second model absorb work when the first model's demand collapses? ANSWERED YES on one machine for a second model the network wants (4.1x rise during zero buckets, FINDINGS.md \u00a723) and still open for a second model it does not, and at any other hardware class. It cleared its askability floor exactly, so it wants replication more than it wants extension.",
+  "Does frequent switching accumulate coordinator fault state? One switch costs about $0.001, but every campaign here switches on a ~36-minute cadence and says nothing about a 5-minute one.",
+  "Is there a hardware floor below which a machine rarely earns at any demand level, and a demand level below which it never does?"
+ ],
+ "notes": [
+  "Roles: only `method` and `instance` are interpreted by the tool; everything else lands in the 'other curated-in' bucket and is for readers. `instance` is reserved for captures meeting task_criteria above \u2014 which is why the two `exploratory-retrospective` members are NOT instances. They are analyses of an archive that already existed when their rules were written, they carry no prereg link, and counting them as instances would inflate the endorsed-instance count with work that cannot satisfy the criteria it would be claiming to meet.",
+  "sk-6817ec3d and sk-2e8f7b2f are superseded revisions of the method. Neither is a member: the E3 pre-registration `applies:` sk-2e8f7b2f because that is the revision in force when the campaign was designed and launched, and re-pointing it would be a false ordering claim. The current method is sk-c0c27636, which adds \u00a716 (an analysis over the whole archive is not re-derivable) and corrects a number in \u00a79 that would not reproduce.",
+  "ds-0cbdbf3e and ds-6d4b3a87 supersede two earlier snapshots (ds-6f9252fe, ds-fbd4ad94) that were published without a pinned cutoff and so could not be re-derived \u2014 their inputs moved as the next campaign ran. The content was sound; pinning reproduced every figure exactly. The superseded ids are left in the ledger rather than hidden."
+ ]
+}

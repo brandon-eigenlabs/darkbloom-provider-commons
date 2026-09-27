@@ -1,0 +1,25 @@
+{
+  "agent": "brandon-curtis",
+  "availability": {
+    "obtainability": "open"
+  },
+  "content": {
+    "bytes": 26135,
+    "filename": "dbyield-report-v1.schema.json",
+    "sha256": "37a8ea87b10a9e1bfcc604b6e6d4bf0d88111b6da9b21187a8de640b6fc15326"
+  },
+  "created": "2026-09-27T16:25:00Z",
+  "description": "",
+  "id": "ds-37a8ea87",
+  "license": "CC-BY-4.0",
+  "links": [],
+  "schema": "rc.v1",
+  "tags": [
+    "darkbloom"
+  ],
+  "title": "Format: dbyield-report/v1",
+  "type": "dataset",
+  "verification": {
+    "tier": "unverified"
+  }
+}
