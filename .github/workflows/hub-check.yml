@@ -12,11 +12,25 @@ on:
   pull_request_target:
   push:
     branches: [main]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
   check:
     runs-on: ubuntu-latest
+    # The tool repo (shabbydev/research-commons) is private, so checking it out needs a
+    # read-only deploy key as COMMONS_TOOL_DEPLOY_KEY. A deploy key can only be created by
+    # the OWNER of the tool repo, which the maintainer of this hub is not — so this gate
+    # cannot be made to pass from here, and a hub run by anyone but the tool's author will
+    # hit the same wall. Skipping rather than failing: a permanently red main that nobody
+    # can fix locally is worse than an honest skip, and `main` is deliberately NOT protected
+    # with this as a required status check for the same reason.
+    #
+    # The authoritative gate is `commons hub check` + `commons fsck --availability` run
+    # locally before every `commons push`, which is what actually guards this hub today.
+    # This job starts working by itself the day the secret exists or the tool repo goes
+    # public; nothing else needs changing.
+    if: vars.COMMONS_TOOL_PUBLIC == 'true' || github.event_name == 'workflow_dispatch'
     steps:
       - name: checkout hub (PR head as DATA only)
         uses: actions/checkout@v4
