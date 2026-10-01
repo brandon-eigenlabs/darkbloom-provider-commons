@@ -2,13 +2,13 @@
 
 A **Research Commons hub**: a data-only git repository (manifests in `registry/`,
 content-addressed blobs in `store/`). It contains **no code**. The `commons` tool lives in
-a separate repository — [shabbydev/research-commons](https://github.com/shabbydev/research-commons) — and you
+a separate repository — [research-common/research-commons](https://github.com/research-common/research-commons) — and you
 update it there, never through this hub.
 
 ## Read it
 
 ```bash
-git clone https://github.com/shabbydev/research-commons.git ~/research-commons   # the tool, once
+git clone https://github.com/research-common/research-commons.git ~/research-commons   # the tool, once
 export PATH="$HOME/research-commons/bin:$PATH"
 git clone <this hub> && cd <this hub>                             # the data
 commons list --type collection        # topics hosted here
