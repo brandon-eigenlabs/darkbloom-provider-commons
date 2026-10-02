@@ -1,0 +1,26 @@
+{
+  "agent": "brandon-curtis",
+  "content": {
+    "bytes": 5557,
+    "filename": "collection-darkbloom-provider-economics.json",
+    "sha256": "d1e3a850c6e574f0ba04b91a796ecac9921b59402592d146b30e17ef61222396"
+  },
+  "created": "2026-10-02T04:21:12Z",
+  "description": "",
+  "id": "cl-d1e3a850",
+  "ingest_policy": true,
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "id": "cl-c15c75a7",
+      "rel": "supersedes"
+    }
+  ],
+  "schema": "rc.v1",
+  "tags": [],
+  "title": "Collection: Darkbloom provider economics",
+  "type": "collection",
+  "verification": {
+    "tier": "unverified"
+  }
+}
