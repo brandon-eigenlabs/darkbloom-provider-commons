@@ -1,5 +1,10 @@
 {
-  "anchored": "pending",
+  "anchored": "confirmed",
+  "bitcoin_blocks": [
+    968905,
+    968908
+  ],
+  "confirmed_at": "2026-10-06T21:34:46Z",
   "created": "2026-09-27T23:57:01Z",
   "heads": {
     "0x44aa8c1d7213e36902c72af22dc68c4bfca649ab.jsonl": "ba1a9d8dc7490568d218804069377191b1fd0b085d499b7424b156bf89ff5a9a"
@@ -9,5 +14,6 @@
   ],
   "ots_proof": "anchor-20260927T235701Z.root.ots",
   "root": "ea95ce8345786aa40fe726a986c6cd4b4f163100bfa7fcb3565a8f8972636dd2",
-  "schema": "rc.v1"
+  "schema": "rc.v1",
+  "verified_locally": false
 }
