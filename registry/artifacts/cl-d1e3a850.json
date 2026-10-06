@@ -10,12 +10,7 @@
   "id": "cl-d1e3a850",
   "ingest_policy": true,
   "license": "CC-BY-4.0",
-  "links": [
-    {
-      "id": "cl-c15c75a7",
-      "rel": "supersedes"
-    }
-  ],
+  "links": [],
   "schema": "rc.v1",
   "tags": [],
   "title": "Collection: Darkbloom provider economics",
