@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: research-common/research-commons
-          ref: e51c43cb89331b97a5d02f35289d6d4a600de907  # main after #15 (supersede-lineage ingest policy); unreleased
+          ref: 780778890b5b9c8d4b0feef4c1b710a119f85079  # v0.3.0-alpha.1
           path: tool
           persist-credentials: false
       - uses: actions/setup-node@v4
