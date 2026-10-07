@@ -1,5 +1,9 @@
 # Darkbloom provider economics
 
+What a Darkbloom provider earns per resident GB-hour, per model and per hardware class, and
+which configuration decisions actually move it. **Want to contribute data from your
+machine? Start with [`CONTRIBUTING.md`](CONTRIBUTING.md).**
+
 A **Research Commons hub**: a data-only git repository (manifests in `registry/`,
 content-addressed blobs in `store/`). It contains **no code**. The `commons` tool lives in
 a separate repository — [research-common/research-commons](https://github.com/research-common/research-commons) — and you
@@ -11,7 +15,7 @@ update it there, never through this hub.
 git clone https://github.com/research-common/research-commons.git ~/research-commons   # the tool, once
 export PATH="$HOME/research-commons/bin:$PATH"
 git clone <this hub> && cd <this hub>                             # the data
-commons list --type collection        # topics hosted here
+commons list --type collection --tips-only   # the current collection (ids change on every endorsement)
 commons collection show <cl-id>       # endorsed + claimed members, open work
 commons verify <id>                   # re-derive it yourself
 ```
@@ -20,6 +24,9 @@ commons verify <id>                   # re-derive it yourself
 marker file); `commons hub where` says which data root is in use.
 
 ## Contribute
+
+The hub-specific procedure, including what data is wanted and how it is anonymised, is
+[`CONTRIBUTING.md`](CONTRIBUTING.md). The general mechanics:
 
 1. Mint a signing key and tell the maintainers your address (`commons peer whoami`).
 2. Fork this hub (or push a branch if you have write access), publish from inside your
@@ -37,4 +44,4 @@ Full guide: `docs/COLLABORATING.md` in the tool repository.
 
 | handle | signing address |
 |---|---|
-| _(add yourself)_ | `0x…` |
+| brandon-curtis | `0x44AA8c1d7213E36902c72AF22dC68C4BFcA649Ab` |
