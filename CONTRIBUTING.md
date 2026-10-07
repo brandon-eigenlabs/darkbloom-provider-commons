@@ -23,12 +23,23 @@ Research Commons mechanics are in the tool's
 
 | Kind | What it is | Effort on your machine | How it's endorsed |
 |---|---|---|---|
-| **Census export** | `dbyield export` after at least 24 h of the sampler on your normal configuration | none: no restarts, no config changes | listed as CLAIMED at once; the role it is endorsed under is still being decided |
+| **Census export** | `dbyield export` after at least 24 h of the sampler on your normal configuration | none: no restarts, no config changes | listed as CLAIMED at once, then endorsed under role `census` if it meets the bar below |
 | **Campaign** | a pre-registered, round-robin experiment meeting the collection's `wanted:` criteria | 5–8 h or more of controlled restarts, which cost earnings | endorsed as an `instance` if it meets the criteria |
 
-Start with a census export. Read the criteria and the method before planning a campaign:
-`commons collection show <current collection>` (the `wanted:` line) and `commons cat sk-798a4418`
-(the method, rev 4).
+Start with a census export. **The census bar** (it's the collection's own rule, so read it
+there with `commons cat <current collection>`; `collection show` doesn't print notes):
+- at least 24 h of sampler coverage inside the export window;
+- your normal configuration, with no experiment or configuration change during the window;
+- the whole window inside one routing era (`METHOD.md` §17), so don't straddle a known
+  coordinator deploy;
+- published with `--link applies:sk-798a4418` and attested with `--observed` at the window's end;
+- at most one endorsed census per machine per routing era.
+
+A census says what a model earned on your hardware class as you chose to run it. It isn't a
+comparison of models, and it's never pooled with campaign arms.
+
+Before planning a campaign, read the criteria and the method: `commons collection show <current
+collection>` (the `wanted:` line) and `commons cat sk-798a4418` (the method, rev 4).
 
 ## Steps
 
