@@ -14,8 +14,7 @@ Research Commons mechanics are in the tool's
 - An Apple Silicon Mac running a Darkbloom provider, serving normally (`darkbloom status`).
 - macOS with Python **3.11+** and **node + npm** (the signer runs on node; without it every
   publish is silently unsigned and can't be attributed to you).
-- [`dbyield`](https://github.com/brandon-eigenlabs/darkbloom-yield), the exporter. **It is not
-  public yet: open an issue on this hub to ask for access.** You cannot contribute without it,
+- [`dbyield`](https://github.com/brandon-eigenlabs/dbyield), the exporter. You cannot contribute without it,
   because the only accepted format is a `dbyield export` bundle (see *Privacy*).
 - The Research Commons tool, **v0.3.0-alpha.1 or later**, the version this hub's CI runs.
 
@@ -50,8 +49,8 @@ git clone https://github.com/research-common/research-commons.git ~/research-com
 cd ~/research-commons && git checkout v0.3.0-alpha.1 && npm install --ignore-scripts
 export PATH="$HOME/research-commons/bin:$PATH"
 
-git clone https://github.com/brandon-eigenlabs/darkbloom-yield.git ~/darkbloom-yield   # after access is granted
-~/darkbloom-yield/install.sh --with-sampler      # puts dbyield on PATH and starts the sampler
+git clone https://github.com/brandon-eigenlabs/dbyield.git ~/dbyield
+~/dbyield/install.sh --with-sampler      # puts dbyield on PATH and starts the sampler
 ```
 
 The sampler only reads state; it never changes your provider. Leave it running.
@@ -140,7 +139,7 @@ Anything published here is public and permanent. Retraction is best effort, not 
 
 Do the steps in order and stop at each point that needs the person:
 
-1. **Stop for the person:** their consent to run the sampler, and their access to `dbyield`.
+1. **Stop for the person:** their consent to run the sampler on their machine.
 2. Install (step 1). Check `node --version` and `commons --version` (v0.3.0-alpha.1 or later).
 3. Make the key (step 2). **Never print or commit the key file**; the address is all that's
    shared. **Stop for the person** to open the issue with the address, or have them confirm you
